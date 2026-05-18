@@ -679,7 +679,7 @@ target="_blank"
 
 </footer>
 
-<!-- BOTÓN CHAT -->
+<!-- CHAT BUTTON -->
 
 <div class="chat-btn" onclick="toggleChat()">
 
@@ -891,74 +891,11 @@ messages.scrollHeight;
 
 }
 
-/* ELIMINAR ÚLTIMO */
-
-function eliminarUltimo(){
-
-const userMessages =
-document.querySelectorAll(".user");
-
-if(userMessages.length > 0){
-
-userMessages[
-userMessages.length - 1
-].remove();
-
-}
-
-if(step > 1){
-step--;
-}
-
-}
-
-/* BOTÓN X */
-
-function agregarBotonEliminar(){
-
-addBotMessage(`
-
-<div style="text-align:right;">
-
-<button
-onclick="eliminarUltimo()"
-style="
-background:red;
-color:#fff;
-border:none;
-width:30px;
-height:30px;
-border-radius:50%;
-cursor:pointer;
-font-weight:bold;
-">
-
-✕
-
-</button>
-
-</div>
-
-`);
-
-}
-
-/* INICIO CHAT */
+/* INICIO */
 
 function startChat(){
 
 messages.innerHTML = "";
-
-step = 0;
-
-userData = {
-servicio:"",
-precio:"",
-nombre:"",
-apellido:"",
-cedula:"",
-telefono:""
-};
 
 addBotMessage(`
 
@@ -994,7 +931,7 @@ Incidente desacato
 
 }
 
-/* SELECCIONAR SERVICIO */
+/* SERVICIO */
 
 function selectOption(option){
 
@@ -1052,7 +989,7 @@ input.value.trim();
 if(text === ""){
 
 addBotMessage(
-"⚠️ Todos los campos son obligatorios."
+"⚠️ Campo obligatorio."
 );
 
 return;
@@ -1066,7 +1003,7 @@ if(step === 1){
 if(!soloLetras(text)){
 
 addBotMessage(
-"⚠️ El nombre solo puede contener letras."
+"⚠️ Solo letras."
 );
 
 return;
@@ -1077,13 +1014,11 @@ userData.nombre = text;
 
 addUserMessage(text);
 
-input.value = "";
-
-agregarBotonEliminar();
-
 addBotMessage(
 "Ahora escribe tu apellido."
 );
+
+input.value = "";
 
 step = 2;
 
@@ -1098,7 +1033,7 @@ if(step === 2){
 if(!soloLetras(text)){
 
 addBotMessage(
-"⚠️ El apellido solo puede contener letras."
+"⚠️ Solo letras."
 );
 
 return;
@@ -1109,13 +1044,11 @@ userData.apellido = text;
 
 addUserMessage(text);
 
-input.value = "";
-
-agregarBotonEliminar();
-
 addBotMessage(
 "Escribe tu número de cédula."
 );
+
+input.value = "";
 
 step = 3;
 
@@ -1130,7 +1063,7 @@ if(step === 3){
 if(!soloNumeros(text)){
 
 addBotMessage(
-"⚠️ La cédula solo puede contener números."
+"⚠️ Solo números."
 );
 
 return;
@@ -1141,13 +1074,11 @@ userData.cedula = text;
 
 addUserMessage(text);
 
-input.value = "";
-
-agregarBotonEliminar();
-
 addBotMessage(
 "Escribe tu número de contacto."
 );
+
+input.value = "";
 
 step = 4;
 
@@ -1162,17 +1093,19 @@ if(step === 4){
 if(!soloNumeros(text)){
 
 addBotMessage(
-"⚠️ El teléfono solo puede contener números."
+"⚠️ Solo números."
 );
 
 return;
 
 }
 
+/* TOPE 10 */
+
 if(solicitudes.length >= 10){
 
 addBotMessage(
-"⚠️ Límite máximo de solicitudes alcanzado."
+"⚠️ Límite máximo alcanzado."
 );
 
 return;
@@ -1218,22 +1151,20 @@ input.value = "";
 
 step = 0;
 
-/* CERRAR */
-
-setTimeout(()=>{
-
-document.getElementById("chatbox")
-.style.display = "none";
-
-},1200);
-
-/* REINICIAR */
+userData = {
+servicio:"",
+precio:"",
+nombre:"",
+apellido:"",
+cedula:"",
+telefono:""
+};
 
 setTimeout(()=>{
 
 startChat();
 
-},1400);
+},1000);
 
 }
 
