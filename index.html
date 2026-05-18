@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<title>asesorias-transito</title>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>asesorias-transito</title>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,18 +17,39 @@
 
 <style>
 
-.checked {
-color: orange;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,sans-serif;
+overflow-x:hidden;
+background:#fff;
+-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility;
+}
+
+/* ESTRELLAS */
+
+.checked{
+color:orange;
 }
 
 /* BOTÓN VOLVER */
+
 .btn-volver{
-position: fixed;
-top: 50%;
-left: 15px;
-transform: translateY(-50%);
-background: #000;
-color: #fff;
+position:fixed;
+top:50%;
+left:15px;
+transform:translateY(-50%);
+background:#000;
+color:#fff;
 width:45px;
 height:45px;
 border-radius:50%;
@@ -36,17 +59,17 @@ align-items:center;
 font-size:18px;
 z-index:1001;
 text-decoration:none;
-box-shadow:0 0 10px rgba(0,0,0,0.5);
-transition:0.3s;
+box-shadow:0 0 10px rgba(0,0,0,.4);
+transition:.3s;
 }
 
 .btn-volver:hover{
 background:#00ff9d;
 color:#000;
-transform: translateY(-50%) scale(1.1);
+transform:translateY(-50%) scale(1.1);
 }
 
-/* ================= CHATBOX ================= */
+/* BOTÓN SOLICITUDES */
 
 .btn-pendientes{
 position:fixed;
@@ -83,6 +106,8 @@ align-items:center;
 font-weight:bold;
 }
 
+/* PANEL */
+
 .panel{
 position:fixed;
 top:0;
@@ -103,10 +128,13 @@ right:0;
 }
 
 .cerrar-panel{
-font-size:28px;
+font-size:30px;
 cursor:pointer;
 float:right;
+font-weight:bold;
 }
+
+/* CHAT BUTTON */
 
 .chat-btn{
 position:fixed;
@@ -126,6 +154,12 @@ box-shadow:0 4px 15px rgba(0,0,0,.3);
 animation:pulse 2s infinite;
 }
 
+.chat-btn:hover{
+transform:scale(1.05);
+}
+
+/* CHATBOX */
+
 .chatbox{
 position:fixed;
 bottom:90px;
@@ -140,6 +174,7 @@ box-shadow:0 10px 25px rgba(0,0,0,.3);
 display:none;
 flex-direction:column;
 z-index:99999;
+will-change:transform;
 }
 
 .header-chat{
@@ -158,6 +193,7 @@ flex:1;
 padding:15px;
 overflow-y:auto;
 background:#fafafa;
+scroll-behavior:smooth;
 }
 
 .message{
@@ -167,10 +203,12 @@ margin-bottom:12px;
 max-width:85%;
 line-height:1.4;
 font-size:14px;
+word-wrap:break-word;
 }
 
 .bot{
 background:#ececec;
+color:#000;
 }
 
 .user{
@@ -178,6 +216,8 @@ background:#0b1c2c;
 color:#fff;
 margin-left:auto;
 }
+
+/* OPCIONES */
 
 .options button{
 display:block;
@@ -189,11 +229,19 @@ border-radius:10px;
 cursor:pointer;
 background:#d4af37;
 font-weight:bold;
+transition:.3s;
 }
+
+.options button:hover{
+background:#c49b1e;
+}
+
+/* INPUT */
 
 .input-area{
 display:flex;
 border-top:1px solid #ddd;
+background:#fff;
 }
 
 .input-area input{
@@ -201,6 +249,7 @@ flex:1;
 padding:15px;
 border:none;
 outline:none;
+font-size:15px;
 }
 
 .input-area button{
@@ -209,7 +258,10 @@ color:#fff;
 border:none;
 padding:15px;
 cursor:pointer;
+font-weight:bold;
 }
+
+/* BADGES */
 
 .badge-pendiente{
 background:red;
@@ -225,11 +277,31 @@ padding:6px 10px;
 border-radius:8px;
 }
 
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
+/* TABLA */
+
+table{
+font-size:13px;
 }
+
+/* ANIMACIÓN */
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.05);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+/* RESPONSIVE */
 
 @media(max-width:768px){
 
@@ -237,6 +309,7 @@ border-radius:8px;
 width:95%;
 left:2.5%;
 height:80vh;
+bottom:85px;
 }
 
 .panel{
@@ -248,6 +321,13 @@ font-size:12px;
 padding:10px 14px;
 }
 
+.chat-btn{
+left:10px;
+bottom:10px;
+padding:13px 18px;
+font-size:14px;
+}
+
 }
 
 </style>
@@ -257,28 +337,41 @@ padding:10px 14px;
 <body>
 
 <!-- BOTÓN VOLVER -->
+
 <a href="https://paginaweb1.github.io/dise-os_web.com/" class="btn-volver">
 <i class="fa fa-arrow-left"></i>
 </a>
 
 <!-- BOTÓN SOLICITUDES -->
+
 <div class="btn-pendientes" onclick="abrirPanel()">
-<div class="contador" id="contadorPendientes">0</div>
+
+<div class="contador" id="contadorPendientes">
+0
+</div>
+
 Solicitudes
+
 </div>
 
 <!-- PANEL -->
+
 <div class="panel" id="panelSolicitudes">
 
-<span class="cerrar-panel" onclick="cerrarPanel()">&times;</span>
+<span class="cerrar-panel" onclick="cerrarPanel()">
+&times;
+</span>
 
-<h2 class="mb-4">Solicitudes Pendientes</h2>
+<h2 class="mb-4">
+Solicitudes Pendientes
+</h2>
 
 <div class="table-responsive">
 
 <table class="table table-bordered">
 
 <thead class="thead-dark">
+
 <tr>
 <th>Servicio</th>
 <th>Nombre</th>
@@ -286,6 +379,7 @@ Solicitudes
 <th>Estado</th>
 <th>Acción</th>
 </tr>
+
 </thead>
 
 <tbody id="tablaSolicitudes"></tbody>
@@ -296,122 +390,222 @@ Solicitudes
 
 </div>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
+
 <div class="w3-top">
+
 <div class="w3-bar w3-black w3-padding w3-card">
 
 <img src="Logo.jpg" alt="Logo" style="width:60px;" class="w3-left">
 
-<h3 style="text-align: center;">
-Vía Legal Asesoría y Gestiones de transito
+<h3 style="text-align:center;">
+Vía Legal Asesoría y Gestiones de tránsito
 </h3>
 
 </div>
+
 </div>
 
-<!-- Header -->
-<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+<!-- HEADER -->
 
-<video autoplay muted loop id="myVideo" style="width:100%;">
+<header class="w3-display-container w3-content w3-wide"
+style="max-width:1500px;"
+id="home">
+
+<video autoplay muted loop playsinline style="width:100%;">
+
 <source src="asesorias-transito.mp4" type="video/mp4">
+
 </video>
 
 <div class="container">
+
 <div class="dropdown">
-<button type="button" class="btn btn-success dropdown-toggle w3-right" data-toggle="dropdown">
+
+<button type="button"
+class="btn btn-success dropdown-toggle w3-right"
+data-toggle="dropdown">
+
 Servicios
+
 </button>
 
 <div class="dropdown-menu">
-<a class="dropdown-item-text" href="#">Embargos</a>
-<a class="dropdown-item-text" href="#">Fotomultas</a>
-<a class="dropdown-item-text" href="#">Comparendos</a>
-<a class="dropdown-item-text" href="#">Acuerdos de pagos</a>
-<a class="dropdown-item-text" href="#">Derechos de peticion</a>
-<a class="dropdown-item-text" href="#">Gestion de traspasos</a>
-<a class="dropdown-item-text" href="#">Renovasion de licencias</a>
-<a class="dropdown-item-text" href="#">Levantamiento de prenda</a>
-<a class="dropdown-item-text" href="#">Revision de antecedentes</a>
-<a class="dropdown-item-text" href="#">Levantamiento de sanciones</a>
-<a class="dropdown-item-text" href="#">Elaboracion de placas de transito</a>
-<a class="dropdown-item-text" href="#">Gestion de traspaso de vehiculos</a>
-<a class="dropdown-item-text" href="#">Curso para descuento de infraccion</a>
-<a class="dropdown-item-text" href="#">Expedicion de licencia por primera vez</a>
-<a class="dropdown-item-text" href="#">Transpaso a indeterminado a nivel nacional</a>
-<a class="dropdown-item-text" href="#">Examen medico para renovar licencia de conduccion</a>
+
+<a class="dropdown-item-text" href="#">
+Embargos
+</a>
+
+<a class="dropdown-item-text" href="#">
+Fotomultas
+</a>
+
+<a class="dropdown-item-text" href="#">
+Comparendos
+</a>
+
+<a class="dropdown-item-text" href="#">
+Acuerdos de pagos
+</a>
+
+<a class="dropdown-item-text" href="#">
+Derechos de petición
+</a>
+
+<a class="dropdown-item-text" href="#">
+Gestión de traspasos
+</a>
+
+<a class="dropdown-item-text" href="#">
+Renovación de licencias
+</a>
+
+<a class="dropdown-item-text" href="#">
+Levantamiento de prenda
+</a>
+
+<a class="dropdown-item-text" href="#">
+Revisión de antecedentes
+</a>
+
+<a class="dropdown-item-text" href="#">
+Levantamiento de sanciones
+</a>
+
+<a class="dropdown-item-text" href="#">
+Elaboración de placas
+</a>
+
+<a class="dropdown-item-text" href="#">
+Traspaso de vehículos
+</a>
+
+<a class="dropdown-item-text" href="#">
+Curso descuento infracción
+</a>
+
+<a class="dropdown-item-text" href="#">
+Licencia por primera vez
+</a>
+
+<a class="dropdown-item-text" href="#">
+Traspaso indeterminado
+</a>
+
+<a class="dropdown-item-text" href="#">
+Examen médico licencia
+</a>
+
 </div>
 
 </div>
+
 </div>
 
 </header>
 
 <!-- CONTENIDO -->
+
 <div class="w3-content w3-padding" style="max-width:1564px">
 
 <div class="w3-container w3-padding-32">
+
 <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-ASESORIAS JURIDICAS EN TRAMITES DE TRANSITO
+ASESORÍAS JURÍDICAS EN TRÁMITES DE TRÁNSITO
 </h3>
+
 </div>
 
 <div class="w3-container w3-padding-32">
+
 <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
 Papeles al día, cero preocupaciones!!
 </h3>
 
 <p>
-Asesoría Jurídica y Trámites de Tránsito: tu aliado para resolver sin complicaciones.
-En un mundo donde el tiempo y la tranquilidad valen oro, contar con una asesoría jurídica confiable y profesional marca la diferencia.
-Nuestro servicio está diseñado para brindarte soluciones rápidas, seguras y efectivas ante cualquier inconveniente legal o vehicular.
+
+Asesoría Jurídica y Trámites de Tránsito:
+tu aliado para resolver sin complicaciones.
+
+En un mundo donde el tiempo y la tranquilidad valen oro,
+contar con una asesoría jurídica confiable y profesional
+marca la diferencia.
+
+Nuestro servicio está diseñado para brindarte soluciones rápidas,
+seguras y efectivas ante cualquier inconveniente legal o vehicular.
+
 ¡Nosotros nos encargamos de todo!
+
 </p>
 
 </div>
 
 <!-- IMÁGENES -->
+
 <div class="w3-row-padding">
 
 <div class="w3-col l3 m6 w3-margin-bottom">
+
 <div class="w3-display-container">
+
 <div class="w3-display-topleft w3-black w3-padding">
-Cursos descuento infraccion
+Cursos descuento infracción
 </div>
+
 <img src="multas.png" style="width:100%">
+
 </div>
+
 </div>
 
 <div class="w3-col l3 m6 w3-margin-bottom">
+
 <div class="w3-display-container">
+
 <div class="w3-display-topleft w3-black w3-padding">
 Licencia por primera vez
 </div>
+
 <img src="licencia x primera vez.png" style="width:100%">
+
 </div>
+
 </div>
 
 <div class="w3-col l3 m6 w3-margin-bottom">
+
 <div class="w3-display-container">
+
 <div class="w3-display-topleft w3-black w3-padding">
 Renovación
 </div>
+
 <img src="renovacion licencia.png" style="width:100%">
+
 </div>
+
 </div>
 
 <div class="w3-col l3 m6 w3-margin-bottom">
+
 <div class="w3-display-container">
+
 <div class="w3-display-topleft w3-black w3-padding">
 Traspaso
 </div>
+
 <img src="transpaso.png" style="width:100%">
+
 </div>
+
 </div>
 
 </div>
 
 <!-- WHATSAPP -->
+
 <div class="w3-container" style="position:relative">
+
 <a href="https://wa.me/573112878814"
 target="_blank"
 class="w3-button w3-xlarge w3-circle w3-teal"
@@ -420,9 +614,11 @@ style="position:absolute;top:-28px;right:24px">
 <i class="fa fa-whatsapp"></i>
 
 </a>
+
 </div>
 
 <!-- CONTACTO -->
+
 <div class="w3-container" id="contact">
 
 <h2>Contacto</h2>
@@ -441,13 +637,19 @@ legalasesoriasdetransito@gmail.com
 </div>
 
 <!-- IMAGEN FINAL -->
+
 <div class="w3-container">
-<img src="footer.png" class="w3-image" style="width:100%">
+
+<img src="footer.png"
+class="w3-image"
+style="width:100%">
+
 </div>
 
 </div>
 
 <!-- FOOTER -->
+
 <footer class="w3-padding-32 w3-black w3-center w3-margin-top">
 
 <span class="fa fa-star checked"></span>
@@ -476,31 +678,55 @@ target="_blank">
 </footer>
 
 <!-- CHAT BUTTON -->
+
 <div class="chat-btn" onclick="toggleChat()">
+
 <i class="fa fa-comments"></i>
+
 Haz tu solicitud aquí
+
 </div>
 
 <!-- CHATBOX -->
+
 <div class="chatbox" id="chatbox">
 
 <div class="header-chat">
+
 Asistente Jurídico
-<span onclick="toggleChat()" style="cursor:pointer;">&times;</span>
+
+<span onclick="toggleChat()" style="cursor:pointer;">
+&times;
+</span>
+
 </div>
 
 <div class="messages" id="messages"></div>
 
 <div class="input-area">
-<input type="text" id="input" placeholder="Escribe aquí...">
-<button onclick="sendMessage()">Enviar</button>
+
+<input
+type="text"
+id="input"
+placeholder="Escribe aquí..."
+autocomplete="off"
+>
+
+<button onclick="sendMessage()">
+Enviar
+</button>
+
 </div>
 
 </div>
 
 <script>
 
-const messages = document.getElementById("messages");
+const messages =
+document.getElementById("messages");
+
+const input =
+document.getElementById("input");
 
 let step = 0;
 
@@ -514,49 +740,69 @@ telefono:""
 };
 
 const servicios = {
+
 "1":{
 nombre:"Derecho de petición",
 precio:"80000"
 },
+
 "2":{
 nombre:"Tutela",
 precio:"120000"
 },
+
 "3":{
 nombre:"Asesoría jurídica",
 precio:"60000"
 },
+
 "4":{
 nombre:"Ejecución de sentencia",
 precio:"250000"
 },
+
 "5":{
 nombre:"Incidente desacato",
 precio:"180000"
 }
+
 };
 
-let solicitudes = JSON.parse(localStorage.getItem("solicitudes")) || [];
+let solicitudes =
+JSON.parse(localStorage.getItem("solicitudes"))
+|| [];
+
+/* CHAT */
 
 function toggleChat(){
 
-const chat = document.getElementById("chatbox");
+const chat =
+document.getElementById("chatbox");
 
-if(chat.style.display === "flex"){
-chat.style.display = "none";
-}else{
-chat.style.display = "flex";
+chat.style.display =
+chat.style.display === "flex"
+? "none"
+: "flex";
+
 }
 
-}
+/* PANEL */
 
 function abrirPanel(){
-document.getElementById("panelSolicitudes").classList.add("active");
+
+document.getElementById("panelSolicitudes")
+.classList.add("active");
+
 }
 
 function cerrarPanel(){
-document.getElementById("panelSolicitudes").classList.remove("active");
+
+document.getElementById("panelSolicitudes")
+.classList.remove("active");
+
 }
+
+/* MENSAJES */
 
 function addBotMessage(text){
 
@@ -568,7 +814,7 @@ div.innerHTML = text;
 
 messages.appendChild(div);
 
-messages.scrollTop = messages.scrollHeight;
+scrollBottom();
 
 }
 
@@ -578,13 +824,44 @@ let div = document.createElement("div");
 
 div.className = "message user";
 
-div.innerHTML = text;
+div.innerHTML = `
+${text}
+
+<span onclick="eliminarMensaje(this)"
+style="
+margin-left:10px;
+cursor:pointer;
+font-weight:bold;
+color:#ff4d4d;
+">
+✕
+</span>
+`;
 
 messages.appendChild(div);
 
-messages.scrollTop = messages.scrollHeight;
+scrollBottom();
 
 }
+
+function eliminarMensaje(btn){
+
+btn.parentElement.remove();
+
+}
+
+function scrollBottom(){
+
+requestAnimationFrame(()=>{
+
+messages.scrollTop =
+messages.scrollHeight;
+
+});
+
+}
+
+/* INICIO CHAT */
 
 function startChat(){
 
@@ -595,80 +872,205 @@ Hola 👋<br><br>
 ¿Qué servicio necesitas?<br><br>
 
 <div class="options">
-<button onclick="selectOption('1')">Derecho de petición</button>
-<button onclick="selectOption('2')">Tutela</button>
-<button onclick="selectOption('3')">Asesoría jurídica</button>
-<button onclick="selectOption('4')">Ejecución sentencia</button>
-<button onclick="selectOption('5')">Incidente desacato</button>
+
+<button onclick="selectOption('1')">
+Derecho de petición
+</button>
+
+<button onclick="selectOption('2')">
+Tutela
+</button>
+
+<button onclick="selectOption('3')">
+Asesoría jurídica
+</button>
+
+<button onclick="selectOption('4')">
+Ejecución sentencia
+</button>
+
+<button onclick="selectOption('5')">
+Incidente desacato
+</button>
+
 </div>
 
 `);
 
 }
 
+/* SERVICIO */
+
 function selectOption(option){
 
-userData.servicio = servicios[option].nombre;
-userData.precio = servicios[option].precio;
+userData.servicio =
+servicios[option].nombre;
 
-addUserMessage(servicios[option].nombre);
+userData.precio =
+servicios[option].precio;
+
+addUserMessage(
+servicios[option].nombre
+);
 
 addBotMessage(`
+
 Valor aproximado:<br><br>
-<b>$${servicios[option].precio} COP</b><br><br>
+
+<b>
+$${servicios[option].precio} COP
+</b>
+
+<br><br>
 
 Escribe tu nombre.
+
 `);
 
 step = 1;
 
 }
 
+/* VALIDACIONES */
+
+function soloLetras(text){
+
+return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
+.test(text);
+
+}
+
+function soloNumeros(text){
+
+return /^[0-9]+$/
+.test(text);
+
+}
+
+/* ENVIAR */
+
 function sendMessage(){
 
-const input = document.getElementById("input");
+const text =
+input.value.trim();
 
-const text = input.value.trim();
+if(text === ""){
 
-if(text === "") return;
+addBotMessage(
+"⚠️ Este campo es obligatorio."
+);
 
-addUserMessage(text);
+return;
 
-input.value = "";
+}
+
+/* NOMBRE */
 
 if(step === 1){
 
+if(!soloLetras(text)){
+
+addBotMessage(
+"⚠️ El nombre solo puede contener letras."
+);
+
+return;
+
+}
+
 userData.nombre = text;
 
-addBotMessage("Ahora escribe tu apellido.");
+addUserMessage(text);
+
+addBotMessage(
+"Ahora escribe tu apellido."
+);
+
+input.value = "";
 
 step = 2;
 
+return;
+
 }
 
-else if(step === 2){
+/* APELLIDO */
+
+if(step === 2){
+
+if(!soloLetras(text)){
+
+addBotMessage(
+"⚠️ El apellido solo puede contener letras."
+);
+
+return;
+
+}
 
 userData.apellido = text;
 
-addBotMessage("Escribe tu número de cédula.");
+addUserMessage(text);
+
+addBotMessage(
+"Escribe tu número de cédula."
+);
+
+input.value = "";
 
 step = 3;
 
+return;
+
 }
 
-else if(step === 3){
+/* CEDULA */
+
+if(step === 3){
+
+if(!soloNumeros(text)){
+
+addBotMessage(
+"⚠️ La cédula solo puede contener números."
+);
+
+return;
+
+}
 
 userData.cedula = text;
 
-addBotMessage("Escribe tu número de contacto.");
+addUserMessage(text);
+
+addBotMessage(
+"Escribe tu número de contacto."
+);
+
+input.value = "";
 
 step = 4;
 
+return;
+
 }
 
-else if(step === 4){
+/* TELEFONO */
+
+if(step === 4){
+
+if(!soloNumeros(text)){
+
+addBotMessage(
+"⚠️ El número de contacto solo puede contener números."
+);
+
+return;
+
+}
 
 userData.telefono = text;
+
+addUserMessage(text);
 
 const ahora = new Date();
 
@@ -677,6 +1079,7 @@ const nuevaSolicitud = {
 tipo:userData.servicio,
 nombre:userData.nombre,
 apellido:userData.apellido,
+cedula:userData.cedula,
 celular:userData.telefono,
 precio:userData.precio,
 fecha:ahora.toLocaleDateString(),
@@ -687,7 +1090,10 @@ estado:"Pendiente"
 
 solicitudes.push(nuevaSolicitud);
 
-localStorage.setItem("solicitudes", JSON.stringify(solicitudes));
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
 
 mostrarSolicitudes();
 
@@ -695,21 +1101,85 @@ addBotMessage(`
 
 ✅ Solicitud registrada correctamente.<br><br>
 
-Servicio: ${userData.servicio}<br>
-Nombre: ${userData.nombre} ${userData.apellido}<br>
-Celular: ${userData.telefono}
+<b>Servicio:</b>
+${userData.servicio}
+<br>
+
+<b>Nombre:</b>
+${userData.nombre}
+${userData.apellido}
+<br>
+
+<b>Cédula:</b>
+${userData.cedula}
+<br>
+
+<b>Celular:</b>
+${userData.telefono}
 
 `);
 
+input.value = "";
+
 step = 5;
 
+setTimeout(()=>{
+
+step = 0;
+
+userData = {
+servicio:"",
+precio:"",
+nombre:"",
+apellido:"",
+cedula:"",
+telefono:""
+};
+
+addBotMessage(`
+
+¿Deseas realizar otra solicitud?<br><br>
+
+<div class="options">
+
+<button onclick="selectOption('1')">
+Derecho de petición
+</button>
+
+<button onclick="selectOption('2')">
+Tutela
+</button>
+
+<button onclick="selectOption('3')">
+Asesoría jurídica
+</button>
+
+<button onclick="selectOption('4')">
+Ejecución sentencia
+</button>
+
+<button onclick="selectOption('5')">
+Incidente desacato
+</button>
+
+</div>
+
+`);
+
+},1500);
+
+return;
+
 }
 
 }
+
+/* TABLA */
 
 function mostrarSolicitudes(){
 
-const tabla = document.getElementById("tablaSolicitudes");
+const tabla =
+document.getElementById("tablaSolicitudes");
 
 tabla.innerHTML = "";
 
@@ -722,46 +1192,89 @@ pendientes++;
 }
 
 tabla.innerHTML += `
+
 <tr>
-<td>${solicitud.tipo}</td>
-<td>${solicitud.nombre}</td>
-<td>${solicitud.celular}</td>
 
 <td>
+${solicitud.tipo}
+</td>
+
+<td>
+${solicitud.nombre}
+${solicitud.apellido}
+</td>
+
+<td>
+${solicitud.celular}
+</td>
+
+<td>
+
 <span class="${
 solicitud.estado === "Pendiente"
 ? "badge-pendiente"
 : "badge-respondido"
 }">
+
 ${solicitud.estado}
+
 </span>
+
 </td>
 
 <td>
-<button class="btn btn-sm btn-success"
+
+<button
+class="btn btn-sm btn-success"
 onclick="cambiarEstado(${index})">
+
 Responder
+
 </button>
+
 </td>
 
 </tr>
+
 `;
 
 });
 
-document.getElementById("contadorPendientes").innerText = pendientes;
+document.getElementById(
+"contadorPendientes"
+).innerText = pendientes;
 
 }
 
+/* RESPONDER */
+
 function cambiarEstado(index){
 
-solicitudes[index].estado = "Respondido";
+solicitudes[index].estado =
+"Respondido";
 
-localStorage.setItem("solicitudes", JSON.stringify(solicitudes));
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
 
 mostrarSolicitudes();
 
 }
+
+/* ENTER */
+
+input.addEventListener("keypress",function(e){
+
+if(e.key === "Enter"){
+
+sendMessage();
+
+}
+
+});
+
+/* INICIO */
 
 startChat();
 
@@ -771,24 +1284,3 @@ mostrarSolicitudes();
 
 </body>
 </html>
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
