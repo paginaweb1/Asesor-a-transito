@@ -212,6 +212,7 @@ margin-bottom:12px;
 max-width:85%;
 line-height:1.4;
 font-size:14px;
+word-wrap:break-word;
 }
 
 .bot{
@@ -234,6 +235,11 @@ border-radius:12px;
 cursor:pointer;
 background:#d4af37;
 font-weight:bold;
+transition:.3s;
+}
+
+.options button:hover{
+transform:translateY(-2px);
 }
 
 .input-area{
@@ -252,6 +258,20 @@ font-weight:bold;
 .btn-enviar{
 background:#0b1c2c;
 color:#fff;
+}
+
+.badge-pendiente{
+background:red;
+color:#fff;
+padding:6px 10px;
+border-radius:8px;
+}
+
+.badge-respondido{
+background:green;
+color:#fff;
+padding:6px 10px;
+border-radius:8px;
 }
 
 #toast{
@@ -336,6 +356,7 @@ Solicitudes Pendientes
 <th>Nombre</th>
 <th>Celular</th>
 <th>Estado</th>
+<th>Acción</th>
 </tr>
 
 </thead>
@@ -593,7 +614,6 @@ JSON.parse(localStorage.getItem("solicitudes"))
 function limpiarCampo(){
 
 input.value = "";
-
 input.focus();
 
 }
@@ -643,6 +663,9 @@ document.getElementById("panelSolicitudes")
 
 function mostrarToast(){
 
+toast.innerHTML =
+"✅ Solicitud enviada<br>📞 En un momento nuestro abogado se pondrá en contacto.";
+
 toast.classList.add("active");
 
 setTimeout(()=>{
@@ -655,7 +678,8 @@ toast.classList.remove("active");
 
 function addBotMessage(text){
 
-let div = document.createElement("div");
+let div =
+document.createElement("div");
 
 div.className = "message bot";
 
@@ -663,13 +687,15 @@ div.innerHTML = text;
 
 messages.appendChild(div);
 
-messages.scrollTop = messages.scrollHeight;
+messages.scrollTop =
+messages.scrollHeight;
 
 }
 
 function addUserMessage(text){
 
-let div = document.createElement("div");
+let div =
+document.createElement("div");
 
 div.className = "message user";
 
@@ -677,7 +703,8 @@ div.innerHTML = text;
 
 messages.appendChild(div);
 
-messages.scrollTop = messages.scrollHeight;
+messages.scrollTop =
+messages.scrollHeight;
 
 }
 
@@ -733,9 +760,7 @@ servicios[option].nombre
 
 addBotMessage(`
 
-Valor aproximado:
-
-<br><br>
+Valor aproximado:<br><br>
 
 <b>
 $${servicios[option].precio} COP
@@ -748,6 +773,20 @@ Escribe tu nombre.
 `);
 
 step = 1;
+
+}
+
+function soloLetras(text){
+
+return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
+.test(text);
+
+}
+
+function soloNumeros(text){
+
+return /^[0-9]+$/
+.test(text);
 
 }
 
@@ -768,6 +807,16 @@ return;
 
 if(step === 1){
 
+if(!soloLetras(text)){
+
+addBotMessage(
+"⚠️ Solo letras."
+);
+
+return;
+
+}
+
 userData.nombre = text;
 
 addUserMessage(text);
@@ -785,6 +834,16 @@ return;
 }
 
 if(step === 2){
+
+if(!soloLetras(text)){
+
+addBotMessage(
+"⚠️ Solo letras."
+);
+
+return;
+
+}
 
 userData.apellido = text;
 
@@ -804,6 +863,16 @@ return;
 
 if(step === 3){
 
+if(!soloNumeros(text)){
+
+addBotMessage(
+"⚠️ Solo números."
+);
+
+return;
+
+}
+
 userData.cedula = text;
 
 addUserMessage(text);
@@ -822,9 +891,47 @@ return;
 
 if(step === 4){
 
+if(!soloNumeros(text)){
+
+addBotMessage(
+"⚠️ Solo números."
+);
+
+return;
+
+}
+
+if(solicitudes.length >= 10){
+
+const limpiar =
+confirm(
+"Ya existen 10 solicitudes. ¿Desea limpiar todas las solicitudes?"
+);
+
+if(limpiar){
+
+solicitudes = [];
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+}else{
+
+return;
+
+}
+
+}
+
 userData.telefono = text;
 
 addUserMessage(text);
+
+const ahora = new Date();
 
 const nuevaSolicitud = {
 
@@ -833,6 +940,9 @@ nombre:userData.nombre,
 apellido:userData.apellido,
 cedula:userData.cedula,
 celular:userData.telefono,
+precio:userData.precio,
+fecha:ahora.toLocaleDateString(),
+hora:ahora.toLocaleTimeString(),
 estado:"Pendiente"
 
 };
@@ -850,17 +960,24 @@ mostrarToast();
 
 addBotMessage(`
 
-✅ Solicitud enviada
+✅ <b>Solicitud enviada</b><br><br>
 
-<br><br>
-
-📞 En un momento nos pondremos en contacto.
+📞 En un momento nuestro abogado se pondrá en contacto.
 
 `);
 
 input.value = "";
 
 step = 0;
+
+userData = {
+servicio:"",
+precio:"",
+nombre:"",
+apellido:"",
+cedula:"",
+telefono:""
+};
 
 setTimeout(()=>{
 
@@ -883,7 +1000,7 @@ tabla.innerHTML = "";
 
 let pendientes = 0;
 
-solicitudes.forEach((solicitud)=>{
+solicitudes.forEach((solicitud,index)=>{
 
 if(solicitud.estado === "Pendiente"){
 pendientes++;
@@ -902,7 +1019,41 @@ ${solicitud.apellido}
 
 <td>${solicitud.celular}</td>
 
-<td>${solicitud.estado}</td>
+<td>
+
+<span class="${
+solicitud.estado === "Pendiente"
+? "badge-pendiente"
+: "badge-respondido"
+}">
+
+${solicitud.estado}
+
+</span>
+
+</td>
+
+<td>
+
+<button
+class="btn btn-sm btn-success"
+onclick="cambiarEstado(${index})"
+>
+
+Responder
+
+</button>
+
+<button
+class="btn btn-sm btn-danger mt-1"
+onclick="eliminarSolicitud(${index})"
+>
+
+Eliminar
+
+</button>
+
+</td>
 
 </tr>
 
@@ -913,6 +1064,33 @@ ${solicitud.apellido}
 document.getElementById(
 "contadorPendientes"
 ).innerText = pendientes;
+
+}
+
+function cambiarEstado(index){
+
+solicitudes[index].estado =
+"Respondido";
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+}
+
+function eliminarSolicitud(index){
+
+solicitudes.splice(index,1);
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
 
 }
 
