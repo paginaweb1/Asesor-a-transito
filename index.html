@@ -65,6 +65,67 @@ color:#000;
 transform:translateY(-50%) scale(1.1);
 }
 
+.btn-pendientes{
+position:fixed;
+top:15px;
+right:15px;
+background:#16a34a;
+color:#fff;
+padding:12px 18px;
+border-radius:50px;
+z-index:9999;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 15px rgba(0,0,0,.3);
+display:flex;
+align-items:center;
+gap:10px;
+transition:.3s;
+}
+
+.btn-pendientes:hover{
+transform:scale(1.05);
+background:#22c55e;
+}
+
+.contador{
+background:#fff;
+color:#16a34a;
+width:28px;
+height:28px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:bold;
+}
+
+.panel{
+position:fixed;
+top:0;
+right:-100%;
+width:100%;
+max-width:500px;
+height:100vh;
+background:#fff;
+z-index:99999;
+overflow-y:auto;
+transition:.4s;
+box-shadow:-5px 0 20px rgba(0,0,0,.3);
+padding:20px;
+}
+
+.panel.active{
+right:0;
+}
+
+.cerrar-panel{
+font-size:30px;
+cursor:pointer;
+float:right;
+font-weight:bold;
+}
+
 .chat-btn{
 position:fixed;
 bottom:20px;
@@ -142,6 +203,36 @@ color:#fff;
 margin-left:auto;
 }
 
+.user-data{
+background:#fff;
+border:1px solid #ddd;
+padding:10px 14px;
+border-radius:12px;
+margin-top:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:14px;
+}
+
+.user-data button{
+background:red;
+color:#fff;
+border:none;
+width:24px;
+height:24px;
+border-radius:50%;
+cursor:pointer;
+font-weight:bold;
+line-height:1;
+transition:.3s;
+}
+
+.user-data button:hover{
+transform:scale(1.1);
+background:#c00000;
+}
+
 .options button{
 display:block;
 width:100%;
@@ -186,21 +277,18 @@ background:#0b1c2c;
 color:#fff;
 }
 
-.btn-limpiar{
-background:#dc2626;
+.badge-pendiente{
+background:red;
 color:#fff;
-width:55px;
-font-size:22px;
-font-weight:bold;
-display:flex;
-align-items:center;
-justify-content:center;
-transition:.3s;
+padding:6px 10px;
+border-radius:8px;
 }
 
-.btn-limpiar:hover{
-background:#b91c1c;
-transform:scale(1.05);
+.badge-respondido{
+background:green;
+color:#fff;
+padding:6px 10px;
+border-radius:8px;
 }
 
 #toast{
@@ -222,6 +310,10 @@ box-shadow:0 4px 15px rgba(0,0,0,.3);
 #toast.active{
 opacity:1;
 transform:translateY(-10px);
+}
+
+table{
+font-size:13px;
 }
 
 @keyframes pulse{
@@ -249,11 +341,27 @@ height:80vh;
 bottom:85px;
 }
 
+.panel{
+max-width:100%;
+}
+
+.btn-pendientes{
+font-size:12px;
+padding:10px 14px;
+}
+
 .chat-btn{
 left:10px;
 bottom:10px;
 padding:13px 18px;
 font-size:14px;
+}
+
+#toast{
+right:10px;
+left:10px;
+bottom:20px;
+text-align:center;
 }
 
 }
@@ -264,9 +372,57 @@ font-size:14px;
 
 <body>
 
-<a href="https://paginaweb1.github.io/dise-os_web.com/" class="btn-volver">
+<a href="#" class="btn-volver">
 <i class="fa fa-arrow-left"></i>
 </a>
+
+<div
+class="btn-pendientes"
+id="adminBtn"
+onclick="verificarAdmin()"
+>
+
+<div class="contador" id="contadorPendientes">
+0
+</div>
+
+Solicitudes
+
+</div>
+
+<div class="panel" id="panelSolicitudes">
+
+<span class="cerrar-panel" onclick="cerrarPanel()">
+&times;
+</span>
+
+<h2 class="mb-4">
+Solicitudes Pendientes
+</h2>
+
+<div class="table-responsive">
+
+<table class="table table-bordered">
+
+<thead class="thead-dark">
+
+<tr>
+<th>Servicio</th>
+<th>Nombre</th>
+<th>Celular</th>
+<th>Estado</th>
+<th>Acción</th>
+</tr>
+
+</thead>
+
+<tbody id="tablaSolicitudes"></tbody>
+
+</table>
+
+</div>
+
+</div>
 
 <div class="chat-btn" onclick="toggleChat()">
 
@@ -303,15 +459,9 @@ autocomplete="off"
 class="btn-enviar"
 onclick="sendMessage()"
 >
-Enviar
-</button>
 
-<button
-class="btn-limpiar"
-onclick="limpiarCampo()"
-title="Limpiar campo"
->
-✕
+Enviar
+
 </button>
 
 </div>
@@ -323,6 +473,8 @@ title="Limpiar campo"
 </div>
 
 <script>
+
+const ADMIN_PASSWORD = "progreso123";
 
 const messages =
 document.getElementById("messages");
@@ -373,6 +525,27 @@ precio:"180000"
 
 };
 
+let solicitudes =
+JSON.parse(localStorage.getItem("solicitudes"))
+|| [];
+
+function verificarAdmin(){
+
+const pass =
+prompt("Ingrese contraseña administrador");
+
+if(pass === ADMIN_PASSWORD){
+
+abrirPanel();
+
+}else{
+
+alert("Acceso denegado");
+
+}
+
+}
+
 function toggleChat(){
 
 const chat =
@@ -382,6 +555,20 @@ chat.style.display =
 chat.style.display === "flex"
 ? "none"
 : "flex";
+
+}
+
+function abrirPanel(){
+
+document.getElementById("panelSolicitudes")
+.classList.add("active");
+
+}
+
+function cerrarPanel(){
+
+document.getElementById("panelSolicitudes")
+.classList.remove("active");
 
 }
 
@@ -415,18 +602,54 @@ scrollBottom();
 
 }
 
-function addUserMessage(text){
+function mostrarDatoEditable(label, valor, paso){
 
 let div =
 document.createElement("div");
 
-div.className = "message user";
+div.className = "user-data";
 
-div.innerHTML = text;
+div.innerHTML = `
+
+<div>
+<b>${label}:</b> ${valor}
+</div>
+
+<button onclick="editarPaso(${paso})">
+×
+</button>
+
+`;
 
 messages.appendChild(div);
 
 scrollBottom();
+
+}
+
+function editarPaso(paso){
+
+step = paso;
+
+if(paso === 1){
+userData.nombre = "";
+}
+
+if(paso === 2){
+userData.apellido = "";
+}
+
+if(paso === 3){
+userData.cedula = "";
+}
+
+if(paso === 4){
+userData.telefono = "";
+}
+
+addBotMessage(
+"✏️ Puedes escribir nuevamente el dato."
+);
 
 }
 
@@ -438,14 +661,6 @@ messages.scrollTop =
 messages.scrollHeight;
 
 });
-
-}
-
-function limpiarCampo(){
-
-input.value = "";
-
-input.focus();
 
 }
 
@@ -495,10 +710,6 @@ servicios[option].nombre;
 userData.precio =
 servicios[option].precio;
 
-addUserMessage(
-servicios[option].nombre
-);
-
 addBotMessage(`
 
 Valor aproximado:<br><br>
@@ -546,8 +757,6 @@ return;
 
 }
 
-/* NOMBRE */
-
 if(step === 1){
 
 if(!soloLetras(text)){
@@ -562,7 +771,11 @@ return;
 
 userData.nombre = text;
 
-addUserMessage(text);
+mostrarDatoEditable(
+"Nombre",
+text,
+1
+);
 
 addBotMessage(
 "Ahora escribe tu apellido."
@@ -575,8 +788,6 @@ step = 2;
 return;
 
 }
-
-/* APELLIDO */
 
 if(step === 2){
 
@@ -592,7 +803,11 @@ return;
 
 userData.apellido = text;
 
-addUserMessage(text);
+mostrarDatoEditable(
+"Apellido",
+text,
+2
+);
 
 addBotMessage(
 "Escribe tu número de cédula."
@@ -605,8 +820,6 @@ step = 3;
 return;
 
 }
-
-/* CÉDULA */
 
 if(step === 3){
 
@@ -622,7 +835,11 @@ return;
 
 userData.cedula = text;
 
-addUserMessage(text);
+mostrarDatoEditable(
+"Cédula",
+text,
+3
+);
 
 addBotMessage(
 "Escribe tu número de contacto."
@@ -635,8 +852,6 @@ step = 4;
 return;
 
 }
-
-/* TELÉFONO */
 
 if(step === 4){
 
@@ -652,7 +867,36 @@ return;
 
 userData.telefono = text;
 
-addUserMessage(text);
+mostrarDatoEditable(
+"Celular",
+text,
+4
+);
+
+const ahora = new Date();
+
+const nuevaSolicitud = {
+
+tipo:userData.servicio,
+nombre:userData.nombre,
+apellido:userData.apellido,
+cedula:userData.cedula,
+celular:userData.telefono,
+precio:userData.precio,
+fecha:ahora.toLocaleDateString(),
+hora:ahora.toLocaleTimeString(),
+estado:"Pendiente"
+
+};
+
+solicitudes.push(nuevaSolicitud);
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
 
 mostrarToast();
 
@@ -689,6 +933,109 @@ startChat();
 
 }
 
+function mostrarSolicitudes(){
+
+const tabla =
+document.getElementById("tablaSolicitudes");
+
+tabla.innerHTML = "";
+
+let pendientes = 0;
+
+solicitudes.forEach((solicitud,index)=>{
+
+if(solicitud.estado === "Pendiente"){
+pendientes++;
+}
+
+tabla.innerHTML += `
+
+<tr>
+
+<td>${solicitud.tipo}</td>
+
+<td>
+${solicitud.nombre}
+${solicitud.apellido}
+</td>
+
+<td>${solicitud.celular}</td>
+
+<td>
+
+<span class="${
+solicitud.estado === "Pendiente"
+? "badge-pendiente"
+: "badge-respondido"
+}">
+
+${solicitud.estado}
+
+</span>
+
+</td>
+
+<td>
+
+<button
+class="btn btn-sm btn-success"
+onclick="cambiarEstado(${index})"
+>
+
+Responder
+
+</button>
+
+<button
+class="btn btn-sm btn-danger mt-1"
+onclick="eliminarSolicitud(${index})"
+>
+
+Eliminar
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+document.getElementById(
+"contadorPendientes"
+).innerText = pendientes;
+
+}
+
+function cambiarEstado(index){
+
+solicitudes[index].estado =
+"Respondido";
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+}
+
+function eliminarSolicitud(index){
+
+solicitudes.splice(index,1);
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+}
+
 input.addEventListener(
 "keypress",
 function(e){
@@ -704,8 +1051,9 @@ sendMessage();
 
 startChat();
 
+mostrarSolicitudes();
+
 </script>
 
 </body>
 </html>
-
