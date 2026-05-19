@@ -203,6 +203,12 @@ color:#fff;
 margin-left:auto;
 }
 
+.message.user span:last-child:hover{
+transform:scale(1.2);
+color:#ff4d4d;
+transition:.2s;
+}
+
 .options button{
 display:block;
 width:100%;
@@ -236,20 +242,12 @@ font-size:15px;
 }
 
 .input-area button{
+background:#0b1c2c;
+color:#fff;
 border:none;
 padding:15px;
 cursor:pointer;
 font-weight:bold;
-}
-
-.btn-enviar{
-background:#0b1c2c;
-color:#fff;
-}
-
-.btn-corregir{
-background:#d97706;
-color:#fff;
 }
 
 .badge-pendiente{
@@ -285,27 +283,6 @@ box-shadow:0 4px 15px rgba(0,0,0,.3);
 #toast.active{
 opacity:1;
 transform:translateY(-10px);
-}
-
-.dropdown-menu{
-border:none;
-border-radius:18px;
-padding:10px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-}
-
-.dropdown-item-text{
-padding:12px 16px;
-border-radius:10px;
-margin-bottom:4px;
-font-weight:600;
-transition:.3s;
-cursor:pointer;
-}
-
-.dropdown-item-text:hover{
-background:#0b1c2c;
-color:#fff;
 }
 
 table{
@@ -420,126 +397,6 @@ Solicitudes Pendientes
 
 </div>
 
-<div class="w3-top">
-
-<div class="w3-bar w3-black w3-padding w3-card">
-
-<img src="Logo.jpg" alt="Logo" style="width:60px;" class="w3-left">
-
-<h3 style="text-align:center;">
-Vía Legal Asesoría y Gestiones de tránsito
-</h3>
-
-</div>
-
-</div>
-
-<header class="w3-display-container w3-content w3-wide"
-style="max-width:1500px;"
-id="home">
-
-<video autoplay muted loop playsinline style="width:100%;">
-
-<source src="asesorias-transito.mp4" type="video/mp4">
-
-</video>
-
-</header>
-
-<div class="w3-content w3-padding" style="max-width:1564px">
-
-<div class="w3-container w3-padding-32">
-
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-ASESORÍAS JURÍDICAS EN TRÁMITES DE TRÁNSITO
-</h3>
-
-</div>
-
-<div class="w3-row-padding">
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-
-<div class="w3-display-container">
-
-<div class="w3-display-topleft w3-black w3-padding">
-Cursos descuento infracción
-</div>
-
-<img src="multas.png" style="width:100%">
-
-</div>
-
-</div>
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-
-<div class="w3-display-container">
-
-<div class="w3-display-topleft w3-black w3-padding">
-Licencia por primera vez
-</div>
-
-<img src="licencia x primera vez.png" style="width:100%">
-
-</div>
-
-</div>
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-
-<div class="w3-display-container">
-
-<div class="w3-display-topleft w3-black w3-padding">
-Renovación
-</div>
-
-<img src="renovacion licencia.png" style="width:100%">
-
-</div>
-
-</div>
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-
-<div class="w3-display-container">
-
-<div class="w3-display-topleft w3-black w3-padding">
-Traspaso
-</div>
-
-<img src="transpaso.png" style="width:100%">
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
-
-<h5>Nuestras Redes Sociales</h5>
-
-<div class="w3-xlarge w3-padding-16">
-
-<a
-class="w3-button w3-large w3-teal"
-href="https://www.instagram.com/vlegalasesoriasdetransito"
-target="_blank"
->
-
-<i class="fa fa-instagram"></i>
-
-</a>
-
-</div>
-
-<p>2025</p>
-
-</footer>
-
 <div class="chat-btn" onclick="toggleChat()">
 
 <i class="fa fa-comments"></i>
@@ -571,22 +428,8 @@ placeholder="Escribe aquí..."
 autocomplete="off"
 >
 
-<button
-class="btn-enviar"
-onclick="sendMessage()"
->
-
+<button onclick="sendMessage()">
 Enviar
-
-</button>
-
-<button
-class="btn-corregir"
-onclick="corregirDato()"
->
-
-Corregir
-
 </button>
 
 </div>
@@ -716,7 +559,7 @@ setTimeout(()=>{
 
 toast.classList.remove("active");
 
-},4000);
+},7000);
 
 }
 
@@ -744,11 +587,55 @@ document.createElement("div");
 
 div.className = "message user";
 
-div.innerHTML = text;
+div.innerHTML = `
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+">
+
+<span>${text}</span>
+
+<span
+onclick="eliminarUltimoDato(this)"
+style="
+cursor:pointer;
+font-weight:bold;
+font-size:18px;
+color:#ffb3b3;
+"
+>
+
+✕
+
+</span>
+
+</div>
+
+`;
 
 messages.appendChild(div);
 
 scrollBottom();
+
+}
+
+function eliminarUltimoDato(elemento){
+
+const mensaje =
+elemento.closest(".message");
+
+mensaje.remove();
+
+if(step > 1){
+step--;
+}
+
+addBotMessage(
+"✏️ Dato eliminado. Puedes escribirlo nuevamente."
+);
 
 }
 
@@ -848,28 +735,6 @@ function soloNumeros(text){
 
 return /^[0-9]+$/
 .test(text);
-
-}
-
-/* CORREGIR */
-
-function corregirDato(){
-
-if(step > 1){
-
-step--;
-
-addBotMessage(
-"✏️ Puedes corregir el dato anterior."
-);
-
-}else{
-
-addBotMessage(
-"⚠️ No hay datos para corregir."
-);
-
-}
 
 }
 
@@ -1078,7 +943,7 @@ messages.innerHTML = "";
 
 startChat();
 
-},3500);
+},7000);
 
 }
 
@@ -1139,15 +1004,6 @@ Responder
 
 </button>
 
-<button
-class="btn btn-sm btn-danger mt-1"
-onclick="eliminarSolicitud(${index})"
->
-
-Eliminar
-
-</button>
-
 </td>
 
 </tr>
@@ -1168,21 +1024,6 @@ function cambiarEstado(index){
 
 solicitudes[index].estado =
 "Respondido";
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-}
-
-/* ELIMINAR */
-
-function eliminarSolicitud(index){
-
-solicitudes.splice(index,1);
 
 localStorage.setItem(
 "solicitudes",
