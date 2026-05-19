@@ -19,3 +19,1202 @@
 
 *{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,sans-serif;
+overflow-x:hidden;
+background:#fff;
+-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility;
+}
+
+.checked{
+color:orange;
+}
+
+.btn-volver{
+position:fixed;
+top:50%;
+left:15px;
+transform:translateY(-50%);
+background:#000;
+color:#fff;
+width:45px;
+height:45px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:18px;
+z-index:1001;
+text-decoration:none;
+box-shadow:0 0 10px rgba(0,0,0,.4);
+transition:.3s;
+}
+
+.btn-volver:hover{
+background:#00ff9d;
+color:#000;
+transform:translateY(-50%) scale(1.1);
+}
+
+.btn-pendientes{
+position:fixed;
+top:15px;
+right:15px;
+background:#16a34a;
+color:#fff;
+padding:12px 18px;
+border-radius:50px;
+z-index:9999;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 15px rgba(0,0,0,.3);
+display:flex;
+align-items:center;
+gap:10px;
+transition:.3s;
+}
+
+.btn-pendientes:hover{
+transform:scale(1.05);
+background:#22c55e;
+}
+
+.contador{
+background:#fff;
+color:#16a34a;
+width:28px;
+height:28px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:bold;
+}
+
+.panel{
+position:fixed;
+top:0;
+right:-100%;
+width:100%;
+max-width:500px;
+height:100vh;
+background:#fff;
+z-index:99999;
+overflow-y:auto;
+transition:.4s;
+box-shadow:-5px 0 20px rgba(0,0,0,.3);
+padding:20px;
+}
+
+.panel.active{
+right:0;
+}
+
+.cerrar-panel{
+font-size:30px;
+cursor:pointer;
+float:right;
+font-weight:bold;
+}
+
+.chat-btn{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#0b1c2c;
+color:#fff;
+padding:15px 22px;
+border-radius:50px;
+cursor:pointer;
+z-index:99999;
+font-weight:bold;
+display:flex;
+align-items:center;
+gap:10px;
+box-shadow:0 4px 15px rgba(0,0,0,.3);
+animation:pulse 2s infinite;
+}
+
+.chat-btn:hover{
+transform:scale(1.05);
+}
+
+.chatbox{
+position:fixed;
+bottom:90px;
+left:20px;
+width:360px;
+max-width:95%;
+height:600px;
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+display:none;
+flex-direction:column;
+z-index:99999;
+}
+
+.header-chat{
+background:#0b1c2c;
+color:#fff;
+padding:18px;
+font-size:18px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.messages{
+flex:1;
+padding:15px;
+overflow-y:auto;
+background:#fafafa;
+scroll-behavior:smooth;
+}
+
+.message{
+padding:12px;
+border-radius:15px;
+margin-bottom:12px;
+max-width:85%;
+line-height:1.4;
+font-size:14px;
+word-wrap:break-word;
+}
+
+.bot{
+background:#ececec;
+}
+
+.user{
+background:#0b1c2c;
+color:#fff;
+margin-left:auto;
+}
+
+.options button{
+display:block;
+width:100%;
+margin-top:8px;
+padding:12px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+background:#d4af37;
+font-weight:bold;
+transition:.3s;
+}
+
+.options button:hover{
+background:#c49b1e;
+transform:translateY(-2px);
+}
+
+.input-area{
+display:flex;
+border-top:1px solid #ddd;
+background:#fff;
+}
+
+.input-area input{
+flex:1;
+padding:15px;
+border:none;
+outline:none;
+font-size:15px;
+}
+
+.input-area button{
+border:none;
+padding:15px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.btn-enviar{
+background:#0b1c2c;
+color:#fff;
+}
+
+.btn-corregir{
+background:#d97706;
+color:#fff;
+}
+
+.badge-pendiente{
+background:red;
+color:#fff;
+padding:6px 10px;
+border-radius:8px;
+}
+
+.badge-respondido{
+background:green;
+color:#fff;
+padding:6px 10px;
+border-radius:8px;
+}
+
+#toast{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#16a34a;
+color:#fff;
+padding:16px 24px;
+border-radius:12px;
+font-weight:bold;
+z-index:999999;
+opacity:0;
+pointer-events:none;
+transition:.4s;
+box-shadow:0 4px 15px rgba(0,0,0,.3);
+}
+
+#toast.active{
+opacity:1;
+transform:translateY(-10px);
+}
+
+.dropdown-menu{
+border:none;
+border-radius:18px;
+padding:10px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.dropdown-item-text{
+padding:12px 16px;
+border-radius:10px;
+margin-bottom:4px;
+font-weight:600;
+transition:.3s;
+cursor:pointer;
+}
+
+.dropdown-item-text:hover{
+background:#0b1c2c;
+color:#fff;
+}
+
+table{
+font-size:13px;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.05);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+@media(max-width:768px){
+
+.chatbox{
+width:95%;
+left:2.5%;
+height:80vh;
+bottom:85px;
+}
+
+.panel{
+max-width:100%;
+}
+
+.btn-pendientes{
+font-size:12px;
+padding:10px 14px;
+}
+
+.chat-btn{
+left:10px;
+bottom:10px;
+padding:13px 18px;
+font-size:14px;
+}
+
+#toast{
+right:10px;
+left:10px;
+bottom:20px;
+text-align:center;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="https://paginaweb1.github.io/dise-os_web.com/" class="btn-volver">
+<i class="fa fa-arrow-left"></i>
+</a>
+
+<div
+class="btn-pendientes"
+id="adminBtn"
+onclick="verificarAdmin()"
+>
+
+<div class="contador" id="contadorPendientes">
+0
+</div>
+
+Solicitudes
+
+</div>
+
+<div class="panel" id="panelSolicitudes">
+
+<span class="cerrar-panel" onclick="cerrarPanel()">
+&times;
+</span>
+
+<h2 class="mb-4">
+Solicitudes Pendientes
+</h2>
+
+<div class="table-responsive">
+
+<table class="table table-bordered">
+
+<thead class="thead-dark">
+
+<tr>
+<th>Servicio</th>
+<th>Nombre</th>
+<th>Celular</th>
+<th>Estado</th>
+<th>Acción</th>
+</tr>
+
+</thead>
+
+<tbody id="tablaSolicitudes"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="w3-top">
+
+<div class="w3-bar w3-black w3-padding w3-card">
+
+<img src="Logo.jpg" alt="Logo" style="width:60px;" class="w3-left">
+
+<h3 style="text-align:center;">
+Vía Legal Asesoría y Gestiones de tránsito
+</h3>
+
+</div>
+
+</div>
+
+<header class="w3-display-container w3-content w3-wide"
+style="max-width:1500px;"
+id="home">
+
+<video autoplay muted loop playsinline style="width:100%;">
+
+<source src="asesorias-transito.mp4" type="video/mp4">
+
+</video>
+
+</header>
+
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+<div class="w3-container w3-padding-32">
+
+<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+ASESORÍAS JURÍDICAS EN TRÁMITES DE TRÁNSITO
+</h3>
+
+</div>
+
+<div class="w3-row-padding">
+
+<div class="w3-col l3 m6 w3-margin-bottom">
+
+<div class="w3-display-container">
+
+<div class="w3-display-topleft w3-black w3-padding">
+Cursos descuento infracción
+</div>
+
+<img src="multas.png" style="width:100%">
+
+</div>
+
+</div>
+
+<div class="w3-col l3 m6 w3-margin-bottom">
+
+<div class="w3-display-container">
+
+<div class="w3-display-topleft w3-black w3-padding">
+Licencia por primera vez
+</div>
+
+<img src="licencia x primera vez.png" style="width:100%">
+
+</div>
+
+</div>
+
+<div class="w3-col l3 m6 w3-margin-bottom">
+
+<div class="w3-display-container">
+
+<div class="w3-display-topleft w3-black w3-padding">
+Renovación
+</div>
+
+<img src="renovacion licencia.png" style="width:100%">
+
+</div>
+
+</div>
+
+<div class="w3-col l3 m6 w3-margin-bottom">
+
+<div class="w3-display-container">
+
+<div class="w3-display-topleft w3-black w3-padding">
+Traspaso
+</div>
+
+<img src="transpaso.png" style="width:100%">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+
+<h5>Nuestras Redes Sociales</h5>
+
+<div class="w3-xlarge w3-padding-16">
+
+<a
+class="w3-button w3-large w3-teal"
+href="https://www.instagram.com/vlegalasesoriasdetransito"
+target="_blank"
+>
+
+<i class="fa fa-instagram"></i>
+
+</a>
+
+</div>
+
+<p>2025</p>
+
+</footer>
+
+<div class="chat-btn" onclick="toggleChat()">
+
+<i class="fa fa-comments"></i>
+
+Haz tu solicitud aquí
+
+</div>
+
+<div class="chatbox" id="chatbox">
+
+<div class="header-chat">
+
+Asistente Jurídico
+
+<span onclick="toggleChat()" style="cursor:pointer;">
+&times;
+</span>
+
+</div>
+
+<div class="messages" id="messages"></div>
+
+<div class="input-area">
+
+<input
+type="text"
+id="input"
+placeholder="Escribe aquí..."
+autocomplete="off"
+>
+
+<button
+class="btn-enviar"
+onclick="sendMessage()"
+>
+
+Enviar
+
+</button>
+
+<button
+class="btn-corregir"
+onclick="corregirDato()"
+>
+
+Corregir
+
+</button>
+
+</div>
+
+</div>
+
+<div id="toast">
+✅ Solicitud enviada
+</div>
+
+<script>
+
+const ADMIN_PASSWORD = "progreso123";
+
+const messages =
+document.getElementById("messages");
+
+const input =
+document.getElementById("input");
+
+const toast =
+document.getElementById("toast");
+
+let step = 0;
+
+let userData = {
+servicio:"",
+precio:"",
+nombre:"",
+apellido:"",
+cedula:"",
+telefono:""
+};
+
+const servicios = {
+
+"1":{
+nombre:"Derecho de petición",
+precio:"80000"
+},
+
+"2":{
+nombre:"Tutela",
+precio:"120000"
+},
+
+"3":{
+nombre:"Asesoría jurídica",
+precio:"60000"
+},
+
+"4":{
+nombre:"Ejecución de sentencia",
+precio:"250000"
+},
+
+"5":{
+nombre:"Incidente desacato",
+precio:"180000"
+}
+
+};
+
+let solicitudes =
+JSON.parse(localStorage.getItem("solicitudes"))
+|| [];
+
+/* ADMIN */
+
+function verificarAdmin(){
+
+const pass =
+prompt("Ingrese contraseña administrador");
+
+if(pass === ADMIN_PASSWORD){
+
+abrirPanel();
+
+}else{
+
+alert("Acceso denegado");
+
+}
+
+}
+
+/* CHAT */
+
+function toggleChat(){
+
+const chat =
+document.getElementById("chatbox");
+
+chat.style.display =
+chat.style.display === "flex"
+? "none"
+: "flex";
+
+}
+
+/* PANEL */
+
+function abrirPanel(){
+
+document.getElementById("panelSolicitudes")
+.classList.add("active");
+
+}
+
+function cerrarPanel(){
+
+document.getElementById("panelSolicitudes")
+.classList.remove("active");
+
+}
+
+/* TOAST */
+
+function mostrarToast(){
+
+toast.innerHTML =
+"✅ Solicitud enviada<br>📞 En un momento nuestro abogado se pondrá en contacto.";
+
+toast.classList.add("active");
+
+setTimeout(()=>{
+
+toast.classList.remove("active");
+
+},4000);
+
+}
+
+/* MENSAJES */
+
+function addBotMessage(text){
+
+let div =
+document.createElement("div");
+
+div.className = "message bot";
+
+div.innerHTML = text;
+
+messages.appendChild(div);
+
+scrollBottom();
+
+}
+
+function addUserMessage(text){
+
+let div =
+document.createElement("div");
+
+div.className = "message user";
+
+div.innerHTML = text;
+
+messages.appendChild(div);
+
+scrollBottom();
+
+}
+
+function scrollBottom(){
+
+requestAnimationFrame(()=>{
+
+messages.scrollTop =
+messages.scrollHeight;
+
+});
+
+}
+
+/* INICIO */
+
+function startChat(){
+
+messages.innerHTML = "";
+
+addBotMessage(`
+
+Hola 👋<br><br>
+
+¿Qué servicio necesitas?<br><br>
+
+<div class="options">
+
+<button onclick="selectOption('1')">
+Derecho de petición
+</button>
+
+<button onclick="selectOption('2')">
+Tutela
+</button>
+
+<button onclick="selectOption('3')">
+Asesoría jurídica
+</button>
+
+<button onclick="selectOption('4')">
+Ejecución sentencia
+</button>
+
+<button onclick="selectOption('5')">
+Incidente desacato
+</button>
+
+</div>
+
+`);
+
+}
+
+/* SERVICIO */
+
+function selectOption(option){
+
+userData.servicio =
+servicios[option].nombre;
+
+userData.precio =
+servicios[option].precio;
+
+addUserMessage(
+servicios[option].nombre
+);
+
+addBotMessage(`
+
+Valor aproximado:<br><br>
+
+<b>
+$${servicios[option].precio} COP
+</b>
+
+<br><br>
+
+Escribe tu nombre.
+
+`);
+
+step = 1;
+
+}
+
+/* VALIDACIONES */
+
+function soloLetras(text){
+
+return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
+.test(text);
+
+}
+
+function soloNumeros(text){
+
+return /^[0-9]+$/
+.test(text);
+
+}
+
+/* CORREGIR */
+
+function corregirDato(){
+
+if(step > 1){
+
+step--;
+
+addBotMessage(
+"✏️ Puedes corregir el dato anterior."
+);
+
+}else{
+
+addBotMessage(
+"⚠️ No hay datos para corregir."
+);
+
+}
+
+}
+
+/* ENVIAR */
+
+function sendMessage(){
+
+const text =
+input.value.trim();
+
+if(text === ""){
+
+addBotMessage(
+"⚠️ Campo obligatorio."
+);
+
+return;
+
+}
+
+/* NOMBRE */
+
+if(step === 1){
+
+if(!soloLetras(text)){
+
+addBotMessage(
+"⚠️ Solo letras."
+);
+
+return;
+
+}
+
+userData.nombre = text;
+
+addUserMessage(text);
+
+addBotMessage(
+"Ahora escribe tu apellido."
+);
+
+input.value = "";
+
+step = 2;
+
+return;
+
+}
+
+/* APELLIDO */
+
+if(step === 2){
+
+if(!soloLetras(text)){
+
+addBotMessage(
+"⚠️ Solo letras."
+);
+
+return;
+
+}
+
+userData.apellido = text;
+
+addUserMessage(text);
+
+addBotMessage(
+"Escribe tu número de cédula."
+);
+
+input.value = "";
+
+step = 3;
+
+return;
+
+}
+
+/* CÉDULA */
+
+if(step === 3){
+
+if(!soloNumeros(text)){
+
+addBotMessage(
+"⚠️ Solo números."
+);
+
+return;
+
+}
+
+userData.cedula = text;
+
+addUserMessage(text);
+
+addBotMessage(
+"Escribe tu número de contacto."
+);
+
+input.value = "";
+
+step = 4;
+
+return;
+
+}
+
+/* TELÉFONO */
+
+if(step === 4){
+
+if(!soloNumeros(text)){
+
+addBotMessage(
+"⚠️ Solo números."
+);
+
+return;
+
+}
+
+if(solicitudes.length >= 10){
+
+const limpiar =
+confirm(
+"Ya existen 10 solicitudes. ¿Desea limpiar todas las solicitudes?"
+);
+
+if(limpiar){
+
+solicitudes = [];
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+}else{
+
+return;
+
+}
+
+}
+
+userData.telefono = text;
+
+addUserMessage(text);
+
+const ahora = new Date();
+
+const nuevaSolicitud = {
+
+tipo:userData.servicio,
+nombre:userData.nombre,
+apellido:userData.apellido,
+cedula:userData.cedula,
+celular:userData.telefono,
+precio:userData.precio,
+fecha:ahora.toLocaleDateString(),
+hora:ahora.toLocaleTimeString(),
+estado:"Pendiente"
+
+};
+
+solicitudes.push(nuevaSolicitud);
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+mostrarToast();
+
+addBotMessage(`
+
+✅ <b>Solicitud enviada</b><br><br>
+
+📞 En un momento nuestro abogado se pondrá en contacto.
+
+`);
+
+input.value = "";
+
+step = 0;
+
+userData = {
+servicio:"",
+precio:"",
+nombre:"",
+apellido:"",
+cedula:"",
+telefono:""
+};
+
+setTimeout(()=>{
+
+messages.innerHTML = "";
+
+startChat();
+
+},3500);
+
+}
+
+}
+
+/* TABLA */
+
+function mostrarSolicitudes(){
+
+const tabla =
+document.getElementById("tablaSolicitudes");
+
+tabla.innerHTML = "";
+
+let pendientes = 0;
+
+solicitudes.forEach((solicitud,index)=>{
+
+if(solicitud.estado === "Pendiente"){
+pendientes++;
+}
+
+tabla.innerHTML += `
+
+<tr>
+
+<td>${solicitud.tipo}</td>
+
+<td>
+${solicitud.nombre}
+${solicitud.apellido}
+</td>
+
+<td>${solicitud.celular}</td>
+
+<td>
+
+<span class="${
+solicitud.estado === "Pendiente"
+? "badge-pendiente"
+: "badge-respondido"
+}">
+
+${solicitud.estado}
+
+</span>
+
+</td>
+
+<td>
+
+<button
+class="btn btn-sm btn-success"
+onclick="cambiarEstado(${index})"
+>
+
+Responder
+
+</button>
+
+<button
+class="btn btn-sm btn-danger mt-1"
+onclick="eliminarSolicitud(${index})"
+>
+
+Eliminar
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+document.getElementById(
+"contadorPendientes"
+).innerText = pendientes;
+
+}
+
+/* RESPONDER */
+
+function cambiarEstado(index){
+
+solicitudes[index].estado =
+"Respondido";
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+}
+
+/* ELIMINAR */
+
+function eliminarSolicitud(index){
+
+solicitudes.splice(index,1);
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+}
+
+/* ENTER */
+
+input.addEventListener(
+"keypress",
+function(e){
+
+if(e.key === "Enter"){
+
+sendMessage();
+
+}
+
+}
+);
+
+/* INICIO */
+
+startChat();
+
+mostrarSolicitudes();
+
+</script>
+
+</body>
+</html>
