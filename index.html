@@ -35,13 +35,9 @@ background:#fff;
 text-rendering:optimizeLegibility;
 }
 
-/* ESTRELLAS */
-
 .checked{
 color:orange;
 }
-
-/* BOTÓN VOLVER */
 
 .btn-volver{
 position:fixed;
@@ -68,8 +64,6 @@ background:#00ff9d;
 color:#000;
 transform:translateY(-50%) scale(1.1);
 }
-
-/* BOTÓN ADMIN */
 
 .btn-pendientes{
 position:fixed;
@@ -106,8 +100,6 @@ align-items:center;
 font-weight:bold;
 }
 
-/* PANEL */
-
 .panel{
 position:fixed;
 top:0;
@@ -133,8 +125,6 @@ cursor:pointer;
 float:right;
 font-weight:bold;
 }
-
-/* CHAT */
 
 .chat-btn{
 position:fixed;
@@ -213,8 +203,6 @@ color:#fff;
 margin-left:auto;
 }
 
-/* OPCIONES */
-
 .options button{
 display:block;
 width:100%;
@@ -233,8 +221,6 @@ background:#c49b1e;
 transform:translateY(-2px);
 }
 
-/* INPUT */
-
 .input-area{
 display:flex;
 border-top:1px solid #ddd;
@@ -250,15 +236,21 @@ font-size:15px;
 }
 
 .input-area button{
-background:#0b1c2c;
-color:#fff;
 border:none;
 padding:15px;
 cursor:pointer;
 font-weight:bold;
 }
 
-/* BADGES */
+.btn-enviar{
+background:#0b1c2c;
+color:#fff;
+}
+
+.btn-corregir{
+background:#d97706;
+color:#fff;
+}
 
 .badge-pendiente{
 background:red;
@@ -273,8 +265,6 @@ color:#fff;
 padding:6px 10px;
 border-radius:8px;
 }
-
-/* TOAST */
 
 #toast{
 position:fixed;
@@ -297,8 +287,6 @@ opacity:1;
 transform:translateY(-10px);
 }
 
-/* DROPDOWN */
-
 .dropdown-menu{
 border:none;
 border-radius:18px;
@@ -320,13 +308,9 @@ background:#0b1c2c;
 color:#fff;
 }
 
-/* TABLA */
-
 table{
 font-size:13px;
 }
-
-/* ANIMACIÓN */
 
 @keyframes pulse{
 
@@ -343,8 +327,6 @@ transform:scale(1);
 }
 
 }
-
-/* RESPONSIVE */
 
 @media(max-width:768px){
 
@@ -386,13 +368,9 @@ text-align:center;
 
 <body>
 
-<!-- BOTÓN VOLVER -->
-
 <a href="https://paginaweb1.github.io/dise-os_web.com/" class="btn-volver">
 <i class="fa fa-arrow-left"></i>
 </a>
-
-<!-- BOTÓN ADMIN -->
 
 <div
 class="btn-pendientes"
@@ -407,8 +385,6 @@ onclick="verificarAdmin()"
 Solicitudes
 
 </div>
-
-<!-- PANEL -->
 
 <div class="panel" id="panelSolicitudes">
 
@@ -444,8 +420,6 @@ Solicitudes Pendientes
 
 </div>
 
-<!-- NAVBAR -->
-
 <div class="w3-top">
 
 <div class="w3-bar w3-black w3-padding w3-card">
@@ -460,8 +434,6 @@ Vía Legal Asesoría y Gestiones de tránsito
 
 </div>
 
-<!-- VIDEO -->
-
 <header class="w3-display-container w3-content w3-wide"
 style="max-width:1500px;"
 id="home">
@@ -472,48 +444,7 @@ id="home">
 
 </video>
 
-<div class="container">
-
-<div class="dropdown">
-
-<button
-type="button"
-class="btn btn-success dropdown-toggle w3-right"
-data-toggle="dropdown"
->
-
-Servicios
-
-</button>
-
-<div class="dropdown-menu">
-
-<a class="dropdown-item-text">Embargos</a>
-<a class="dropdown-item-text">Fotomultas</a>
-<a class="dropdown-item-text">Comparendos</a>
-<a class="dropdown-item-text">Acuerdos de pago</a>
-<a class="dropdown-item-text">Derechos de petición</a>
-<a class="dropdown-item-text">Gestión de traspasos</a>
-<a class="dropdown-item-text">Renovación de licencias</a>
-<a class="dropdown-item-text">Levantamiento de prenda</a>
-<a class="dropdown-item-text">Revisión de antecedentes</a>
-<a class="dropdown-item-text">Levantamiento de sanciones</a>
-<a class="dropdown-item-text">Placas de tránsito</a>
-<a class="dropdown-item-text">Traspaso de vehículos</a>
-<a class="dropdown-item-text">Curso descuento infracción</a>
-<a class="dropdown-item-text">Licencia por primera vez</a>
-<a class="dropdown-item-text">Traspaso indeterminado</a>
-<a class="dropdown-item-text">Examen médico licencia</a>
-
-</div>
-
-</div>
-
-</div>
-
 </header>
-
-<!-- CONTENIDO -->
 
 <div class="w3-content w3-padding" style="max-width:1564px">
 
@@ -524,21 +455,6 @@ ASESORÍAS JURÍDICAS EN TRÁMITES DE TRÁNSITO
 </h3>
 
 </div>
-
-<div class="w3-container w3-padding-32">
-
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-Papeles al día, cero preocupaciones!!
-</h3>
-
-<p>
-Asesoría Jurídica y Trámites de Tránsito:
-tu aliado para resolver sin complicaciones.
-</p>
-
-</div>
-
-<!-- IMÁGENES -->
 
 <div class="w3-row-padding">
 
@@ -600,63 +516,9 @@ Traspaso
 
 </div>
 
-<!-- WHATSAPP -->
-
-<div class="w3-container" style="position:relative">
-
-<a
-href="https://wa.me/573112878814"
-target="_blank"
-class="w3-button w3-xlarge w3-circle w3-teal"
-style="position:absolute;top:-28px;right:24px"
->
-
-<i class="fa fa-whatsapp"></i>
-
-</a>
-
 </div>
-
-<!-- CONTACTO -->
-
-<div class="w3-container" id="contact">
-
-<h2>Contacto</h2>
-
-<i class="fa fa-map-marker w3-text-red"></i>
-Cali, Colombia
-<br>
-
-<i class="fa fa-phone w3-text-red"></i>
-Cel: 3112878814
-<br>
-
-<i class="fa fa-envelope w3-text-red"></i>
-legalasesoriasdetransito@gmail.com
-
-</div>
-
-<!-- FOOTER IMG -->
-
-<div class="w3-container">
-
-<img src="footer.png"
-class="w3-image"
-style="width:100%">
-
-</div>
-
-</div>
-
-<!-- FOOTER -->
 
 <footer class="w3-padding-32 w3-black w3-center w3-margin-top">
-
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
 
 <h5>Nuestras Redes Sociales</h5>
 
@@ -675,11 +537,8 @@ target="_blank"
 </div>
 
 <p>2025</p>
-<p>© copyright</p>
 
 </footer>
-
-<!-- CHAT BUTTON -->
 
 <div class="chat-btn" onclick="toggleChat()">
 
@@ -688,8 +547,6 @@ target="_blank"
 Haz tu solicitud aquí
 
 </div>
-
-<!-- CHATBOX -->
 
 <div class="chatbox" id="chatbox">
 
@@ -714,23 +571,35 @@ placeholder="Escribe aquí..."
 autocomplete="off"
 >
 
-<button onclick="sendMessage()">
+<button
+class="btn-enviar"
+onclick="sendMessage()"
+>
+
 Enviar
+
+</button>
+
+<button
+class="btn-corregir"
+onclick="corregirDato()"
+>
+
+Corregir
+
 </button>
 
 </div>
 
 </div>
 
-<!-- TOAST -->
-
 <div id="toast">
-✅ Solicitud enviada exitosamente
+✅ Solicitud enviada
 </div>
 
 <script>
 
-const ADMIN_PASSWORD = "admin2026";
+const ADMIN_PASSWORD = "progreso123";
 
 const messages =
 document.getElementById("messages");
@@ -838,13 +707,16 @@ document.getElementById("panelSolicitudes")
 
 function mostrarToast(){
 
+toast.innerHTML =
+"✅ Solicitud enviada<br>📞 En un momento nuestro abogado se pondrá en contacto.";
+
 toast.classList.add("active");
 
 setTimeout(()=>{
 
 toast.classList.remove("active");
 
-},3000);
+},4000);
 
 }
 
@@ -979,6 +851,28 @@ return /^[0-9]+$/
 
 }
 
+/* CORREGIR */
+
+function corregirDato(){
+
+if(step > 1){
+
+step--;
+
+addBotMessage(
+"✏️ Puedes corregir el dato anterior."
+);
+
+}else{
+
+addBotMessage(
+"⚠️ No hay datos para corregir."
+);
+
+}
+
+}
+
 /* ENVIAR */
 
 function sendMessage(){
@@ -1100,15 +994,29 @@ return;
 
 }
 
-/* TOPE 10 */
-
 if(solicitudes.length >= 10){
 
-addBotMessage(
-"⚠️ Límite máximo alcanzado."
+const limpiar =
+confirm(
+"Ya existen 10 solicitudes. ¿Desea limpiar todas las solicitudes?"
 );
 
+if(limpiar){
+
+solicitudes = [];
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+}else{
+
 return;
+
+}
 
 }
 
@@ -1143,9 +1051,13 @@ mostrarSolicitudes();
 
 mostrarToast();
 
-/* LIMPIAR */
+addBotMessage(`
 
-messages.innerHTML = "";
+✅ <b>Solicitud enviada</b><br><br>
+
+📞 En un momento nuestro abogado se pondrá en contacto.
+
+`);
 
 input.value = "";
 
@@ -1162,9 +1074,11 @@ telefono:""
 
 setTimeout(()=>{
 
+messages.innerHTML = "";
+
 startChat();
 
-},1000);
+},3500);
 
 }
 
@@ -1230,7 +1144,7 @@ class="btn btn-sm btn-danger mt-1"
 onclick="eliminarSolicitud(${index})"
 >
 
-Limpiar
+Eliminar
 
 </button>
 
