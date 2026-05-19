@@ -227,14 +227,6 @@ border-top:1px solid #ddd;
 background:#fff;
 }
 
-.input-area input{
-flex:1;
-padding:15px;
-border:none;
-outline:none;
-font-size:15px;
-}
-
 .input-area button{
 border:none;
 padding:15px;
@@ -244,11 +236,6 @@ font-weight:bold;
 
 .btn-enviar{
 background:#0b1c2c;
-color:#fff;
-}
-
-.btn-corregir{
-background:#d97706;
 color:#fff;
 }
 
@@ -285,27 +272,6 @@ box-shadow:0 4px 15px rgba(0,0,0,.3);
 #toast.active{
 opacity:1;
 transform:translateY(-10px);
-}
-
-.dropdown-menu{
-border:none;
-border-radius:18px;
-padding:10px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-}
-
-.dropdown-item-text{
-padding:12px 16px;
-border-radius:10px;
-margin-bottom:4px;
-font-weight:600;
-transition:.3s;
-cursor:pointer;
-}
-
-.dropdown-item-text:hover{
-background:#0b1c2c;
-color:#fff;
 }
 
 table{
@@ -564,12 +530,41 @@ Asistente Jurídico
 
 <div class="input-area">
 
+<div style="position:relative;flex:1;display:flex;align-items:center;">
+
 <input
 type="text"
 id="input"
 placeholder="Escribe aquí..."
 autocomplete="off"
+style="
+width:100%;
+padding:15px;
+padding-right:45px;
+border:none;
+outline:none;
+font-size:15px;
+"
 >
+
+<span
+onclick="limpiarCampo()"
+style="
+position:absolute;
+right:15px;
+font-size:22px;
+cursor:pointer;
+color:#777;
+font-weight:bold;
+user-select:none;
+"
+>
+
+&times;
+
+</span>
+
+</div>
 
 <button
 class="btn-enviar"
@@ -577,15 +572,6 @@ onclick="sendMessage()"
 >
 
 Enviar
-
-</button>
-
-<button
-class="btn-corregir"
-onclick="corregirDato()"
->
-
-Corregir
 
 </button>
 
@@ -653,6 +639,16 @@ precio:"180000"
 let solicitudes =
 JSON.parse(localStorage.getItem("solicitudes"))
 || [];
+
+/* LIMPIAR CAMPO */
+
+function limpiarCampo(){
+
+input.value = "";
+
+input.focus();
+
+}
 
 /* ADMIN */
 
@@ -848,28 +844,6 @@ function soloNumeros(text){
 
 return /^[0-9]+$/
 .test(text);
-
-}
-
-/* CORREGIR */
-
-function corregirDato(){
-
-if(step > 1){
-
-step--;
-
-addBotMessage(
-"✏️ Puedes corregir el dato anterior."
-);
-
-}else{
-
-addBotMessage(
-"⚠️ No hay datos para corregir."
-);
-
-}
 
 }
 
