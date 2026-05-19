@@ -247,9 +247,21 @@ background:#0b1c2c;
 color:#fff;
 }
 
-.btn-corregir{
-background:#d97706;
+.btn-limpiar{
+background:#dc2626;
 color:#fff;
+width:55px;
+font-size:22px;
+font-weight:bold;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:.3s;
+}
+
+.btn-limpiar:hover{
+background:#b91c1c;
+transform:scale(1.05);
 }
 
 .badge-pendiente{
@@ -368,178 +380,6 @@ text-align:center;
 
 <body>
 
-<a href="https://paginaweb1.github.io/dise-os_web.com/" class="btn-volver">
-<i class="fa fa-arrow-left"></i>
-</a>
-
-<div
-class="btn-pendientes"
-id="adminBtn"
-onclick="verificarAdmin()"
->
-
-<div class="contador" id="contadorPendientes">
-0
-</div>
-
-Solicitudes
-
-</div>
-
-<div class="panel" id="panelSolicitudes">
-
-<span class="cerrar-panel" onclick="cerrarPanel()">
-&times;
-</span>
-
-<h2 class="mb-4">
-Solicitudes Pendientes
-</h2>
-
-<div class="table-responsive">
-
-<table class="table table-bordered">
-
-<thead class="thead-dark">
-
-<tr>
-<th>Servicio</th>
-<th>Nombre</th>
-<th>Celular</th>
-<th>Estado</th>
-<th>Acción</th>
-</tr>
-
-</thead>
-
-<tbody id="tablaSolicitudes"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-<div class="w3-top">
-
-<div class="w3-bar w3-black w3-padding w3-card">
-
-<img src="Logo.jpg" alt="Logo" style="width:60px;" class="w3-left">
-
-<h3 style="text-align:center;">
-Vía Legal Asesoría y Gestiones de tránsito
-</h3>
-
-</div>
-
-</div>
-
-<header class="w3-display-container w3-content w3-wide"
-style="max-width:1500px;"
-id="home">
-
-<video autoplay muted loop playsinline style="width:100%;">
-
-<source src="asesorias-transito.mp4" type="video/mp4">
-
-</video>
-
-</header>
-
-<div class="w3-content w3-padding" style="max-width:1564px">
-
-<div class="w3-container w3-padding-32">
-
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-ASESORÍAS JURÍDICAS EN TRÁMITES DE TRÁNSITO
-</h3>
-
-</div>
-
-<div class="w3-row-padding">
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-
-<div class="w3-display-container">
-
-<div class="w3-display-topleft w3-black w3-padding">
-Cursos descuento infracción
-</div>
-
-<img src="multas.png" style="width:100%">
-
-</div>
-
-</div>
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-
-<div class="w3-display-container">
-
-<div class="w3-display-topleft w3-black w3-padding">
-Licencia por primera vez
-</div>
-
-<img src="licencia x primera vez.png" style="width:100%">
-
-</div>
-
-</div>
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-
-<div class="w3-display-container">
-
-<div class="w3-display-topleft w3-black w3-padding">
-Renovación
-</div>
-
-<img src="renovacion licencia.png" style="width:100%">
-
-</div>
-
-</div>
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-
-<div class="w3-display-container">
-
-<div class="w3-display-topleft w3-black w3-padding">
-Traspaso
-</div>
-
-<img src="transpaso.png" style="width:100%">
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
-
-<h5>Nuestras Redes Sociales</h5>
-
-<div class="w3-xlarge w3-padding-16">
-
-<a
-class="w3-button w3-large w3-teal"
-href="https://www.instagram.com/vlegalasesoriasdetransito"
-target="_blank"
->
-
-<i class="fa fa-instagram"></i>
-
-</a>
-
-</div>
-
-<p>2025</p>
-
-</footer>
-
 <div class="chat-btn" onclick="toggleChat()">
 
 <i class="fa fa-comments"></i>
@@ -581,11 +421,12 @@ Enviar
 </button>
 
 <button
-class="btn-corregir"
-onclick="corregirDato()"
+class="btn-limpiar"
+onclick="limpiarCampo()"
+title="Limpiar campo"
 >
 
-Corregir
+✕
 
 </button>
 
@@ -598,8 +439,6 @@ Corregir
 </div>
 
 <script>
-
-const ADMIN_PASSWORD = "progreso123";
 
 const messages =
 document.getElementById("messages");
@@ -650,31 +489,6 @@ precio:"180000"
 
 };
 
-let solicitudes =
-JSON.parse(localStorage.getItem("solicitudes"))
-|| [];
-
-/* ADMIN */
-
-function verificarAdmin(){
-
-const pass =
-prompt("Ingrese contraseña administrador");
-
-if(pass === ADMIN_PASSWORD){
-
-abrirPanel();
-
-}else{
-
-alert("Acceso denegado");
-
-}
-
-}
-
-/* CHAT */
-
 function toggleChat(){
 
 const chat =
@@ -686,24 +500,6 @@ chat.style.display === "flex"
 : "flex";
 
 }
-
-/* PANEL */
-
-function abrirPanel(){
-
-document.getElementById("panelSolicitudes")
-.classList.add("active");
-
-}
-
-function cerrarPanel(){
-
-document.getElementById("panelSolicitudes")
-.classList.remove("active");
-
-}
-
-/* TOAST */
 
 function mostrarToast(){
 
@@ -719,8 +515,6 @@ toast.classList.remove("active");
 },4000);
 
 }
-
-/* MENSAJES */
 
 function addBotMessage(text){
 
@@ -760,6 +554,16 @@ messages.scrollTop =
 messages.scrollHeight;
 
 });
+
+}
+
+/* LIMPIAR CAMPO */
+
+function limpiarCampo(){
+
+input.value = "";
+
+input.focus();
 
 }
 
@@ -803,8 +607,6 @@ Incidente desacato
 
 }
 
-/* SERVICIO */
-
 function selectOption(option){
 
 userData.servicio =
@@ -835,8 +637,6 @@ step = 1;
 
 }
 
-/* VALIDACIONES */
-
 function soloLetras(text){
 
 return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
@@ -850,30 +650,6 @@ return /^[0-9]+$/
 .test(text);
 
 }
-
-/* CORREGIR */
-
-function corregirDato(){
-
-if(step > 1){
-
-step--;
-
-addBotMessage(
-"✏️ Puedes corregir el dato anterior."
-);
-
-}else{
-
-addBotMessage(
-"⚠️ No hay datos para corregir."
-);
-
-}
-
-}
-
-/* ENVIAR */
 
 function sendMessage(){
 
@@ -889,8 +665,6 @@ addBotMessage(
 return;
 
 }
-
-/* NOMBRE */
 
 if(step === 1){
 
@@ -920,8 +694,6 @@ return;
 
 }
 
-/* APELLIDO */
-
 if(step === 2){
 
 if(!soloLetras(text)){
@@ -949,8 +721,6 @@ step = 3;
 return;
 
 }
-
-/* CÉDULA */
 
 if(step === 3){
 
@@ -980,8 +750,6 @@ return;
 
 }
 
-/* TELÉFONO */
-
 if(step === 4){
 
 if(!soloNumeros(text)){
@@ -994,60 +762,9 @@ return;
 
 }
 
-if(solicitudes.length >= 10){
-
-const limpiar =
-confirm(
-"Ya existen 10 solicitudes. ¿Desea limpiar todas las solicitudes?"
-);
-
-if(limpiar){
-
-solicitudes = [];
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-}else{
-
-return;
-
-}
-
-}
-
 userData.telefono = text;
 
 addUserMessage(text);
-
-const ahora = new Date();
-
-const nuevaSolicitud = {
-
-tipo:userData.servicio,
-nombre:userData.nombre,
-apellido:userData.apellido,
-cedula:userData.cedula,
-celular:userData.telefono,
-precio:userData.precio,
-fecha:ahora.toLocaleDateString(),
-hora:ahora.toLocaleTimeString(),
-estado:"Pendiente"
-
-};
-
-solicitudes.push(nuevaSolicitud);
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
 
 mostrarToast();
 
@@ -1084,117 +801,6 @@ startChat();
 
 }
 
-/* TABLA */
-
-function mostrarSolicitudes(){
-
-const tabla =
-document.getElementById("tablaSolicitudes");
-
-tabla.innerHTML = "";
-
-let pendientes = 0;
-
-solicitudes.forEach((solicitud,index)=>{
-
-if(solicitud.estado === "Pendiente"){
-pendientes++;
-}
-
-tabla.innerHTML += `
-
-<tr>
-
-<td>${solicitud.tipo}</td>
-
-<td>
-${solicitud.nombre}
-${solicitud.apellido}
-</td>
-
-<td>${solicitud.celular}</td>
-
-<td>
-
-<span class="${
-solicitud.estado === "Pendiente"
-? "badge-pendiente"
-: "badge-respondido"
-}">
-
-${solicitud.estado}
-
-</span>
-
-</td>
-
-<td>
-
-<button
-class="btn btn-sm btn-success"
-onclick="cambiarEstado(${index})"
->
-
-Responder
-
-</button>
-
-<button
-class="btn btn-sm btn-danger mt-1"
-onclick="eliminarSolicitud(${index})"
->
-
-Eliminar
-
-</button>
-
-</td>
-
-</tr>
-
-`;
-
-});
-
-document.getElementById(
-"contadorPendientes"
-).innerText = pendientes;
-
-}
-
-/* RESPONDER */
-
-function cambiarEstado(index){
-
-solicitudes[index].estado =
-"Respondido";
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-}
-
-/* ELIMINAR */
-
-function eliminarSolicitud(index){
-
-solicitudes.splice(index,1);
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-}
-
-/* ENTER */
-
 input.addEventListener(
 "keypress",
 function(e){
@@ -1208,11 +814,7 @@ sendMessage();
 }
 );
 
-/* INICIO */
-
 startChat();
-
-mostrarSolicitudes();
 
 </script>
 
