@@ -25,7 +25,7 @@ overflow-x:hidden;
 background:#fff;
 }
 
-/* NAVBAR */
+/* NAVBAR PREMIUM */
 
 .navbar-premium{
 
@@ -275,6 +275,63 @@ transition:.4s;
 opacity:1;
 }
 
+/* REDES PREMIUM */
+
+.red-social-premium{
+
+background:
+linear-gradient(
+270deg,
+#000000,
+#1a1a1a,
+#d4af37,
+#000000
+);
+
+background-size:600% 600%;
+
+animation:brilloRedes 6s ease infinite;
+
+color:#fff !important;
+
+border-radius:16px;
+
+border:2px solid #d4af37;
+
+box-shadow:
+0 0 10px rgba(212,175,55,.6),
+0 0 20px rgba(212,175,55,.4);
+
+transition:.3s;
+
+}
+
+.red-social-premium:hover{
+
+transform:scale(1.08);
+
+box-shadow:
+0 0 15px rgba(212,175,55,.9),
+0 0 30px rgba(212,175,55,.7);
+
+}
+
+@keyframes brilloRedes{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
 @keyframes pulse{
 
 0%{
@@ -311,6 +368,8 @@ font-size:16px;
 
 <body>
 
+<!-- BOTÓN ADMIN -->
+
 <div class="btn-pendientes" onclick="verificarAdmin()">
 
 <div class="contador" id="contadorPendientes">
@@ -320,6 +379,8 @@ font-size:16px;
 Solicitudes
 
 </div>
+
+<!-- PANEL -->
 
 <div class="panel" id="panelSolicitudes">
 
@@ -355,6 +416,8 @@ Solicitudes Pendientes
 
 </div>
 
+<!-- NAVBAR -->
+
 <div class="w3-top">
 
 <div class="w3-bar navbar-premium w3-padding w3-card">
@@ -369,6 +432,8 @@ Vía Legal Asesoría y Gestiones de tránsito
 
 </div>
 
+<!-- VIDEO -->
+
 <header class="w3-display-container w3-content w3-wide"
 style="max-width:1500px;margin-top:70px;">
 
@@ -381,6 +446,8 @@ style="max-width:1500px;margin-top:70px;">
 </header>
 
 <div class="w3-content w3-padding" style="max-width:1564px">
+
+<!-- SERVICIOS PRINCIPALES -->
 
 <div class="w3-container w3-padding-32">
 
@@ -547,8 +614,7 @@ Nuestras Redes Sociales
 <div class="w3-xlarge w3-padding-16">
 
 <a
-class="w3-button w3-large w3-round-large"
-style="background:#E1306C;color:white;"
+class="w3-button w3-large red-social-premium"
 href="https://www.instagram.com/vlegalasesoriasdetransito/"
 target="_blank"
 >
@@ -558,7 +624,7 @@ target="_blank"
 </a>
 
 <a
-class="w3-button w3-large w3-green w3-round-large"
+class="w3-button w3-large red-social-premium"
 href="https://wa.me/573112878814"
 target="_blank"
 >
