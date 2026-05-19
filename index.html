@@ -65,67 +65,6 @@ color:#000;
 transform:translateY(-50%) scale(1.1);
 }
 
-.btn-pendientes{
-position:fixed;
-top:15px;
-right:15px;
-background:#16a34a;
-color:#fff;
-padding:12px 18px;
-border-radius:50px;
-z-index:9999;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 4px 15px rgba(0,0,0,.3);
-display:flex;
-align-items:center;
-gap:10px;
-transition:.3s;
-}
-
-.btn-pendientes:hover{
-transform:scale(1.05);
-background:#22c55e;
-}
-
-.contador{
-background:#fff;
-color:#16a34a;
-width:28px;
-height:28px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:bold;
-}
-
-.panel{
-position:fixed;
-top:0;
-right:-100%;
-width:100%;
-max-width:500px;
-height:100vh;
-background:#fff;
-z-index:99999;
-overflow-y:auto;
-transition:.4s;
-box-shadow:-5px 0 20px rgba(0,0,0,.3);
-padding:20px;
-}
-
-.panel.active{
-right:0;
-}
-
-.cerrar-panel{
-font-size:30px;
-cursor:pointer;
-float:right;
-font-weight:bold;
-}
-
 .chat-btn{
 position:fixed;
 bottom:20px;
@@ -203,31 +142,6 @@ color:#fff;
 margin-left:auto;
 }
 
-.user-msg{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-}
-
-.btn-x{
-background:#ff4d4d;
-border:none;
-color:#fff;
-width:22px;
-height:22px;
-border-radius:50%;
-font-size:12px;
-cursor:pointer;
-flex-shrink:0;
-transition:.3s;
-}
-
-.btn-x:hover{
-background:#d60000;
-transform:scale(1.1);
-}
-
 .options button{
 display:block;
 width:100%;
@@ -272,18 +186,21 @@ background:#0b1c2c;
 color:#fff;
 }
 
-.badge-pendiente{
-background:red;
+.btn-limpiar{
+background:#dc2626;
 color:#fff;
-padding:6px 10px;
-border-radius:8px;
+width:55px;
+font-size:22px;
+font-weight:bold;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:.3s;
 }
 
-.badge-respondido{
-background:green;
-color:#fff;
-padding:6px 10px;
-border-radius:8px;
+.btn-limpiar:hover{
+background:#b91c1c;
+transform:scale(1.05);
 }
 
 #toast{
@@ -323,15 +240,40 @@ transform:scale(1);
 
 }
 
+@media(max-width:768px){
+
+.chatbox{
+width:95%;
+left:2.5%;
+height:80vh;
+bottom:85px;
+}
+
+.chat-btn{
+left:10px;
+bottom:10px;
+padding:13px 18px;
+font-size:14px;
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
+<a href="https://paginaweb1.github.io/dise-os_web.com/" class="btn-volver">
+<i class="fa fa-arrow-left"></i>
+</a>
+
 <div class="chat-btn" onclick="toggleChat()">
+
 <i class="fa fa-comments"></i>
+
 Haz tu solicitud aquí
+
 </div>
 
 <div class="chatbox" id="chatbox">
@@ -362,6 +304,14 @@ class="btn-enviar"
 onclick="sendMessage()"
 >
 Enviar
+</button>
+
+<button
+class="btn-limpiar"
+onclick="limpiarCampo()"
+title="Limpiar campo"
+>
+✕
 </button>
 
 </div>
@@ -465,29 +415,14 @@ scrollBottom();
 
 }
 
-function addUserMessage(text,campo){
+function addUserMessage(text){
 
 let div =
 document.createElement("div");
 
 div.className = "message user";
 
-div.innerHTML = `
-
-<div class="user-msg">
-
-<span>${text}</span>
-
-<button
-class="btn-x"
-onclick="eliminarDato('${campo}', this)"
->
-×
-</button>
-
-</div>
-
-`;
+div.innerHTML = text;
 
 messages.appendChild(div);
 
@@ -503,6 +438,14 @@ messages.scrollTop =
 messages.scrollHeight;
 
 });
+
+}
+
+function limpiarCampo(){
+
+input.value = "";
+
+input.focus();
 
 }
 
@@ -553,8 +496,7 @@ userData.precio =
 servicios[option].precio;
 
 addUserMessage(
-servicios[option].nombre,
-"servicio"
+servicios[option].nombre
 );
 
 addBotMessage(`
@@ -589,27 +531,6 @@ return /^[0-9]+$/
 
 }
 
-function eliminarDato(campo, boton){
-
-const pasos = {
-nombre:1,
-apellido:2,
-cedula:3,
-telefono:4
-};
-
-userData[campo] = "";
-
-step = pasos[campo];
-
-boton.closest(".message").remove();
-
-addBotMessage(
-"✏️ Puedes escribir nuevamente el dato."
-);
-
-}
-
 function sendMessage(){
 
 const text =
@@ -625,6 +546,8 @@ return;
 
 }
 
+/* NOMBRE */
+
 if(step === 1){
 
 if(!soloLetras(text)){
@@ -639,7 +562,7 @@ return;
 
 userData.nombre = text;
 
-addUserMessage(text,"nombre");
+addUserMessage(text);
 
 addBotMessage(
 "Ahora escribe tu apellido."
@@ -652,6 +575,8 @@ step = 2;
 return;
 
 }
+
+/* APELLIDO */
 
 if(step === 2){
 
@@ -667,7 +592,7 @@ return;
 
 userData.apellido = text;
 
-addUserMessage(text,"apellido");
+addUserMessage(text);
 
 addBotMessage(
 "Escribe tu número de cédula."
@@ -680,6 +605,8 @@ step = 3;
 return;
 
 }
+
+/* CÉDULA */
 
 if(step === 3){
 
@@ -695,7 +622,7 @@ return;
 
 userData.cedula = text;
 
-addUserMessage(text,"cedula");
+addUserMessage(text);
 
 addBotMessage(
 "Escribe tu número de contacto."
@@ -708,6 +635,8 @@ step = 4;
 return;
 
 }
+
+/* TELÉFONO */
 
 if(step === 4){
 
@@ -723,7 +652,7 @@ return;
 
 userData.telefono = text;
 
-addUserMessage(text,"telefono");
+addUserMessage(text);
 
 mostrarToast();
 
@@ -738,6 +667,15 @@ addBotMessage(`
 input.value = "";
 
 step = 0;
+
+userData = {
+servicio:"",
+precio:"",
+nombre:"",
+apellido:"",
+cedula:"",
+telefono:""
+};
 
 setTimeout(()=>{
 
@@ -770,4 +708,4 @@ startChat();
 
 </body>
 </html>
-```
+
