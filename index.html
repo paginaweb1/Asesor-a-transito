@@ -483,6 +483,47 @@ Vía Legal Asesoría y Gestiones de tránsito
 </h3>
 
 <p>
+Comprometidos con brindarte soluciones jurídicas rápidas y seguras.
+</p>
+
+<h5 class="w3-padding-16">
+Nuestras Redes Sociales
+</h5>
+
+<div class="w3-xlarge w3-padding-16">
+
+<a
+class="w3-button w3-large w3-round-large"
+style="background:#E1306C;color:white;"
+href="https://www.instagram.com/vlegalasesoriasdetransito/"
+target="_blank"
+>
+
+<i class="fa fa-instagram"></i>
+
+</a>
+
+<a
+class="w3-button w3-large w3-green w3-round-large"
+href="https://wa.me/573112878814"
+target="_blank"
+>
+
+<i class="fa fa-whatsapp"></i>
+
+</a>
+
+</div>
+
+<p>
+📞 3112878814
+</p>
+
+<p>
+📧 vlegalasesoriasdetransito@gmail.com
+</p>
+
+<p>
 © 2025 Todos los derechos reservados
 </p>
 
@@ -547,8 +588,13 @@ font-weight:bold;
 
 </div>
 
-<button class="btn-enviar" onclick="sendMessage()">
+<button
+class="btn-enviar"
+onclick="sendMessage()"
+>
+
 Enviar
+
 </button>
 
 </div>
@@ -563,9 +609,14 @@ Enviar
 
 const ADMIN_PASSWORD = "progreso123";
 
-const messages = document.getElementById("messages");
-const input = document.getElementById("input");
-const toast = document.getElementById("toast");
+const messages =
+document.getElementById("messages");
+
+const input =
+document.getElementById("input");
+
+const toast =
+document.getElementById("toast");
 
 let step = 0;
 
@@ -672,7 +723,7 @@ setTimeout(()=>{
 
 toast.classList.remove("active");
 
-},4000);
+},4500);
 
 }
 
@@ -901,32 +952,6 @@ return;
 
 }
 
-if(solicitudes.length >= 10){
-
-const limpiar =
-confirm(
-"Ya existen 10 solicitudes. ¿Desea limpiar todas las solicitudes?"
-);
-
-if(limpiar){
-
-solicitudes = [];
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-}else{
-
-return;
-
-}
-
-}
-
 userData.telefono = text;
 
 addUserMessage(text);
@@ -962,7 +987,7 @@ addBotMessage(`
 
 ✅ <b>Solicitud enviada</b><br><br>
 
-📞 En un momento nuestro abogado se pondrá en contacto.
+📞 En un momento se pondrá en contacto nuestro abogado.
 
 `);
 
@@ -985,7 +1010,7 @@ messages.innerHTML = "";
 
 startChat();
 
-},3500);
+},4500);
 
 }
 
