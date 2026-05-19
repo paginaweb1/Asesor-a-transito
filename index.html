@@ -31,8 +31,6 @@ body{
 font-family:Arial,sans-serif;
 overflow-x:hidden;
 background:#fff;
--webkit-font-smoothing:antialiased;
-text-rendering:optimizeLegibility;
 }
 
 .checked{
@@ -81,11 +79,6 @@ display:flex;
 align-items:center;
 gap:10px;
 transition:.3s;
-}
-
-.btn-pendientes:hover{
-transform:scale(1.05);
-background:#22c55e;
 }
 
 .contador{
@@ -144,10 +137,6 @@ box-shadow:0 4px 15px rgba(0,0,0,.3);
 animation:pulse 2s infinite;
 }
 
-.chat-btn:hover{
-transform:scale(1.05);
-}
-
 .chatbox{
 position:fixed;
 bottom:90px;
@@ -180,7 +169,6 @@ flex:1;
 padding:15px;
 overflow-y:auto;
 background:#fafafa;
-scroll-behavior:smooth;
 }
 
 .message{
@@ -213,12 +201,6 @@ border-radius:12px;
 cursor:pointer;
 background:#d4af37;
 font-weight:bold;
-transition:.3s;
-}
-
-.options button:hover{
-background:#c49b1e;
-transform:translateY(-2px);
 }
 
 .input-area{
@@ -264,33 +246,18 @@ border-radius:12px;
 font-weight:bold;
 z-index:999999;
 opacity:0;
-pointer-events:none;
 transition:.4s;
-box-shadow:0 4px 15px rgba(0,0,0,.3);
 }
 
 #toast.active{
 opacity:1;
-transform:translateY(-10px);
-}
-
-table{
-font-size:13px;
 }
 
 @keyframes pulse{
 
-0%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(1.05);
-}
-
-100%{
-transform:scale(1);
-}
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
 
 }
 
@@ -307,25 +274,6 @@ bottom:85px;
 max-width:100%;
 }
 
-.btn-pendientes{
-font-size:12px;
-padding:10px 14px;
-}
-
-.chat-btn{
-left:10px;
-bottom:10px;
-padding:13px 18px;
-font-size:14px;
-}
-
-#toast{
-right:10px;
-left:10px;
-bottom:20px;
-text-align:center;
-}
-
 }
 
 </style>
@@ -338,11 +286,7 @@ text-align:center;
 <i class="fa fa-arrow-left"></i>
 </a>
 
-<div
-class="btn-pendientes"
-id="adminBtn"
-onclick="verificarAdmin()"
->
+<div class="btn-pendientes" onclick="verificarAdmin()">
 
 <div class="contador" id="contadorPendientes">
 0
@@ -401,8 +345,7 @@ Vía Legal Asesoría y Gestiones de tránsito
 </div>
 
 <header class="w3-display-container w3-content w3-wide"
-style="max-width:1500px;"
-id="home">
+style="max-width:1500px;margin-top:70px;">
 
 <video autoplay muted loop playsinline style="width:100%;">
 
@@ -482,16 +425,143 @@ Traspaso
 
 </div>
 
+<!-- INFORMACIÓN -->
+
+<div class="w3-container w3-padding-32">
+
+<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+¿Por qué elegirnos?
+</h3>
+
+<p style="font-size:17px;line-height:1.8;">
+
+En Vía Legal Asesoría y Gestiones de tránsito ofrecemos acompañamiento
+jurídico responsable, rápido y confiable en diferentes trámites y procesos.
+
+</p>
+
+</div>
+
+<!-- CONTACTO -->
+
+<div class="w3-container w3-padding-32">
+
+<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+Contacto
+</h3>
+
+<div class="w3-row-padding">
+
+<div class="w3-col l6 m6 s12 w3-margin-bottom">
+
+<div class="w3-card w3-padding" style="border-radius:15px;">
+
+<h4>
+<i class="fa fa-phone"></i>
+ Atención personalizada
+</h4>
+
+<p>
+📞 WhatsApp: 3000000000
+</p>
+
+<p>
+📧 contacto@vialegal.com
+</p>
+
+<p>
+🕒 Lunes a sábado
+</p>
+
+<p>
+📍 Colombia
+</p>
+
+<a
+href="https://wa.me/573000000000"
+target="_blank"
+class="w3-button w3-green w3-round-large"
+>
+
+<i class="fa fa-whatsapp"></i>
+ WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+<div class="w3-col l6 m6 s12 w3-margin-bottom">
+
+<div class="w3-card w3-padding" style="border-radius:15px;">
+
+<h4>
+<i class="fa fa-balance-scale"></i>
+ Servicios jurídicos
+</h4>
+
+<ul style="line-height:2;">
+
+<li>Derechos de petición</li>
+<li>Tutelas</li>
+<li>Impugnaciones</li>
+<li>Incidentes de desacato</li>
+<li>Procesos de tránsito</li>
+<li>Asesorías jurídicas</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- UBICACIÓN -->
+
+<div class="w3-container w3-padding-32">
+
+<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+Ubicación
+</h3>
+
+<div class="w3-card" style="overflow:hidden;border-radius:15px;">
+
+<iframe
+src="https://maps.google.com/maps?q=colombia&t=&z=5&ie=UTF8&iwloc=&output=embed"
+width="100%"
+height="350"
+style="border:0;"
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
 </div>
 
 <footer class="w3-padding-32 w3-black w3-center w3-margin-top">
 
-<h5>Nuestras Redes Sociales</h5>
+<h3>
+Vía Legal Asesoría y Gestiones de tránsito
+</h3>
+
+<p>
+Comprometidos con brindarte soluciones jurídicas rápidas y seguras.
+</p>
+
+<h5 class="w3-padding-16">
+Nuestras Redes Sociales
+</h5>
 
 <div class="w3-xlarge w3-padding-16">
 
 <a
-class="w3-button w3-large w3-teal"
+class="w3-button w3-large w3-teal w3-round-large"
 href="https://www.instagram.com/vlegalasesoriasdetransito"
 target="_blank"
 >
@@ -500,9 +570,21 @@ target="_blank"
 
 </a>
 
+<a
+class="w3-button w3-large w3-green w3-round-large"
+href="https://wa.me/573000000000"
+target="_blank"
+>
+
+<i class="fa fa-whatsapp"></i>
+
+</a>
+
 </div>
 
-<p>2025</p>
+<p>
+© 2025 Todos los derechos reservados
+</p>
 
 </footer>
 
@@ -556,7 +638,6 @@ font-size:22px;
 cursor:pointer;
 color:#777;
 font-weight:bold;
-user-select:none;
 "
 >
 
@@ -587,14 +668,9 @@ Enviar
 
 const ADMIN_PASSWORD = "progreso123";
 
-const messages =
-document.getElementById("messages");
-
-const input =
-document.getElementById("input");
-
-const toast =
-document.getElementById("toast");
+const messages = document.getElementById("messages");
+const input = document.getElementById("input");
+const toast = document.getElementById("toast");
 
 let step = 0;
 
@@ -640,17 +716,10 @@ let solicitudes =
 JSON.parse(localStorage.getItem("solicitudes"))
 || [];
 
-/* LIMPIAR CAMPO */
-
 function limpiarCampo(){
-
 input.value = "";
-
 input.focus();
-
 }
-
-/* ADMIN */
 
 function verificarAdmin(){
 
@@ -669,8 +738,6 @@ alert("Acceso denegado");
 
 }
 
-/* CHAT */
-
 function toggleChat(){
 
 const chat =
@@ -683,28 +750,17 @@ chat.style.display === "flex"
 
 }
 
-/* PANEL */
-
 function abrirPanel(){
-
 document.getElementById("panelSolicitudes")
 .classList.add("active");
-
 }
 
 function cerrarPanel(){
-
 document.getElementById("panelSolicitudes")
 .classList.remove("active");
-
 }
 
-/* TOAST */
-
 function mostrarToast(){
-
-toast.innerHTML =
-"✅ Solicitud enviada<br>📞 En un momento nuestro abogado se pondrá en contacto.";
 
 toast.classList.add("active");
 
@@ -716,12 +772,9 @@ toast.classList.remove("active");
 
 }
 
-/* MENSAJES */
-
 function addBotMessage(text){
 
-let div =
-document.createElement("div");
+let div = document.createElement("div");
 
 div.className = "message bot";
 
@@ -729,14 +782,13 @@ div.innerHTML = text;
 
 messages.appendChild(div);
 
-scrollBottom();
+messages.scrollTop = messages.scrollHeight;
 
 }
 
 function addUserMessage(text){
 
-let div =
-document.createElement("div");
+let div = document.createElement("div");
 
 div.className = "message user";
 
@@ -744,22 +796,9 @@ div.innerHTML = text;
 
 messages.appendChild(div);
 
-scrollBottom();
+messages.scrollTop = messages.scrollHeight;
 
 }
-
-function scrollBottom(){
-
-requestAnimationFrame(()=>{
-
-messages.scrollTop =
-messages.scrollHeight;
-
-});
-
-}
-
-/* INICIO */
 
 function startChat(){
 
@@ -799,27 +838,20 @@ Incidente desacato
 
 }
 
-/* SERVICIO */
-
 function selectOption(option){
 
-userData.servicio =
-servicios[option].nombre;
+userData.servicio = servicios[option].nombre;
+userData.precio = servicios[option].precio;
 
-userData.precio =
-servicios[option].precio;
-
-addUserMessage(
-servicios[option].nombre
-);
+addUserMessage(servicios[option].nombre);
 
 addBotMessage(`
 
-Valor aproximado:<br><br>
+Valor aproximado:
 
-<b>
-$${servicios[option].precio} COP
-</b>
+<br><br>
+
+<b>$${servicios[option].precio} COP</b>
 
 <br><br>
 
@@ -831,48 +863,31 @@ step = 1;
 
 }
 
-/* VALIDACIONES */
-
 function soloLetras(text){
-
-return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
-.test(text);
-
+return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(text);
 }
 
 function soloNumeros(text){
-
-return /^[0-9]+$/
-.test(text);
-
+return /^[0-9]+$/.test(text);
 }
-
-/* ENVIAR */
 
 function sendMessage(){
 
-const text =
-input.value.trim();
+const text = input.value.trim();
 
 if(text === ""){
 
-addBotMessage(
-"⚠️ Campo obligatorio."
-);
+addBotMessage("⚠️ Campo obligatorio.");
 
 return;
 
 }
 
-/* NOMBRE */
-
 if(step === 1){
 
 if(!soloLetras(text)){
 
-addBotMessage(
-"⚠️ Solo letras."
-);
+addBotMessage("⚠️ Solo letras.");
 
 return;
 
@@ -882,9 +897,7 @@ userData.nombre = text;
 
 addUserMessage(text);
 
-addBotMessage(
-"Ahora escribe tu apellido."
-);
+addBotMessage("Ahora escribe tu apellido.");
 
 input.value = "";
 
@@ -894,15 +907,11 @@ return;
 
 }
 
-/* APELLIDO */
-
 if(step === 2){
 
 if(!soloLetras(text)){
 
-addBotMessage(
-"⚠️ Solo letras."
-);
+addBotMessage("⚠️ Solo letras.");
 
 return;
 
@@ -912,9 +921,7 @@ userData.apellido = text;
 
 addUserMessage(text);
 
-addBotMessage(
-"Escribe tu número de cédula."
-);
+addBotMessage("Escribe tu número de cédula.");
 
 input.value = "";
 
@@ -924,15 +931,11 @@ return;
 
 }
 
-/* CÉDULA */
-
 if(step === 3){
 
 if(!soloNumeros(text)){
 
-addBotMessage(
-"⚠️ Solo números."
-);
+addBotMessage("⚠️ Solo números.");
 
 return;
 
@@ -942,9 +945,7 @@ userData.cedula = text;
 
 addUserMessage(text);
 
-addBotMessage(
-"Escribe tu número de contacto."
-);
+addBotMessage("Escribe tu número de contacto.");
 
 input.value = "";
 
@@ -954,51 +955,19 @@ return;
 
 }
 
-/* TELÉFONO */
-
 if(step === 4){
 
 if(!soloNumeros(text)){
 
-addBotMessage(
-"⚠️ Solo números."
-);
+addBotMessage("⚠️ Solo números.");
 
 return;
-
-}
-
-if(solicitudes.length >= 10){
-
-const limpiar =
-confirm(
-"Ya existen 10 solicitudes. ¿Desea limpiar todas las solicitudes?"
-);
-
-if(limpiar){
-
-solicitudes = [];
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-}else{
-
-return;
-
-}
 
 }
 
 userData.telefono = text;
 
 addUserMessage(text);
-
-const ahora = new Date();
 
 const nuevaSolicitud = {
 
@@ -1008,8 +977,6 @@ apellido:userData.apellido,
 cedula:userData.cedula,
 celular:userData.telefono,
 precio:userData.precio,
-fecha:ahora.toLocaleDateString(),
-hora:ahora.toLocaleTimeString(),
 estado:"Pendiente"
 
 };
@@ -1027,9 +994,11 @@ mostrarToast();
 
 addBotMessage(`
 
-✅ <b>Solicitud enviada</b><br><br>
+✅ Solicitud enviada
 
-📞 En un momento nuestro abogado se pondrá en contacto.
+<br><br>
+
+📞 En un momento nos pondremos en contacto.
 
 `);
 
@@ -1057,8 +1026,6 @@ startChat();
 }
 
 }
-
-/* TABLA */
 
 function mostrarSolicitudes(){
 
@@ -1136,8 +1103,6 @@ document.getElementById(
 
 }
 
-/* RESPONDER */
-
 function cambiarEstado(index){
 
 solicitudes[index].estado =
@@ -1152,8 +1117,6 @@ mostrarSolicitudes();
 
 }
 
-/* ELIMINAR */
-
 function eliminarSolicitud(index){
 
 solicitudes.splice(index,1);
@@ -1167,8 +1130,6 @@ mostrarSolicitudes();
 
 }
 
-/* ENTER */
-
 input.addEventListener(
 "keypress",
 function(e){
@@ -1181,8 +1142,6 @@ sendMessage();
 
 }
 );
-
-/* INICIO */
 
 startChat();
 
