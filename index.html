@@ -3,17 +3,13 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>asesorias-transito</title>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
 
@@ -23,17 +19,13 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 font-family:Arial,sans-serif;
 overflow-x:hidden;
 background:#fff;
 }
 
-/* NAVBAR PREMIUM */
+/* NAVBAR */
 
 .navbar-premium{
 
@@ -41,44 +33,20 @@ background:
 linear-gradient(
 270deg,
 #000000,
-#111111,
+#1a1a1a,
 #d4af37,
-#000000,
-#1a1a1a
+#000000
 );
 
 background-size:600% 600%;
 
 animation:brilloNavbar 8s ease infinite;
 
+border-bottom:2px solid #d4af37;
+
 box-shadow:
 0 0 12px rgba(212,175,55,.5),
 0 0 25px rgba(212,175,55,.3);
-
-border-bottom:2px solid #d4af37;
-
-}
-
-.navbar-premium h3{
-
-color:#fff;
-
-font-weight:bold;
-
-text-shadow:
-0 0 5px rgba(255,255,255,.3),
-0 0 12px rgba(212,175,55,.8);
-
-letter-spacing:1px;
-
-}
-
-.navbar-premium img{
-
-border-radius:12px;
-
-box-shadow:
-0 0 10px rgba(212,175,55,.7);
 
 }
 
@@ -97,6 +65,20 @@ background-position:0% 50%;
 }
 
 }
+
+.navbar-premium h3{
+
+color:#fff;
+
+font-weight:bold;
+
+text-shadow:
+0 0 5px rgba(255,255,255,.3),
+0 0 12px rgba(212,175,55,.8);
+
+}
+
+/* BOTÓN SOLICITUDES */
 
 .btn-pendientes{
 position:fixed;
@@ -127,6 +109,8 @@ align-items:center;
 font-weight:bold;
 }
 
+/* PANEL */
+
 .panel{
 position:fixed;
 top:0;
@@ -138,8 +122,8 @@ background:#fff;
 z-index:99999;
 overflow-y:auto;
 transition:.4s;
-box-shadow:-5px 0 20px rgba(0,0,0,.3);
 padding:20px;
+box-shadow:-5px 0 20px rgba(0,0,0,.3);
 }
 
 .panel.active{
@@ -152,6 +136,8 @@ cursor:pointer;
 float:right;
 font-weight:bold;
 }
+
+/* CHAT */
 
 .chat-btn{
 position:fixed;
@@ -210,9 +196,8 @@ padding:12px;
 border-radius:15px;
 margin-bottom:12px;
 max-width:85%;
-line-height:1.4;
 font-size:14px;
-word-wrap:break-word;
+line-height:1.5;
 }
 
 .bot{
@@ -235,29 +220,27 @@ border-radius:12px;
 cursor:pointer;
 background:#d4af37;
 font-weight:bold;
-transition:.3s;
-}
-
-.options button:hover{
-transform:translateY(-2px);
 }
 
 .input-area{
 display:flex;
 border-top:1px solid #ddd;
-background:#fff;
 }
 
-.input-area button{
-border:none;
+.input-area input{
+flex:1;
 padding:15px;
-cursor:pointer;
-font-weight:bold;
+border:none;
+outline:none;
 }
 
 .btn-enviar{
 background:#0b1c2c;
 color:#fff;
+border:none;
+padding:15px;
+cursor:pointer;
+font-weight:bold;
 }
 
 .badge-pendiente{
@@ -294,9 +277,17 @@ opacity:1;
 
 @keyframes pulse{
 
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.05);
+}
+
+100%{
+transform:scale(1);
+}
 
 }
 
@@ -306,11 +297,6 @@ opacity:1;
 width:95%;
 left:2.5%;
 height:80vh;
-bottom:85px;
-}
-
-.panel{
-max-width:100%;
 }
 
 .navbar-premium h3{
@@ -373,7 +359,7 @@ Solicitudes Pendientes
 
 <div class="w3-bar navbar-premium w3-padding w3-card">
 
-<img src="Logo.jpg" alt="Logo" style="width:60px;" class="w3-left">
+<img src="Logo.jpg" style="width:60px;" class="w3-left">
 
 <h3 style="text-align:center;">
 Vía Legal Asesoría y Gestiones de tránsito
@@ -444,6 +430,70 @@ Traspaso
 
 </div>
 
+<!-- SERVICIOS -->
+
+<div class="w3-container w3-padding-32">
+
+<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+Nuestros Servicios
+</h3>
+
+<div class="w3-row-padding">
+
+<div class="w3-col l4 m6 s12 w3-margin-bottom">
+<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+<i class="fa fa-file-text fa-3x" style="color:#d4af37;"></i>
+<h4 class="w3-padding-16">Derechos de petición</h4>
+<p>Redacción y radicación de derechos de petición.</p>
+</div>
+</div>
+
+<div class="w3-col l4 m6 s12 w3-margin-bottom">
+<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+<i class="fa fa-balance-scale fa-3x" style="color:#d4af37;"></i>
+<h4 class="w3-padding-16">Tutelas</h4>
+<p>Protección inmediata de derechos fundamentales.</p>
+</div>
+</div>
+
+<div class="w3-col l4 m6 s12 w3-margin-bottom">
+<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+<i class="fa fa-car fa-3x" style="color:#d4af37;"></i>
+<h4 class="w3-padding-16">Procesos de tránsito</h4>
+<p>Asesoría jurídica en comparendos y multas.</p>
+</div>
+</div>
+
+<div class="w3-col l4 m6 s12 w3-margin-bottom">
+<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+<i class="fa fa-gavel fa-3x" style="color:#d4af37;"></i>
+<h4 class="w3-padding-16">Incidentes de desacato</h4>
+<p>Procesos legales por incumplimientos judiciales.</p>
+</div>
+</div>
+
+<div class="w3-col l4 m6 s12 w3-margin-bottom">
+<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+<i class="fa fa-university fa-3x" style="color:#d4af37;"></i>
+<h4 class="w3-padding-16">Ejecución de sentencia</h4>
+<p>Gestión jurídica para cumplimiento de fallos.</p>
+</div>
+</div>
+
+<div class="w3-col l4 m6 s12 w3-margin-bottom">
+<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+<i class="fa fa-users fa-3x" style="color:#d4af37;"></i>
+<h4 class="w3-padding-16">Asesorías jurídicas</h4>
+<p>Orientación profesional personalizada.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTACTO -->
+
 <div class="w3-container w3-padding-32">
 
 <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
@@ -457,6 +507,8 @@ Contacto
 <p>📍 Calle 57 # 2D - 26 Los Andes - Cali</p>
 
 </div>
+
+<!-- UBICACIÓN -->
 
 <div class="w3-container w3-padding-32">
 
@@ -475,6 +527,8 @@ loading="lazy">
 </div>
 
 </div>
+
+<!-- FOOTER -->
 
 <footer class="w3-padding-32 w3-black w3-center">
 
@@ -515,19 +569,15 @@ target="_blank"
 
 </div>
 
-<p>
-📞 3112878814
-</p>
+<p>📞 3112878814</p>
 
-<p>
-📧 vlegalasesoriasdetransito@gmail.com
-</p>
+<p>📧 vlegalasesoriasdetransito@gmail.com</p>
 
-<p>
-© 2025 Todos los derechos reservados
-</p>
+<p>© 2025 Todos los derechos reservados</p>
 
 </footer>
+
+<!-- CHAT -->
 
 <div class="chat-btn" onclick="toggleChat()">
 
@@ -553,48 +603,15 @@ Asistente Jurídico
 
 <div class="input-area">
 
-<div style="position:relative;flex:1;display:flex;align-items:center;">
-
 <input
 type="text"
 id="input"
 placeholder="Escribe aquí..."
 autocomplete="off"
-style="
-width:100%;
-padding:15px;
-padding-right:45px;
-border:none;
-outline:none;
-font-size:15px;
-"
 >
 
-<span
-onclick="limpiarCampo()"
-style="
-position:absolute;
-right:15px;
-font-size:22px;
-cursor:pointer;
-color:#777;
-font-weight:bold;
-"
->
-
-&times;
-
-</span>
-
-</div>
-
-<button
-class="btn-enviar"
-onclick="sendMessage()"
->
-
+<button class="btn-enviar" onclick="sendMessage()">
 Enviar
-
 </button>
 
 </div>
@@ -662,13 +679,6 @@ let solicitudes =
 JSON.parse(localStorage.getItem("solicitudes"))
 || [];
 
-function limpiarCampo(){
-
-input.value = "";
-input.focus();
-
-}
-
 function verificarAdmin(){
 
 const pass =
@@ -715,7 +725,7 @@ document.getElementById("panelSolicitudes")
 function mostrarToast(){
 
 toast.innerHTML =
-"✅ Solicitud enviada<br>📞 En un momento nuestro abogado se pondrá en contacto.";
+"✅ Solicitud enviada<br>📞 En un momento se pondrá en contacto nuestro abogado.";
 
 toast.classList.add("active");
 
@@ -956,8 +966,6 @@ userData.telefono = text;
 
 addUserMessage(text);
 
-const ahora = new Date();
-
 const nuevaSolicitud = {
 
 tipo:userData.servicio,
@@ -966,8 +974,6 @@ apellido:userData.apellido,
 cedula:userData.cedula,
 celular:userData.telefono,
 precio:userData.precio,
-fecha:ahora.toLocaleDateString(),
-hora:ahora.toLocaleTimeString(),
 estado:"Pendiente"
 
 };
