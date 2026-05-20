@@ -1,817 +1,528 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>asesorias-transito</title>
-
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:Arial,sans-serif;
-overflow-x:hidden;
-background:#fff;
-}
-
-/* NAVBAR PREMIUM */
-
-.navbar-premium{
-
-background:
-linear-gradient(
-270deg,
-#000000,
-#1a1a1a,
-#d4af37,
-#000000
-);
-
-background-size:600% 600%;
-
-animation:brilloNavbar 8s ease infinite;
-
-border-bottom:2px solid #d4af37;
-
-box-shadow:
-0 0 12px rgba(212,175,55,.5),
-0 0 25px rgba(212,175,55,.3);
-
-}
-
-@keyframes brilloNavbar{
-
-0%{
-background-position:0% 50%;
-}
-
-50%{
-background-position:100% 50%;
-}
-
-100%{
-background-position:0% 50%;
-}
-
-}
-
-.navbar-premium h3{
-
-color:#fff;
-
-font-weight:bold;
-
-text-shadow:
-0 0 5px rgba(255,255,255,.3),
-0 0 12px rgba(212,175,55,.8);
-
-}
-
-/* BOTÓN SOLICITUDES */
-
-.btn-pendientes{
-position:fixed;
-top:18px;
-right:18px;
-background:#d4af37;
-color:#000;
-padding:8px 14px;
-border-radius:40px;
-z-index:9999;
-font-weight:bold;
-cursor:pointer;
-display:flex;
-align-items:center;
-gap:8px;
-font-size:13px;
-border:2px solid #000;
-box-shadow:
-0 0 10px rgba(212,175,55,.7),
-0 0 20px rgba(212,175,55,.4);
-transition:.3s;
-}
-
-.btn-pendientes:hover{
-transform:scale(1.05);
-}
-
-.contador{
-background:#000;
-color:#d4af37;
-width:24px;
-height:24px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:bold;
-font-size:12px;
-}
-
-/* PANEL */
-
-.panel{
-position:fixed;
-top:0;
-right:-100%;
-width:100%;
-max-width:500px;
-height:100vh;
-background:#fff;
-z-index:99999;
-overflow-y:auto;
-transition:.4s;
-padding:20px;
-box-shadow:-5px 0 20px rgba(0,0,0,.3);
-}
-
-.panel.active{
-right:0;
-}
-
-.cerrar-panel{
-font-size:30px;
-cursor:pointer;
-float:right;
-font-weight:bold;
-}
-
-/* CHAT MOSTAZA */
-
-.chat-btn{
-position:fixed;
-bottom:20px;
-left:20px;
-
-background:
-linear-gradient(
-135deg,
-#f7d25b,
-#d4af37,
-#b8860b
-);
-
-color:#000;
-
-padding:15px 24px;
-
-border-radius:50px;
-
-cursor:pointer;
-
-z-index:99999;
-
-font-weight:bold;
-
-display:flex;
-
-align-items:center;
-
-gap:10px;
-
-border:2px solid #000;
-
-box-shadow:
-0 0 12px rgba(212,175,55,.8),
-0 0 24px rgba(212,175,55,.5);
-
-animation:pulse 2s infinite;
-
-transition:.3s;
-}
-
-.chat-btn:hover{
-
-transform:scale(1.05);
-
-box-shadow:
-0 0 18px rgba(212,175,55,1),
-0 0 35px rgba(212,175,55,.8);
-
-}
-
-.chatbox{
-position:fixed;
-bottom:90px;
-left:20px;
-width:360px;
-max-width:95%;
-height:600px;
-background:#fff;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,.3);
-display:none;
-flex-direction:column;
-z-index:99999;
-}
-
-.header-chat{
-background:#0b1c2c;
-color:#fff;
-padding:18px;
-font-size:18px;
-font-weight:bold;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.messages{
-flex:1;
-padding:15px;
-overflow-y:auto;
-background:#fafafa;
-}
-
-.message{
-padding:12px;
-border-radius:15px;
-margin-bottom:12px;
-max-width:85%;
-font-size:14px;
-line-height:1.5;
-}
-
-.bot{
-background:#ececec;
-}
-
-.user{
-background:#0b1c2c;
-color:#fff;
-margin-left:auto;
-}
-
-.options button{
-display:block;
-width:100%;
-margin-top:8px;
-padding:12px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-background:#d4af37;
-font-weight:bold;
-transition:.3s;
-}
-
-.options button:hover{
-transform:scale(1.02);
-}
-
-.input-area{
-display:flex;
-border-top:1px solid #ddd;
-}
-
-.input-area input{
-flex:1;
-padding:15px;
-border:none;
-outline:none;
-}
-
-.btn-enviar{
-background:#0b1c2c;
-color:#fff;
-border:none;
-padding:15px;
-cursor:pointer;
-font-weight:bold;
-}
-
-.badge-pendiente{
-background:red;
-color:#fff;
-padding:6px 10px;
-border-radius:8px;
-}
-
-.badge-respondido{
-background:green;
-color:#fff;
-padding:6px 10px;
-border-radius:8px;
-}
-
-#toast{
-position:fixed;
-bottom:30px;
-right:30px;
-background:#16a34a;
-color:#fff;
-padding:16px 24px;
-border-radius:12px;
-font-weight:bold;
-z-index:999999;
-opacity:0;
-transition:.4s;
-}
-
-#toast.active{
-opacity:1;
-}
-
-/* TÍTULOS MOSTAZA */
-
-.titulo-servicio{
-
-background:
-linear-gradient(
-135deg,
-#f7d25b,
-#d4af37,
-#b8860b
-);
-
-color:#000;
-
-padding:10px 14px;
-
-font-weight:bold;
-
-border-bottom-right-radius:14px;
-
-box-shadow:
-0 0 10px rgba(212,175,55,.8),
-0 0 18px rgba(212,175,55,.4);
-
-text-transform:uppercase;
-
-letter-spacing:.5px;
-
-}
-
-/* IMÁGENES PREMIUM */
-
-.imagen-premium{
-
-width:100%;
-
-height:240px;
-
-object-fit:cover;
-
-border-radius:14px;
-
-border:2px solid #d4af37;
-
-box-shadow:
-0 8px 20px rgba(0,0,0,.25),
-0 0 18px rgba(212,175,55,.4);
-
-transition:.4s;
-
-}
-
-.imagen-premium:hover{
-
-transform:scale(1.03);
-
-box-shadow:
-0 12px 28px rgba(0,0,0,.35),
-0 0 25px rgba(212,175,55,.8);
-
-}
-
-/* REDES PREMIUM */
-
-.red-social-premium{
-
-background:
-linear-gradient(
-270deg,
-#000000,
-#1a1a1a,
-#d4af37,
-#000000
-);
-
-background-size:600% 600%;
-
-animation:brilloRedes 6s ease infinite;
-
-color:#fff !important;
-
-border-radius:16px;
-
-border:2px solid #d4af37;
-
-box-shadow:
-0 0 10px rgba(212,175,55,.6),
-0 0 20px rgba(212,175,55,.4);
-
-transition:.3s;
-
-}
-
-.red-social-premium:hover{
-
-transform:scale(1.08);
-
-box-shadow:
-0 0 15px rgba(212,175,55,.9),
-0 0 30px rgba(212,175,55,.7);
-
-}
-
-@keyframes brilloRedes{
-
-0%{
-background-position:0% 50%;
-}
-
-50%{
-background-position:100% 50%;
-}
-
-100%{
-background-position:0% 50%;
-}
-
-}
-
-@keyframes pulse{
-
-0%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(1.05);
-}
-
-100%{
-transform:scale(1);
-}
-
-}
-
-@media(max-width:768px){
-
-.chatbox{
-width:95%;
-left:2.5%;
-height:80vh;
-}
-
-.navbar-premium h3{
-font-size:15px;
-padding-right:110px;
-}
-
-.btn-pendientes{
-top:20px;
-right:10px;
-padding:7px 10px;
-font-size:11px;
-}
-
-.imagen-premium{
-height:220px;
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<!-- BOTÓN ADMIN -->
-
-<div class="btn-pendientes" onclick="verificarAdmin()">
-
-<div class="contador" id="contadorPendientes">
-0
-</div>
-
-Solicitudes
-
-</div>
-
-<!-- PANEL -->
-
-<div class="panel" id="panelSolicitudes">
-
-<span class="cerrar-panel" onclick="cerrarPanel()">
-&times;
-</span>
-
-<h2 class="mb-4">
-Solicitudes Pendientes
-</h2>
-
-<div class="table-responsive">
-
-<table class="table table-bordered">
-
-<thead class="thead-dark">
-
-<tr>
-<th>Servicio</th>
-<th>Nombre</th>
-<th>Celular</th>
-<th>Estado</th>
-<th>Acción</th>
-</tr>
-
-</thead>
-
-<tbody id="tablaSolicitudes"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-<!-- NAVBAR -->
-
-<div class="w3-top">
-
-<div class="w3-bar navbar-premium w3-padding w3-card">
-
-<img src="Logo.jpg" style="width:60px;" class="w3-left">
-
-<h3 style="text-align:center;">
-Vía Legal Asesoría y Gestiones de tránsito
-</h3>
-
-</div>
-
-</div>
-
-<!-- VIDEO -->
-
-<header class="w3-display-container w3-content w3-wide"
-style="max-width:1500px;margin-top:70px;">
-
-<video autoplay muted loop playsinline style="width:100%;">
-
-<source src="asesorias-transito.mp4" type="video/mp4">
-
-</video>
-
-</header>
-
-<div class="w3-content w3-padding" style="max-width:1564px">
-
-<!-- SERVICIOS PRINCIPALES -->
-
-<div class="w3-container w3-padding-32">
-
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-ASESORÍAS JURÍDICAS EN TRÁMITES DE TRÁNSITO
-</h3>
-
-</div>
-
-<div class="w3-row-padding">
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
-
-<div class="w3-display-topleft titulo-servicio">
-Cursos descuento infracción
-</div>
-
-<img
-src="multas.png"
-class="imagen-premium"
-style="width:100%"
-alt="Curso descuento infracción">
-
-</div>
-</div>
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
-
-<div class="w3-display-topleft titulo-servicio">
-Licencia por primera vez
-</div>
-
-<img
-src="licencia x primera vez.png"
-class="imagen-premium"
-style="width:100%"
-alt="Licencia por primera vez">
-
-</div>
-</div>
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
-
-<div class="w3-display-topleft titulo-servicio">
-Renovación
-</div>
-
-<img
-src="renovacion licencia.png"
-class="imagen-premium"
-style="width:100%"
-alt="Renovación">
-
-</div>
-</div>
-
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
-
-<div class="w3-display-topleft titulo-servicio">
-Traspaso
-</div>
-
-<img
-src="transpaso.png"
-class="imagen-premium"
-style="width:100%"
-alt="Traspaso">
-
-</div>
-</div>
-
-</div>
-
-<!-- SERVICIOS -->
-
-<div class="w3-container w3-padding-32">
-
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-Nuestros Servicios
-</h3>
-
-<div class="w3-row-padding">
-
-<div class="w3-col l4 m6 s12 w3-margin-bottom">
-<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
-<i class="fa fa-file-text fa-3x" style="color:#d4af37;"></i>
-<h4 class="w3-padding-16">Derechos de petición</h4>
-<p>Redacción y radicación de derechos de petición.</p>
-</div>
-</div>
-
-<div class="w3-col l4 m6 s12 w3-margin-bottom">
-<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
-<i class="fa fa-balance-scale fa-3x" style="color:#d4af37;"></i>
-<h4 class="w3-padding-16">Tutelas</h4>
-<p>Protección inmediata de derechos fundamentales.</p>
-</div>
-</div>
-
-<div class="w3-col l4 m6 s12 w3-margin-bottom">
-<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
-<i class="fa fa-car fa-3x" style="color:#d4af37;"></i>
-<h4 class="w3-padding-16">Procesos de tránsito</h4>
-<p>Asesoría jurídica en comparendos y multas.</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- CONTACTO -->
-
-<div class="w3-container w3-padding-32">
-
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-Contacto
-</h3>
-
-<p>📞 WhatsApp: 3112878814</p>
-
-<p>📧 vlegalasesoriasdetransito@gmail.com</p>
-
-<p>📍 Calle 57 # 2D - 26 Los Andes - Cali</p>
-
-</div>
-
-</div>
-
-<!-- FOOTER -->
-
-<footer class="w3-padding-32 w3-black w3-center">
-
-<h3>
-Vía Legal Asesoría y Gestiones de tránsito
-</h3>
-
-<p>
-Comprometidos con brindarte soluciones jurídicas rápidas y seguras.
-</p>
-
-<h5 class="w3-padding-16">
-Nuestras Redes Sociales
-</h5>
-
-<div class="w3-xlarge w3-padding-16">
-
-<a
-class="w3-button w3-large red-social-premium"
-href="https://www.instagram.com/vlegalasesoriasdetransito/"
-target="_blank"
->
-
-<i class="fa fa-instagram"></i>
-
-</a>
-
-<a
-class="w3-button w3-large red-social-premium"
-href="https://wa.me/573112878814"
-target="_blank"
->
-
-<i class="fa fa-whatsapp"></i>
-
-</a>
-
-</div>
-
-<p>📞 3112878814</p>
-
-<p>📧 vlegalasesoriasdetransito@gmail.com</p>
-
-<p>© 2025 Todos los derechos reservados</p>
-
-</footer>
-
-<!-- CHAT -->
-
-<div class="chat-btn" onclick="toggleChat()">
-
-<i class="fa fa-comments"></i>
-
-Haz tu solicitud aquí
-
-</div>
-
-<div class="chatbox" id="chatbox">
-
-<div class="header-chat">
-
-Asistente Jurídico
-
-<span onclick="toggleChat()" style="cursor:pointer;">
-&times;
-</span>
-
-</div>
-
-<div class="messages" id="messages"></div>
-
-<div class="input-area">
-
-<input
-type="text"
-id="input"
-placeholder="Escribe aquí..."
-autocomplete="off"
->
-
-<button class="btn-enviar" onclick="sendMessage()">
-Enviar
-</button>
-
-</div>
-
-</div>
-
-<div id="toast">
-✅ Solicitud enviada
-</div>
+<!-- REEMPLAZA TODO EL <script> POR ESTE -->
 
 <script>
+
+const ADMIN_PASSWORD = "progreso123";
+
+const messages =
+document.getElementById("messages");
+
+const input =
+document.getElementById("input");
+
+const toast =
+document.getElementById("toast");
+
+let step = 0;
+
+let userData = {
+servicio:"",
+precio:"",
+nombre:"",
+apellido:"",
+cedula:"",
+telefono:""
+};
+
+const servicios = {
+
+"1":{
+nombre:"Derecho de petición",
+precio:"80000"
+},
+
+"2":{
+nombre:"Tutela",
+precio:"120000"
+},
+
+"3":{
+nombre:"Asesoría jurídica",
+precio:"60000"
+},
+
+"4":{
+nombre:"Ejecución sentencia",
+precio:"250000"
+},
+
+"5":{
+nombre:"Incidente desacato",
+precio:"180000"
+}
+
+};
+
+let solicitudes =
+JSON.parse(localStorage.getItem("solicitudes"))
+|| [];
+
+function verificarAdmin(){
+
+const pass =
+prompt("Ingrese contraseña administrador");
+
+if(pass === ADMIN_PASSWORD){
+
+abrirPanel();
+
+}else{
+
+alert("Acceso denegado");
+
+}
+
+}
 
 function toggleChat(){
 
 const chat =
 document.getElementById("chatbox");
 
-chat.style.display =
-chat.style.display === "flex"
-? "none"
-: "flex";
+if(chat.style.display === "flex"){
+
+chat.style.display = "none";
+
+}else{
+
+chat.style.display = "flex";
 
 }
 
-</script>
+}
 
-</body>
-</html>
+function abrirPanel(){
+
+document.getElementById("panelSolicitudes")
+.classList.add("active");
+
+}
+
+function cerrarPanel(){
+
+document.getElementById("panelSolicitudes")
+.classList.remove("active");
+
+}
+
+function mostrarToast(){
+
+toast.innerHTML =
+"✅ Solicitud enviada<br>📞 En un momento se pondrá en contacto nuestro abogado.";
+
+toast.classList.add("active");
+
+setTimeout(()=>{
+
+toast.classList.remove("active");
+
+},4500);
+
+}
+
+function addBotMessage(text){
+
+let div =
+document.createElement("div");
+
+div.className = "message bot";
+
+div.innerHTML = text;
+
+messages.appendChild(div);
+
+messages.scrollTop =
+messages.scrollHeight;
+
+}
+
+function addUserMessage(text){
+
+let div =
+document.createElement("div");
+
+div.className = "message user";
+
+div.innerHTML = text;
+
+messages.appendChild(div);
+
+messages.scrollTop =
+messages.scrollHeight;
+
+}
+
+function startChat(){
+
+messages.innerHTML = "";
+
+addBotMessage(`
+
+Hola 👋<br><br>
+
+¿Qué servicio necesitas?<br><br>
+
+<div class="options">
+
+<button onclick="selectOption('1')">
+Derecho de petición
+</button>
+
+<button onclick="selectOption('2')">
+Tutela
+</button>
+
+<button onclick="selectOption('3')">
+Asesoría jurídica
+</button>
+
+<button onclick="selectOption('4')">
+Ejecución sentencia
+</button>
+
+<button onclick="selectOption('5')">
+Incidente desacato
+</button>
+
+</div>
+
+`);
+
+}
+
+function selectOption(option){
+
+userData.servicio =
+servicios[option].nombre;
+
+userData.precio =
+servicios[option].precio;
+
+addUserMessage(
+servicios[option].nombre
+);
+
+addBotMessage(`
+
+Valor aproximado:<br><br>
+
+<b>
+$${servicios[option].precio} COP
+</b>
+
+<br><br>
+
+Escribe tu nombre.
+
+`);
+
+step = 1;
+
+}
+
+function soloLetras(text){
+
+return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
+.test(text);
+
+}
+
+function soloNumeros(text){
+
+return /^[0-9]+$/
+.test(text);
+
+}
+
+function sendMessage(){
+
+const text =
+input.value.trim();
+
+if(text === ""){
+
+addBotMessage(
+"⚠️ Campo obligatorio."
+);
+
+return;
+
+}
+
+if(step === 1){
+
+if(!soloLetras(text)){
+
+addBotMessage(
+"⚠️ Solo letras."
+);
+
+return;
+
+}
+
+userData.nombre = text;
+
+addUserMessage(text);
+
+addBotMessage(
+"Ahora escribe tu apellido."
+);
+
+input.value = "";
+
+step = 2;
+
+return;
+
+}
+
+if(step === 2){
+
+if(!soloLetras(text)){
+
+addBotMessage(
+"⚠️ Solo letras."
+);
+
+return;
+
+}
+
+userData.apellido = text;
+
+addUserMessage(text);
+
+addBotMessage(
+"Escribe tu número de cédula."
+);
+
+input.value = "";
+
+step = 3;
+
+return;
+
+}
+
+if(step === 3){
+
+if(!soloNumeros(text)){
+
+addBotMessage(
+"⚠️ Solo números."
+);
+
+return;
+
+}
+
+userData.cedula = text;
+
+addUserMessage(text);
+
+addBotMessage(
+"Escribe tu número de contacto."
+);
+
+input.value = "";
+
+step = 4;
+
+return;
+
+}
+
+if(step === 4){
+
+if(!soloNumeros(text)){
+
+addBotMessage(
+"⚠️ Solo números."
+);
+
+return;
+
+}
+
+userData.telefono = text;
+
+addUserMessage(text);
+
+const nuevaSolicitud = {
+
+tipo:userData.servicio,
+nombre:userData.nombre,
+apellido:userData.apellido,
+cedula:userData.cedula,
+celular:userData.telefono,
+precio:userData.precio,
+estado:"Pendiente"
+
+};
+
+solicitudes.push(nuevaSolicitud);
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+mostrarToast();
+
+addBotMessage(`
+
+✅ <b>Solicitud enviada</b><br><br>
+
+📞 En un momento se pondrá en contacto nuestro abogado.
+
+`);
+
+input.value = "";
+
+step = 0;
+
+userData = {
+servicio:"",
+precio:"",
+nombre:"",
+apellido:"",
+cedula:"",
+telefono:""
+};
+
+setTimeout(()=>{
+
+messages.innerHTML = "";
+
+startChat();
+
+},4500);
+
+}
+
+}
+
+function mostrarSolicitudes(){
+
+const tabla =
+document.getElementById("tablaSolicitudes");
+
+tabla.innerHTML = "";
+
+let pendientes = 0;
+
+solicitudes.forEach((solicitud,index)=>{
+
+if(solicitud.estado === "Pendiente"){
+pendientes++;
+}
+
+tabla.innerHTML += `
+
+<tr>
+
+<td>${solicitud.tipo}</td>
+
+<td>
+${solicitud.nombre}
+${solicitud.apellido}
+</td>
+
+<td>${solicitud.celular}</td>
+
+<td>
+
+<span class="${
+solicitud.estado === "Pendiente"
+? "badge-pendiente"
+: "badge-respondido"
+}">
+
+${solicitud.estado}
+
+</span>
+
+</td>
+
+<td>
+
+<button
+class="btn btn-sm btn-success"
+onclick="cambiarEstado(${index})"
+>
+
+Responder
+
+</button>
+
+<button
+class="btn btn-sm btn-danger mt-1"
+onclick="eliminarSolicitud(${index})"
+>
+
+Eliminar
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+document.getElementById(
+"contadorPendientes"
+).innerText = pendientes;
+
+}
+
+function cambiarEstado(index){
+
+solicitudes[index].estado =
+"Respondido";
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+}
+
+function eliminarSolicitud(index){
+
+solicitudes.splice(index,1);
+
+localStorage.setItem(
+"solicitudes",
+JSON.stringify(solicitudes)
+);
+
+mostrarSolicitudes();
+
+}
+
+input.addEventListener(
+"keypress",
+function(e){
+
+if(e.key === "Enter"){
+
+sendMessage();
+
+}
+
+}
+);
+
+startChat();
+
+mostrarSolicitudes();
+
+</script>
