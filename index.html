@@ -28,7 +28,6 @@ background:#fff;
 /* NAVBAR PREMIUM */
 
 .navbar-premium{
-
 background:
 linear-gradient(
 270deg,
@@ -37,17 +36,12 @@ linear-gradient(
 #d4af37,
 #000000
 );
-
 background-size:600% 600%;
-
 animation:brilloNavbar 8s ease infinite;
-
 border-bottom:2px solid #d4af37;
-
 box-shadow:
 0 0 12px rgba(212,175,55,.5),
 0 0 25px rgba(212,175,55,.3);
-
 }
 
 @keyframes brilloNavbar{
@@ -67,15 +61,11 @@ background-position:0% 50%;
 }
 
 .navbar-premium h3{
-
 color:#fff;
-
 font-weight:bold;
-
 text-shadow:
 0 0 5px rgba(255,255,255,.3),
 0 0 12px rgba(212,175,55,.8);
-
 }
 
 /* BOTÓN SOLICITUDES */
@@ -153,7 +143,6 @@ font-weight:bold;
 position:fixed;
 bottom:20px;
 left:20px;
-
 background:
 linear-gradient(
 135deg,
@@ -161,33 +150,20 @@ linear-gradient(
 #d4af37,
 #b8860b
 );
-
 color:#000;
-
 padding:15px 24px;
-
 border-radius:50px;
-
 cursor:pointer;
-
 z-index:99999;
-
 font-weight:bold;
-
 display:flex;
-
 align-items:center;
-
 gap:10px;
-
 border:2px solid #000;
-
 box-shadow:
 0 0 12px rgba(212,175,55,.8),
 0 0 24px rgba(212,175,55,.5);
-
 animation:pulse 2s infinite;
-
 transition:.3s;
 }
 
@@ -289,7 +265,6 @@ font-weight:bold;
 /* IMÁGENES */
 
 .titulo-servicio{
-
 background:
 linear-gradient(
 135deg,
@@ -297,36 +272,24 @@ linear-gradient(
 #d4af37,
 #b8860b
 );
-
 color:#000;
-
 padding:10px 14px;
-
 font-weight:bold;
-
 border-bottom-right-radius:14px;
-
 box-shadow:
 0 0 10px rgba(212,175,55,.8);
-
 }
 
 .imagen-premium{
-
 width:100%;
 height:240px;
 object-fit:cover;
-
 border-radius:14px;
-
 border:2px solid #d4af37;
-
 box-shadow:
 0 8px 20px rgba(0,0,0,.25),
 0 0 18px rgba(212,175,55,.4);
-
 transition:.4s;
-
 }
 
 .imagen-premium:hover{
@@ -336,7 +299,6 @@ transform:scale(1.03);
 /* REDES */
 
 .red-social-premium{
-
 background:
 linear-gradient(
 270deg,
@@ -345,22 +307,14 @@ linear-gradient(
 #d4af37,
 #000000
 );
-
 background-size:600% 600%;
-
 animation:brilloRedes 6s ease infinite;
-
 color:#fff !important;
-
 border-radius:16px;
-
 border:2px solid #d4af37;
-
 box-shadow:
 0 0 10px rgba(212,175,55,.6);
-
 transition:.3s;
-
 }
 
 .red-social-premium:hover{
@@ -642,6 +596,54 @@ Nuestros Servicios
 </div>
 </div>
 
+<div class="w3-col l4 m6 s12 w3-margin-bottom">
+<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+<i class="fa fa-exchange fa-3x" style="color:#d4af37;"></i>
+<h4 class="w3-padding-16">
+Traspaso de vehículos a nivel nacional
+</h4>
+<p>
+Gestión rápida y segura para traspasos de vehículos.
+</p>
+</div>
+</div>
+
+<div class="w3-col l4 m6 s12 w3-margin-bottom">
+<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+<i class="fa fa-unlock-alt fa-3x" style="color:#d4af37;"></i>
+<h4 class="w3-padding-16">
+Levantamiento de prenda
+</h4>
+<p>
+Asesoría y trámite para cancelación de prendas vehiculares.
+</p>
+</div>
+</div>
+
+<div class="w3-col l4 m6 s12 w3-margin-bottom">
+<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+<i class="fa fa-id-card fa-3x" style="color:#d4af37;"></i>
+<h4 class="w3-padding-16">
+Licencia de conducción por primera vez
+</h4>
+<p>
+Acompañamiento completo para obtener tu licencia.
+</p>
+</div>
+</div>
+
+<div class="w3-col l4 m6 s12 w3-margin-bottom">
+<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+<i class="fa fa-refresh fa-3x" style="color:#d4af37;"></i>
+<h4 class="w3-padding-16">
+Renovación de licencia de conducción
+</h4>
+<p>
+Renueva tu licencia de manera ágil y segura.
+</p>
+</div>
+</div>
+
 </div>
 
 </div>
@@ -681,8 +683,6 @@ loading="lazy">
 </div>
 
 </div>
-
-<!-- FOOTER -->
 
 <footer class="w3-padding-32 w3-black w3-center">
 
@@ -727,538 +727,6 @@ target="_blank">
 <p>© 2025 Todos los derechos reservados</p>
 
 </footer>
-
-<!-- CHAT -->
-
-<div class="chat-btn" onclick="toggleChat()">
-
-<i class="fa fa-comments"></i>
-
-Haz tu solicitud aquí
-
-</div>
-
-<div class="chatbox" id="chatbox">
-
-<div class="header-chat">
-
-Asistente Jurídico
-
-<span onclick="toggleChat()" style="cursor:pointer;">
-&times;
-</span>
-
-</div>
-
-<div class="messages" id="messages"></div>
-
-<div class="input-area">
-
-<input
-type="text"
-id="input"
-placeholder="Escribe aquí..."
-autocomplete="off"
->
-
-<button class="btn-enviar" onclick="sendMessage()">
-Enviar
-</button>
-
-</div>
-
-</div>
-
-<div id="toast">
-✅ Solicitud enviada
-</div>
-
-<script>
-
-const ADMIN_PASSWORD = "progreso123";
-
-const messages =
-document.getElementById("messages");
-
-const input =
-document.getElementById("input");
-
-const toast =
-document.getElementById("toast");
-
-let step = 0;
-
-let userData = {
-servicio:"",
-precio:"",
-nombre:"",
-apellido:"",
-cedula:"",
-telefono:""
-};
-
-const servicios = {
-
-"1":{
-nombre:"Derecho de petición",
-precio:"80000"
-},
-
-"2":{
-nombre:"Tutela",
-precio:"120000"
-},
-
-"3":{
-nombre:"Asesoría jurídica",
-precio:"60000"
-},
-
-"4":{
-nombre:"Ejecución sentencia",
-precio:"250000"
-},
-
-"5":{
-nombre:"Incidente desacato",
-precio:"180000"
-}
-
-};
-
-let solicitudes =
-JSON.parse(localStorage.getItem("solicitudes"))
-|| [];
-
-function verificarAdmin(){
-
-const pass =
-prompt("Ingrese contraseña administrador");
-
-if(pass === ADMIN_PASSWORD){
-
-abrirPanel();
-
-}else{
-
-alert("Acceso denegado");
-
-}
-
-}
-
-function toggleChat(){
-
-const chat =
-document.getElementById("chatbox");
-
-chat.style.display =
-chat.style.display === "flex"
-? "none"
-: "flex";
-
-}
-
-function abrirPanel(){
-
-document.getElementById("panelSolicitudes")
-.classList.add("active");
-
-}
-
-function cerrarPanel(){
-
-document.getElementById("panelSolicitudes")
-.classList.remove("active");
-
-}
-
-function mostrarToast(){
-
-toast.innerHTML =
-"✅ Solicitud enviada<br>📞 En un momento se pondrá en contacto nuestro abogado.";
-
-toast.classList.add("active");
-
-setTimeout(()=>{
-
-toast.classList.remove("active");
-
-},4500);
-
-}
-
-function addBotMessage(text){
-
-let div =
-document.createElement("div");
-
-div.className = "message bot";
-
-div.innerHTML = text;
-
-messages.appendChild(div);
-
-messages.scrollTop =
-messages.scrollHeight;
-
-}
-
-function addUserMessage(text){
-
-let div =
-document.createElement("div");
-
-div.className = "message user";
-
-div.innerHTML = text;
-
-messages.appendChild(div);
-
-messages.scrollTop =
-messages.scrollHeight;
-
-}
-
-function startChat(){
-
-messages.innerHTML = "";
-
-addBotMessage(`
-
-Hola 👋<br><br>
-
-¿Qué servicio necesitas?<br><br>
-
-<div class="options">
-
-<button onclick="selectOption('1')">
-Derecho de petición
-</button>
-
-<button onclick="selectOption('2')">
-Tutela
-</button>
-
-<button onclick="selectOption('3')">
-Asesoría jurídica
-</button>
-
-<button onclick="selectOption('4')">
-Ejecución sentencia
-</button>
-
-<button onclick="selectOption('5')">
-Incidente desacato
-</button>
-
-</div>
-
-`);
-
-}
-
-function selectOption(option){
-
-userData.servicio =
-servicios[option].nombre;
-
-userData.precio =
-servicios[option].precio;
-
-addUserMessage(
-servicios[option].nombre
-);
-
-addBotMessage(`
-
-Valor aproximado:<br><br>
-
-<b>
-$${servicios[option].precio} COP
-</b>
-
-<br><br>
-
-Escribe tu nombre.
-
-`);
-
-step = 1;
-
-}
-
-function soloLetras(text){
-
-return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
-.test(text);
-
-}
-
-function soloNumeros(text){
-
-return /^[0-9]+$/
-.test(text);
-
-}
-
-function sendMessage(){
-
-const text =
-input.value.trim();
-
-if(text === ""){
-addBotMessage("⚠️ Campo obligatorio.");
-return;
-}
-
-if(step === 1){
-
-if(!soloLetras(text)){
-addBotMessage("⚠️ Solo letras.");
-return;
-}
-
-userData.nombre = text;
-
-addUserMessage(text);
-
-addBotMessage("Ahora escribe tu apellido.");
-
-input.value = "";
-
-step = 2;
-
-return;
-
-}
-
-if(step === 2){
-
-if(!soloLetras(text)){
-addBotMessage("⚠️ Solo letras.");
-return;
-}
-
-userData.apellido = text;
-
-addUserMessage(text);
-
-addBotMessage("Escribe tu número de cédula.");
-
-input.value = "";
-
-step = 3;
-
-return;
-
-}
-
-if(step === 3){
-
-if(!soloNumeros(text)){
-addBotMessage("⚠️ Solo números.");
-return;
-}
-
-userData.cedula = text;
-
-addUserMessage(text);
-
-addBotMessage("Escribe tu número de contacto.");
-
-input.value = "";
-
-step = 4;
-
-return;
-
-}
-
-if(step === 4){
-
-if(!soloNumeros(text)){
-addBotMessage("⚠️ Solo números.");
-return;
-}
-
-userData.telefono = text;
-
-addUserMessage(text);
-
-const nuevaSolicitud = {
-
-tipo:userData.servicio,
-nombre:userData.nombre,
-apellido:userData.apellido,
-cedula:userData.cedula,
-celular:userData.telefono,
-precio:userData.precio,
-estado:"Pendiente"
-
-};
-
-solicitudes.push(nuevaSolicitud);
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-mostrarToast();
-
-addBotMessage(`
-
-✅ <b>Solicitud enviada</b><br><br>
-
-📞 En un momento se pondrá en contacto nuestro abogado.
-
-`);
-
-input.value = "";
-
-step = 0;
-
-userData = {
-servicio:"",
-precio:"",
-nombre:"",
-apellido:"",
-cedula:"",
-telefono:""
-};
-
-setTimeout(()=>{
-
-messages.innerHTML = "";
-
-startChat();
-
-},4500);
-
-}
-
-}
-
-function mostrarSolicitudes(){
-
-const tabla =
-document.getElementById("tablaSolicitudes");
-
-tabla.innerHTML = "";
-
-let pendientes = 0;
-
-solicitudes.forEach((solicitud,index)=>{
-
-if(solicitud.estado === "Pendiente"){
-pendientes++;
-}
-
-tabla.innerHTML += `
-
-<tr>
-
-<td>${solicitud.tipo}</td>
-
-<td>
-${solicitud.nombre}
-${solicitud.apellido}
-</td>
-
-<td>${solicitud.celular}</td>
-
-<td>
-
-<span class="${
-solicitud.estado === "Pendiente"
-? "badge-pendiente"
-: "badge-respondido"
-}">
-
-${solicitud.estado}
-
-</span>
-
-</td>
-
-<td>
-
-<button
-class="btn btn-sm btn-success"
-onclick="cambiarEstado(${index})"
->
-Responder
-</button>
-
-<button
-class="btn btn-sm btn-danger mt-1"
-onclick="eliminarSolicitud(${index})"
->
-Eliminar
-</button>
-
-</td>
-
-</tr>
-
-`;
-
-});
-
-document.getElementById(
-"contadorPendientes"
-).innerText = pendientes;
-
-}
-
-function cambiarEstado(index){
-
-solicitudes[index].estado =
-"Respondido";
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-}
-
-function eliminarSolicitud(index){
-
-solicitudes.splice(index,1);
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-}
-
-input.addEventListener(
-"keypress",
-function(e){
-
-if(e.key === "Enter"){
-
-sendMessage();
-
-}
-
-}
-);
-
-startChat();
-
-mostrarSolicitudes();
-
-</script>
 
 </body>
 </html>
