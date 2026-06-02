@@ -868,9 +868,7 @@ window.selectOption = function(option) {
   addUserMessage(servicios[option].nombre);
   addBotMessage(`
     Has seleccionado: <b>${servicios[option].nombre}</b><br><br>
-    Por favor escribe tu <b>nombre</b>.
-    Ahora escribe <b>solo tu Nombre o dos primeros Nombres</b>.<br>
-    <small style="color:#888;">Ejemplo: si te llamas Juan Luis Pérez Anaya, aquí solo escribe: <i>Juan Luis</i></small>
+    Por favor escribe tu <b>nombre</b>(Sin Apellidos).
   `);
   step = 1;
 };
@@ -893,8 +891,7 @@ window.selectOption = function(option) {
       addUserMessage(text);
       addBotMessage(`
         Nombre registrado: <b>${text}</b><br><br>
-        Ahora escribe <b>solo tu Apellido o tus Apellidos</b>.<br>
-        <small style="color:#888;">Ejemplo: si te llamas Juan Luis Pérez Anaya, aquí solo escribe: <i>Pérez Anaya</i></small>
+        Ahora escribe tu<b>Apellidos</b>.
       `);
       inputEl.value = "";
       step = 2;
