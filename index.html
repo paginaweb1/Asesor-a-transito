@@ -700,12 +700,13 @@ window.accionAdmin = function() {
   };
 
 window.abrirPanel = function() {
-    if (!usuarioAdmin) {
-      document.getElementById("modalAdmin").classList.add("active");
-      return;
-    }
-    document.getElementById("panelSolicitudes").classList.add("active");
-  };
+  if (!usuarioAdmin) {
+    document.getElementById("modalAdmin").classList.add("active");
+    return;
+  }
+  document.getElementById("panelSolicitudes").classList.add("active");
+  renderTabla();
+};
 
   window.cerrarPanel = function() {
     document.getElementById("panelSolicitudes").classList.remove("active");
