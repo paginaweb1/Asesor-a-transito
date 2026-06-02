@@ -46,6 +46,7 @@ text-shadow:0 0 5px rgba(255,255,255,.3),0 0 12px rgba(212,175,55,.8);
 }
 
 .btn-pendientes{
+display:none;
 position:fixed;
 top:20px;
 right:10px;
@@ -131,8 +132,9 @@ position:fixed;
 bottom:90px;
 left:20px;
 width:360px;
-max-width:95%;
-height:600px;
+max-width:calc(100vw - 40px);
+height:500px;
+max-height:calc(100vh - 120px);
 background:#fff;
 border-radius:20px;
 overflow:hidden;
@@ -631,12 +633,15 @@ const firebaseConfig = {
   // ============================================================
   // AUTENTICACIÓN ADMIN
   // ============================================================
-  onAuthStateChanged(auth, (user) => {
-    usuarioAdmin = user;
-    if (user) {
-      escucharSolicitudes();
-    }
-  });
+onAuthStateChanged(auth, (user) => {
+  usuarioAdmin = user;
+  if (user) {
+    document.querySelector(".btn-pendientes").style.display = "flex";
+    escucharSolicitudes();
+  } else {
+    document.querySelector(".btn-pendientes").style.display = "none";
+  }
+});
 
   window.verificarAdmin = function() {
     document.getElementById("modalAdmin").classList.add("active");
