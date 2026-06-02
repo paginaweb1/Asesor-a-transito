@@ -799,15 +799,14 @@ window.abrirPanel = function() {
   const toastEl = document.getElementById("toast");
 
   let step = 0;
-  let userData = { servicio:"", precio:"", nombre:"", apellido:"", cedula:"", telefono:"" };
-
-  const servicios = {
-    "1":{ nombre:"Derecho de petición", precio:"80000" },
-    "2":{ nombre:"Tutela", precio:"120000" },
-    "3":{ nombre:"Asesoría jurídica", precio:"60000" },
-    "4":{ nombre:"Ejecución sentencia", precio:"250000" },
-    "5":{ nombre:"Incidente desacato", precio:"180000" }
-  };
+let userData = { servicio:"", nombre:"", apellido:"", cedula:"", telefono:"" };  
+const servicios = {
+  "1":{ nombre:"Derecho de petición" },
+  "2":{ nombre:"Tutela" },
+  "3":{ nombre:"Asesoría jurídica" },
+  "4":{ nombre:"Ejecución sentencia" },
+  "5":{ nombre:"Incidente desacato" }
+};
 
   window.toggleChat = function() {
     const chat = document.getElementById("chatbox");
@@ -851,17 +850,15 @@ window.abrirPanel = function() {
     `);
   }
 
-  window.selectOption = function(option) {
-    userData.servicio = servicios[option].nombre;
-    userData.precio = servicios[option].precio;
-    addUserMessage(servicios[option].nombre);
-    addBotMessage(`
-      Valor aproximado:<br><br>
-      <b>$${servicios[option].precio} COP</b><br><br>
-      Escribe tu nombre.
-    `);
-    step = 1;
-  };
+window.selectOption = function(option) {
+  userData.servicio = servicios[option].nombre;
+  addUserMessage(servicios[option].nombre);
+  addBotMessage(`
+    Has seleccionado: <b>${servicios[option].nombre}</b><br><br>
+    Por favor escribe tu <b>nombre</b>.
+  `);
+  step = 1;
+};
 
   function soloLetras(text) {
     return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(text);
@@ -917,7 +914,6 @@ window.abrirPanel = function() {
         apellido: userData.apellido,
         cedula: userData.cedula,
         celular: userData.telefono,
-        precio: userData.precio,
         estado: "Pendiente"
       };
 
@@ -933,7 +929,7 @@ window.abrirPanel = function() {
       }
 
       step = 0;
-      userData = { servicio:"", precio:"", nombre:"", apellido:"", cedula:"", telefono:"" };
+      userData = { servicio:"", nombre:"", apellido:"", cedula:"", telefono:"" };
 
       setTimeout(() => {
         messagesEl.innerHTML = "";
