@@ -724,7 +724,7 @@ window.abrirPanel = function() {
           solicitudesCache.push({ id: docSnap.id, ...docSnap.data() });
         });
         renderTabla();
-       /*  estadoEl.innerText = "✅ Conectado a Firebase"; */
+        estadoEl.innerText = "✅ Conectado a Firebase"; 
         estadoEl.className = "conectado";
       }, (error) => {
         estadoEl.innerText = "❌ Error de conexión: " + error.message;
