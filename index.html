@@ -360,7 +360,17 @@ padding:4px;
 .btn-pendientes{top:20px;right:8px;font-size:11px;padding:7px 10px;}
 .imagen-premium{height:220px;}
 }
-
+.contador-admin{
+display:flex;
+align-items:center;
+gap:6px;
+background:#d4af37;
+color:#000;
+padding:4px 12px;
+border-radius:20px;
+font-weight:bold;
+font-size:13px;
+}
 </style>
 </head>
 
@@ -380,8 +390,11 @@ padding:4px;
 
 <!-- BOTÓN ADMIN -->
 <div class="btn-pendientes" id="btnAdmin" onclick="accionAdmin()">
-  <span id="textoAdmin">Admin</span>
-  <div class="contador" id="contadorPendientes" style="display:none;">0</div>
+  <span id="textoAdmin">Iniciar como Administrador</span>
+  <div class="contador-admin" id="contadorPendientes" style="display:none;">
+    <span id="numPendientes">0</span>
+    <span id="labelPendientes"> solicitudes pendientes</span>
+  </div>
 </div>
 
 <!-- PANEL -->
@@ -643,19 +656,19 @@ window.accionAdmin = function() {
   }
 };
 
-onAuthStateChanged(auth, (user) => {
-  usuarioAdmin = user;
-  const textoAdmin = document.getElementById("textoAdmin");
-  const contador = document.getElementById("contadorPendientes");
-  if (user) {
-    textoAdmin.innerText = "";
-    contador.style.display = "flex";
-    escucharSolicitudes();
-  } else {
-    textoAdmin.innerText = "Admin";
-    contador.style.display = "none";
-  }
-});
+  onAuthStateChanged(auth, (user) => {
+    usuarioAdmin = user;
+    const textoAdmin = document.getElementById("textoAdmin");
+    const contador = document.getElementById("contadorPendientes");
+    if (user) {
+      textoAdmin.style.display = "none";
+      contador.style.display = "flex";
+      escucharSolicitudes();
+    } else {
+      textoAdmin.style.display = "inline";
+      contador.style.display = "none";
+    }
+  });
 
   window.cerrarModal = function() {
     document.getElementById("modalAdmin").classList.remove("active");
@@ -754,7 +767,7 @@ window.abrirPanel = function() {
       `;
     });
 
-    document.getElementById("contadorPendientes").innerText = pendientes;
+     document.getElementById("numPendientes").innerText = pendientes;
   }
 
   // ============================================================
@@ -873,25 +886,31 @@ window.selectOption = function(option) {
     if (text === "") { addBotMessage("⚠️ Campo obligatorio."); return; }
 
     if (step === 1) {
-      if (!soloLetras(text)) { addBotMessage("⚠️ Solo letras."); return; }
+      if (!soloLetras(text)) { addBotMessage("⚠️ Solo letras, sin números."); return; }
       userData.nombre = text;
       addUserMessage(text);
-      addBotMessage("Ahora escribe tu apellido.");
+      addBotMessage(`
+        ✅ Nombre registrado: <b>${text}</b><br><br>
+        Ahora escribe <b>solo tu apellido</b>.<br>
+        <small style="color:#888;">Ejemplo: si te llamas Juan Pérez, aquí solo escribe: <i>Pérez</i></small>
+      `);
       inputEl.value = "";
       step = 2;
       return;
     }
-
+    
     if (step === 2) {
-      if (!soloLetras(text)) { addBotMessage("⚠️ Solo letras."); return; }
+      if (!soloLetras(text)) { addBotMessage("⚠️ Solo letras, sin números."); return; }
       userData.apellido = text;
       addUserMessage(text);
-      addBotMessage("Escribe tu número de cédula.");
+      addBotMessage(`
+        ✅ Registrado: <b>${userData.nombre} ${text}</b><br><br>
+        Ahora escribe tu número de <b>cédula</b>.
+      `);
       inputEl.value = "";
       step = 3;
       return;
     }
-
     if (step === 3) {
       if (!soloNumeros(text)) { addBotMessage("⚠️ Solo números."); return; }
       userData.cedula = text;
