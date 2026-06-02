@@ -605,11 +605,11 @@ padding:4px;
     orderBy,
     serverTimestamp
   } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-  import {
+ import {
     getAuth,
     signInWithEmailAndPassword,
     signOut,
-    
+    onAuthStateChanged
   } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -686,9 +686,9 @@ onAuthStateChanged(auth, (user) => {
     cerrarPanel();
   };
 
-  window.abrirPanel = function() {
+window.abrirPanel = function() {
     if (!usuarioAdmin) {
-      verificarAdmin();
+      document.getElementById("modalAdmin").classList.add("active");
       return;
     }
     document.getElementById("panelSolicitudes").classList.add("active");
