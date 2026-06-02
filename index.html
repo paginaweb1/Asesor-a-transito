@@ -724,7 +724,7 @@ window.abrirPanel = function() {
           solicitudesCache.push({ id: docSnap.id, ...docSnap.data() });
         });
         renderTabla();
-        estadoEl.innerText = "✅ Conectado a Firebase";
+       /*  estadoEl.innerText = "✅ Conectado a Firebase"; */
         estadoEl.className = "conectado";
       }, (error) => {
         estadoEl.innerText = "❌ Error de conexión: " + error.message;
@@ -869,6 +869,8 @@ window.selectOption = function(option) {
   addBotMessage(`
     Has seleccionado: <b>${servicios[option].nombre}</b><br><br>
     Por favor escribe tu <b>nombre</b>.
+    Ahora escribe <b>solo tu Nombre o dos primeros Nombres</b>.<br>
+    <small style="color:#888;">Ejemplo: si te llamas Juan Luis Pérez Anaya, aquí solo escribe: <i>Juan Luis</i></small>
   `);
   step = 1;
 };
@@ -890,9 +892,9 @@ window.selectOption = function(option) {
       userData.nombre = text;
       addUserMessage(text);
       addBotMessage(`
-        ✅ Nombre registrado: <b>${text}</b><br><br>
-        Ahora escribe <b>solo tu apellido</b>.<br>
-        <small style="color:#888;">Ejemplo: si te llamas Juan Pérez, aquí solo escribe: <i>Pérez</i></small>
+        Nombre registrado: <b>${text}</b><br><br>
+        Ahora escribe <b>solo tu Apellido o tus Apellidos</b>.<br>
+        <small style="color:#888;">Ejemplo: si te llamas Juan Luis Pérez Anaya, aquí solo escribe: <i>Pérez Anaya</i></small>
       `);
       inputEl.value = "";
       step = 2;
@@ -904,7 +906,7 @@ window.selectOption = function(option) {
       userData.apellido = text;
       addUserMessage(text);
       addBotMessage(`
-        ✅ Registrado: <b>${userData.nombre} ${text}</b><br><br>
+        Registrado: <b>${userData.nombre} ${text}</b><br><br>
         Ahora escribe tu número de <b>cédula</b>.
       `);
       inputEl.value = "";
