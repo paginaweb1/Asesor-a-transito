@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
 <style>
 
 *{
@@ -24,50 +25,25 @@ overflow-x:hidden;
 background:#fff;
 }
 
-/* NAVBAR PREMIUM */
-
 .navbar-premium{
-background:
-linear-gradient(
-270deg,
-#000000,
-#1a1a1a,
-#d4af37,
-#000000
-);
+background:linear-gradient(270deg,#000000,#1a1a1a,#d4af37,#000000);
 background-size:600% 600%;
 animation:brilloNavbar 8s ease infinite;
 border-bottom:2px solid #d4af37;
-box-shadow:
-0 0 12px rgba(212,175,55,.5),
-0 0 25px rgba(212,175,55,.3);
+box-shadow:0 0 12px rgba(212,175,55,.5),0 0 25px rgba(212,175,55,.3);
 }
 
 @keyframes brilloNavbar{
-
-0%{
-background-position:0% 50%;
-}
-
-50%{
-background-position:100% 50%;
-}
-
-100%{
-background-position:0% 50%;
-}
-
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 .navbar-premium h3{
 color:#fff;
 font-weight:bold;
-text-shadow:
-0 0 5px rgba(255,255,255,.3),
-0 0 12px rgba(212,175,55,.8);
+text-shadow:0 0 5px rgba(255,255,255,.3),0 0 12px rgba(212,175,55,.8);
 }
-
-/* BOTÓN SOLICITUDES */
 
 .btn-pendientes{
 position:fixed;
@@ -85,15 +61,11 @@ align-items:center;
 gap:8px;
 font-size:13px;
 border:2px solid #000;
-box-shadow:
-0 0 10px rgba(212,175,55,.7),
-0 0 20px rgba(212,175,55,.4);
+box-shadow:0 0 10px rgba(212,175,55,.7),0 0 20px rgba(212,175,55,.4);
 transition:.3s;
 }
 
-.btn-pendientes:hover{
-transform:scale(1.05);
-}
+.btn-pendientes:hover{transform:scale(1.05);}
 
 .contador{
 background:#000;
@@ -107,8 +79,6 @@ align-items:center;
 font-weight:bold;
 font-size:12px;
 }
-
-/* PANEL */
 
 .panel{
 position:fixed;
@@ -125,9 +95,7 @@ padding:20px;
 box-shadow:-5px 0 20px rgba(0,0,0,.3);
 }
 
-.panel.active{
-right:0;
-}
+.panel.active{right:0;}
 
 .cerrar-panel{
 font-size:30px;
@@ -136,19 +104,11 @@ float:right;
 font-weight:bold;
 }
 
-/* BOTÓN CHAT */
-
 .chat-btn{
 position:fixed;
 bottom:20px;
 left:20px;
-background:
-linear-gradient(
-135deg,
-#f7d25b,
-#d4af37,
-#b8860b
-);
+background:linear-gradient(135deg,#f7d25b,#d4af37,#b8860b);
 color:#000;
 padding:15px 24px;
 border-radius:50px;
@@ -159,16 +119,12 @@ display:flex;
 align-items:center;
 gap:10px;
 border:2px solid #000;
-box-shadow:
-0 0 12px rgba(212,175,55,.8),
-0 0 24px rgba(212,175,55,.5);
+box-shadow:0 0 12px rgba(212,175,55,.8),0 0 24px rgba(212,175,55,.5);
 animation:pulse 2s infinite;
 transition:.3s;
 }
 
-.chat-btn:hover{
-transform:scale(1.05);
-}
+.chat-btn:hover{transform:scale(1.05);}
 
 .chatbox{
 position:fixed;
@@ -213,9 +169,7 @@ font-size:14px;
 line-height:1.5;
 }
 
-.bot{
-background:#ececec;
-}
+.bot{background:#ececec;}
 
 .user{
 background:#0b1c2c;
@@ -236,14 +190,9 @@ font-weight:bold;
 transition:.3s;
 }
 
-.options button:hover{
-transform:scale(1.02);
-}
+.options button:hover{transform:scale(1.02);}
 
-.input-area{
-display:flex;
-border-top:1px solid #ddd;
-}
+.input-area{display:flex;border-top:1px solid #ddd;}
 
 .input-area input{
 flex:1;
@@ -261,22 +210,13 @@ cursor:pointer;
 font-weight:bold;
 }
 
-/* IMÁGENES */
-
 .titulo-servicio{
-background:
-linear-gradient(
-135deg,
-#f7d25b,
-#d4af37,
-#b8860b
-);
+background:linear-gradient(135deg,#f7d25b,#d4af37,#b8860b);
 color:#000;
 padding:10px 14px;
 font-weight:bold;
 border-bottom-right-radius:14px;
-box-shadow:
-0 0 10px rgba(212,175,55,.8);
+box-shadow:0 0 10px rgba(212,175,55,.8);
 }
 
 .imagen-premium{
@@ -285,40 +225,24 @@ height:240px;
 object-fit:cover;
 border-radius:14px;
 border:2px solid #d4af37;
-box-shadow:
-0 8px 20px rgba(0,0,0,.25),
-0 0 18px rgba(212,175,55,.4);
+box-shadow:0 8px 20px rgba(0,0,0,.25),0 0 18px rgba(212,175,55,.4);
 transition:.4s;
 }
 
-.imagen-premium:hover{
-transform:scale(1.03);
-}
-
-/* REDES */
+.imagen-premium:hover{transform:scale(1.03);}
 
 .red-social-premium{
-background:
-linear-gradient(
-270deg,
-#000000,
-#1a1a1a,
-#d4af37,
-#000000
-);
+background:linear-gradient(270deg,#000000,#1a1a1a,#d4af37,#000000);
 background-size:600% 600%;
 animation:brilloRedes 6s ease infinite;
 color:#fff !important;
 border-radius:16px;
 border:2px solid #d4af37;
-box-shadow:
-0 0 10px rgba(212,175,55,.6);
+box-shadow:0 0 10px rgba(212,175,55,.6);
 transition:.3s;
 }
 
-.red-social-premium:hover{
-transform:scale(1.08);
-}
+.red-social-premium:hover{transform:scale(1.08);}
 
 .badge-pendiente{
 background:red;
@@ -348,947 +272,666 @@ opacity:0;
 transition:.4s;
 }
 
-#toast.active{
-opacity:1;
+#toast.active{opacity:1;}
+
+/* MODAL LOGIN ADMIN */
+.modal-admin{
+display:none;
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.6);
+z-index:999999;
+justify-content:center;
+align-items:center;
 }
+
+.modal-admin.active{display:flex;}
+
+.modal-box{
+background:#fff;
+padding:30px;
+border-radius:20px;
+width:320px;
+box-shadow:0 0 30px rgba(212,175,55,0.6);
+border:2px solid #d4af37;
+}
+
+.modal-box h4{
+margin-bottom:16px;
+font-weight:bold;
+}
+
+.modal-box input{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border:1px solid #ccc;
+border-radius:10px;
+outline:none;
+font-size:15px;
+}
+
+.modal-box button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#d4af37;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+}
+
+.modal-box .btn-cancelar{
+background:#333;
+color:#fff;
+margin-top:8px;
+}
+
+#estadoFirebase{
+font-size:12px;
+color:#666;
+text-align:center;
+padding:4px;
+}
+
+#estadoFirebase.conectado{color:green;}
+#estadoFirebase.error{color:red;}
 
 @keyframes brilloRedes{
-
-0%{
-background-position:0% 50%;
-}
-
-50%{
-background-position:100% 50%;
-}
-
-100%{
-background-position:0% 50%;
-}
-
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 @keyframes pulse{
-
-0%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(1.05);
-}
-
-100%{
-transform:scale(1);
-}
-
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
 }
 
 @media(max-width:768px){
-
-.chatbox{
-width:95%;
-left:2.5%;
-height:80vh;
-}
-
-.navbar-premium h3{
-font-size:15px;
-padding-right:110px;
-}
-
-.btn-pendientes{
-top:20px;
-right:8px;
-font-size:11px;
-padding:7px 10px;
-}
-
-.imagen-premium{
-height:220px;
-}
-
+.chatbox{width:95%;left:2.5%;height:80vh;}
+.navbar-premium h3{font-size:15px;padding-right:110px;}
+.btn-pendientes{top:20px;right:8px;font-size:11px;padding:7px 10px;}
+.imagen-premium{height:220px;}
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- BOTÓN ADMIN -->
-
-<div class="btn-pendientes" onclick="verificarAdmin()">
-
-<div class="contador" id="contadorPendientes">
-0
+<!-- MODAL LOGIN ADMIN -->
+<div class="modal-admin" id="modalAdmin">
+  <div class="modal-box">
+    <h4>🔐 Acceso Administrador</h4>
+    <input type="email" id="adminEmail" placeholder="Correo electrónico">
+    <input type="password" id="adminPassword" placeholder="Contraseña">
+    <button onclick="loginAdmin()">Ingresar</button>
+    <button class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+    <p id="errorLogin" style="color:red;font-size:13px;margin-top:8px;"></p>
+  </div>
 </div>
 
-Solicitudes
-
+<!-- BOTÓN ADMIN -->
+<div class="btn-pendientes" onclick="verificarAdmin()">
+  <div class="contador" id="contadorPendientes">0</div>
+  Solicitudes
 </div>
 
 <!-- PANEL -->
-
 <div class="panel" id="panelSolicitudes">
-
-<span class="cerrar-panel" onclick="cerrarPanel()">
-&times;
-</span>
-
-<h2 class="mb-4">
-Solicitudes Pendientes
-</h2>
-
-<div class="table-responsive">
-
-<table class="table table-bordered">
-
-<thead class="thead-dark">
-
-<tr>
-<th>Servicio</th>
-<th>Nombre</th>
-<th>Celular</th>
-<th>Estado</th>
-<th>Acción</th>
-</tr>
-
-</thead>
-
-<tbody id="tablaSolicitudes"></tbody>
-
-</table>
-
-</div>
-
+  <span class="cerrar-panel" onclick="cerrarPanel()">&times;</span>
+  <h2 class="mb-2">Solicitudes</h2>
+  <p id="estadoFirebase">Conectando con Firebase...</p>
+  <button class="btn btn-sm btn-danger mb-3" onclick="logoutAdmin()">Cerrar sesión</button>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Servicio</th>
+          <th>Nombre</th>
+          <th>Cédula</th>
+          <th>Celular</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="tablaSolicitudes"></tbody>
+    </table>
+  </div>
 </div>
 
 <!-- NAVBAR -->
-
 <div class="w3-top">
-
-<div class="w3-bar navbar-premium w3-padding w3-card">
-
-<img src="Logo.jpg" style="width:60px;" class="w3-left">
-
-<h3 style="text-align:center;">
-Vía Legal Asesoría y Gestiones de tránsito
-</h3>
-
-</div>
-
+  <div class="w3-bar navbar-premium w3-padding w3-card">
+    <img src="Logo.jpg" style="width:60px;" class="w3-left">
+    <h3 style="text-align:center;">Vía Legal Asesoría y Gestiones de tránsito</h3>
+  </div>
 </div>
 
 <!-- VIDEO -->
-
-<header class="w3-display-container w3-content w3-wide"
-style="max-width:1500px;margin-top:70px;">
-
-<video autoplay muted loop playsinline style="width:100%;">
-
-<source src="asesorias-transito.mp4" type="video/mp4">
-
-</video>
-
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;margin-top:70px;">
+  <video autoplay muted loop playsinline style="width:100%;">
+    <source src="asesorias-transito.mp4" type="video/mp4">
+  </video>
 </header>
 
 <div class="w3-content w3-padding" style="max-width:1564px">
 
-<!-- SERVICIOS PRINCIPALES -->
+  <!-- SERVICIOS PRINCIPALES -->
+  <div class="w3-container w3-padding-32">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">ASESORÍAS JURÍDICAS EN TRÁMITES DE TRÁNSITO</h3>
+  </div>
 
-<div class="w3-container w3-padding-32">
+  <div class="w3-row-padding">
 
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-ASESORÍAS JURÍDICAS EN TRÁMITES DE TRÁNSITO
-</h3>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft titulo-servicio">Cursos descuento infracción</div>
+        <img src="multas.png" class="imagen-premium">
+      </div>
+    </div>
 
-</div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft titulo-servicio">Licencia por primera vez</div>
+        <img src="licencia x primera vez.png" class="imagen-premium">
+      </div>
+    </div>
 
-<div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft titulo-servicio">Renovación</div>
+        <img src="renovacion licencia.png" class="imagen-premium">
+      </div>
+    </div>
 
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft titulo-servicio">Traspaso</div>
+        <img src="transpaso.png" class="imagen-premium">
+      </div>
+    </div>
 
-<div class="w3-display-topleft titulo-servicio">
-Cursos descuento infracción
-</div>
+  </div>
 
-<img src="multas.png" class="imagen-premium">
+  <!-- SERVICIOS -->
+  <div class="w3-container w3-padding-32">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Nuestros Servicios</h3>
+    <div class="w3-row-padding">
 
-</div>
-</div>
+      <div class="w3-col l4 m6 s12 w3-margin-bottom">
+        <div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+          <i class="fa fa-file-text fa-3x" style="color:#d4af37;"></i>
+          <h4 class="w3-padding-16">Derechos de petición</h4>
+          <p>Redacción y radicación de derechos de petición.</p>
+        </div>
+      </div>
 
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
+      <div class="w3-col l4 m6 s12 w3-margin-bottom">
+        <div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+          <i class="fa fa-balance-scale fa-3x" style="color:#d4af37;"></i>
+          <h4 class="w3-padding-16">Tutelas</h4>
+          <p>Protección inmediata de derechos fundamentales.</p>
+        </div>
+      </div>
 
-<div class="w3-display-topleft titulo-servicio">
-Licencia por primera vez
-</div>
+      <div class="w3-col l4 m6 s12 w3-margin-bottom">
+        <div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+          <i class="fa fa-car fa-3x" style="color:#d4af37;"></i>
+          <h4 class="w3-padding-16">Procesos de tránsito</h4>
+          <p>Asesoría jurídica en comparendos y multas.</p>
+        </div>
+      </div>
 
-<img src="licencia x primera vez.png" class="imagen-premium">
+      <div class="w3-col l4 m6 s12 w3-margin-bottom">
+        <div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+          <i class="fa fa-exchange fa-3x" style="color:#d4af37;"></i>
+          <h4 class="w3-padding-16">Traspaso de vehículos a nivel nacional</h4>
+          <p>Gestión rápida y segura para traspasos de vehículos.</p>
+        </div>
+      </div>
 
-</div>
-</div>
+      <div class="w3-col l4 m6 s12 w3-margin-bottom">
+        <div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+          <i class="fa fa-unlock-alt fa-3x" style="color:#d4af37;"></i>
+          <h4 class="w3-padding-16">Levantamiento de prenda</h4>
+          <p>Asesoría y trámite para cancelación de prendas vehiculares.</p>
+        </div>
+      </div>
 
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
+      <div class="w3-col l4 m6 s12 w3-margin-bottom">
+        <div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+          <i class="fa fa-id-card fa-3x" style="color:#d4af37;"></i>
+          <h4 class="w3-padding-16">Licencia de conducción por primera vez</h4>
+          <p>Acompañamiento completo para obtener tu licencia.</p>
+        </div>
+      </div>
 
-<div class="w3-display-topleft titulo-servicio">
-Renovación
-</div>
+      <div class="w3-col l4 m6 s12 w3-margin-bottom">
+        <div class="w3-card w3-padding w3-center" style="border-radius:15px;">
+          <i class="fa fa-refresh fa-3x" style="color:#d4af37;"></i>
+          <h4 class="w3-padding-16">Renovación de licencia de conducción</h4>
+          <p>Renueva tu licencia de manera ágil y segura.</p>
+        </div>
+      </div>
 
-<img src="renovacion licencia.png" class="imagen-premium">
+    </div>
+  </div>
 
-</div>
-</div>
+  <!-- CONTACTO -->
+  <div class="w3-container w3-padding-32">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contacto</h3>
+    <p>📞 WhatsApp: 3112878814</p>
+    <p>📧 vlegalasesoriasdetransito@gmail.com</p>
+    <p>📍 Calle 57 # 2D - 26 Los Andes - Cali</p>
+  </div>
 
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
-
-<div class="w3-display-topleft titulo-servicio">
-Traspaso
-</div>
-
-<img src="transpaso.png" class="imagen-premium">
-
-</div>
-</div>
-
-</div>
-
-<!-- SERVICIOS -->
-
-<div class="w3-container w3-padding-32">
-
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-Nuestros Servicios
-</h3>
-
-<div class="w3-row-padding">
-
-<div class="w3-col l4 m6 s12 w3-margin-bottom">
-<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
-<i class="fa fa-file-text fa-3x" style="color:#d4af37;"></i>
-<h4 class="w3-padding-16">Derechos de petición</h4>
-<p>Redacción y radicación de derechos de petición.</p>
-</div>
-</div>
-
-<div class="w3-col l4 m6 s12 w3-margin-bottom">
-<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
-<i class="fa fa-balance-scale fa-3x" style="color:#d4af37;"></i>
-<h4 class="w3-padding-16">Tutelas</h4>
-<p>Protección inmediata de derechos fundamentales.</p>
-</div>
-</div>
-
-<div class="w3-col l4 m6 s12 w3-margin-bottom">
-<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
-<i class="fa fa-car fa-3x" style="color:#d4af37;"></i>
-<h4 class="w3-padding-16">Procesos de tránsito</h4>
-<p>Asesoría jurídica en comparendos y multas.</p>
-</div>
-</div>
-
-<div class="w3-col l4 m6 s12 w3-margin-bottom">
-<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
-<i class="fa fa-exchange fa-3x" style="color:#d4af37;"></i>
-<h4 class="w3-padding-16">
-Traspaso de vehículos a nivel nacional
-</h4>
-<p>
-Gestión rápida y segura para traspasos de vehículos.
-</p>
-</div>
-</div>
-
-<div class="w3-col l4 m6 s12 w3-margin-bottom">
-<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
-<i class="fa fa-unlock-alt fa-3x" style="color:#d4af37;"></i>
-<h4 class="w3-padding-16">
-Levantamiento de prenda
-</h4>
-<p>
-Asesoría y trámite para cancelación de prendas vehiculares.
-</p>
-</div>
-</div>
-
-<div class="w3-col l4 m6 s12 w3-margin-bottom">
-<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
-<i class="fa fa-id-card fa-3x" style="color:#d4af37;"></i>
-<h4 class="w3-padding-16">
-Licencia de conducción por primera vez
-</h4>
-<p>
-Acompañamiento completo para obtener tu licencia.
-</p>
-</div>
-</div>
-
-<div class="w3-col l4 m6 s12 w3-margin-bottom">
-<div class="w3-card w3-padding w3-center" style="border-radius:15px;">
-<i class="fa fa-refresh fa-3x" style="color:#d4af37;"></i>
-<h4 class="w3-padding-16">
-Renovación de licencia de conducción
-</h4>
-<p>
-Renueva tu licencia de manera ágil y segura.
-</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- CONTACTO -->
-
-<div class="w3-container w3-padding-32">
-
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-Contacto
-</h3>
-
-<p>📞 WhatsApp: 3112878814</p>
-
-<p>📧 vlegalasesoriasdetransito@gmail.com</p>
-
-<p>📍 Calle 57 # 2D - 26 Los Andes - Cali</p>
-
-</div>
-
-<!-- MAPA -->
-
-<div class="w3-container w3-padding-32">
-
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
-Ubicación
-</h3>
-
-<iframe
-src="https://maps.google.com/maps?q=Calle%2057%20%232D-26%20Los%20Andes%20Cali&t=&z=17&ie=UTF8&iwloc=&output=embed"
-width="100%"
-height="350"
-style="border:0;border-radius:15px;"
-loading="lazy">
-</iframe>
-
-</div>
+  <!-- MAPA -->
+  <div class="w3-container w3-padding-32">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Ubicación</h3>
+    <iframe
+      src="https://maps.google.com/maps?q=Calle%2057%20%232D-26%20Los%20Andes%20Cali&t=&z=17&ie=UTF8&iwloc=&output=embed"
+      width="100%" height="350"
+      style="border:0;border-radius:15px;"
+      loading="lazy">
+    </iframe>
+  </div>
 
 </div>
 
 <!-- FOOTER -->
-
 <footer class="w3-padding-32 w3-black w3-center">
-
-<h3>
-Vía Legal Asesoría y Gestiones de tránsito
-</h3>
-
-<p>
-Comprometidos con brindarte soluciones jurídicas rápidas y seguras.
-</p>
-
-<h5 class="w3-padding-16">
-Nuestras Redes Sociales
-</h5>
-
-<div class="w3-xlarge w3-padding-16">
-
-<a
-class="w3-button w3-large red-social-premium"
-href="https://www.instagram.com/vlegalasesoriasdetransito/"
-target="_blank">
-
-<i class="fa fa-instagram"></i>
-
-</a>
-
-<a
-class="w3-button w3-large red-social-premium"
-href="https://wa.me/573112878814"
-target="_blank">
-
-<i class="fa fa-whatsapp"></i>
-
-</a>
-
-</div>
-
-<p>📞 3112878814</p>
-
-<p>📧 vlegalasesoriasdetransito@gmail.com</p>
-
-<p>© 2025 Todos los derechos reservados</p>
-
+  <h3>Vía Legal Asesoría y Gestiones de tránsito</h3>
+  <p>Comprometidos con brindarte soluciones jurídicas rápidas y seguras.</p>
+  <h5 class="w3-padding-16">Nuestras Redes Sociales</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <a class="w3-button w3-large red-social-premium" href="https://www.instagram.com/vlegalasesoriasdetransito/" target="_blank">
+      <i class="fa fa-instagram"></i>
+    </a>
+    <a class="w3-button w3-large red-social-premium" href="https://wa.me/573112878814" target="_blank">
+      <i class="fa fa-whatsapp"></i>
+    </a>
+  </div>
+  <p>📞 3112878814</p>
+  <p>📧 vlegalasesoriasdetransito@gmail.com</p>
+  <p>© 2025 Todos los derechos reservados</p>
 </footer>
 
 <!-- CHAT -->
-
 <div class="chat-btn" onclick="toggleChat()">
-
-<i class="fa fa-comments"></i>
-
-Haz tu solicitud aquí
-
+  <i class="fa fa-comments"></i>
+  Haz tu solicitud aquí
 </div>
 
 <div class="chatbox" id="chatbox">
-
-<div class="header-chat">
-
-Asistente Jurídico
-
-<span onclick="toggleChat()" style="cursor:pointer;">
-&times;
-</span>
-
+  <div class="header-chat">
+    Asistente Jurídico
+    <span onclick="toggleChat()" style="cursor:pointer;">&times;</span>
+  </div>
+  <div class="messages" id="messages"></div>
+  <div class="input-area">
+    <input type="text" id="input" placeholder="Escribe aquí..." autocomplete="off">
+    <button class="btn-enviar" onclick="sendMessage()">Enviar</button>
+  </div>
 </div>
 
-<div class="messages" id="messages"></div>
-
-<div class="input-area">
-
-<input
-type="text"
-id="input"
-placeholder="Escribe aquí..."
-autocomplete="off"
->
-
-<button class="btn-enviar" onclick="sendMessage()">
-Enviar
-</button>
-
-</div>
-
-</div>
-
-<div id="toast">
-✅ Solicitud enviada
-</div>
-
-<script>
-
-const ADMIN_PASSWORD = "progreso123";
-
-const messages =
-document.getElementById("messages");
-
-const input =
-document.getElementById("input");
-
-const toast =
-document.getElementById("toast");
-
-let step = 0;
-
-let userData = {
-servicio:"",
-precio:"",
-nombre:"",
-apellido:"",
-cedula:"",
-telefono:""
-};
-
-const servicios = {
-
-"1":{
-nombre:"Derecho de petición",
-precio:"80000"
-},
-
-"2":{
-nombre:"Tutela",
-precio:"120000"
-},
-
-"3":{
-nombre:"Asesoría jurídica",
-precio:"60000"
-},
-
-"4":{
-nombre:"Ejecución sentencia",
-precio:"250000"
-},
-
-"5":{
-nombre:"Incidente desacato",
-precio:"180000"
-}
-
-};
-
-let solicitudes =
-JSON.parse(localStorage.getItem("solicitudes"))
-|| [];
-
-function verificarAdmin(){
-
-const pass =
-prompt("Ingrese contraseña administrador");
-
-if(pass === ADMIN_PASSWORD){
-
-abrirPanel();
-
-}else{
-
-alert("Acceso denegado");
-
-}
-
-}
-
-function toggleChat(){
-
-const chat =
-document.getElementById("chatbox");
-
-chat.style.display =
-chat.style.display === "flex"
-? "none"
-: "flex";
-
-}
-
-function abrirPanel(){
-
-document.getElementById("panelSolicitudes")
-.classList.add("active");
-
-}
-
-function cerrarPanel(){
-
-document.getElementById("panelSolicitudes")
-.classList.remove("active");
-
-}
-
-function mostrarToast(){
-
-toast.innerHTML =
-"✅ Solicitud enviada<br>📞 En un momento se pondrá en contacto nuestro abogado.";
-
-toast.classList.add("active");
-
-setTimeout(()=>{
-
-toast.classList.remove("active");
-
-},4500);
-
-}
-
-function addBotMessage(text){
-
-let div =
-document.createElement("div");
-
-div.className = "message bot";
-
-div.innerHTML = text;
-
-messages.appendChild(div);
-
-messages.scrollTop =
-messages.scrollHeight;
-
-}
-
-function addUserMessage(text){
-
-let div =
-document.createElement("div");
-
-div.className = "message user";
-
-div.innerHTML = text;
-
-messages.appendChild(div);
-
-messages.scrollTop =
-messages.scrollHeight;
-
-}
-
-function startChat(){
-
-messages.innerHTML = "";
-
-addBotMessage(`
-
-Hola 👋<br><br>
-
-¿Qué servicio necesitas?<br><br>
-
-<div class="options">
-
-<button onclick="selectOption('1')">
-Derecho de petición
-</button>
-
-<button onclick="selectOption('2')">
-Tutela
-</button>
-
-<button onclick="selectOption('3')">
-Asesoría jurídica
-</button>
-
-<button onclick="selectOption('4')">
-Ejecución sentencia
-</button>
-
-<button onclick="selectOption('5')">
-Incidente desacato
-</button>
-
-</div>
-
-`);
-
-}
-
-function selectOption(option){
-
-userData.servicio =
-servicios[option].nombre;
-
-userData.precio =
-servicios[option].precio;
-
-addUserMessage(
-servicios[option].nombre
-);
-
-addBotMessage(`
-
-Valor aproximado:<br><br>
-
-<b>
-$${servicios[option].precio} COP
-</b>
-
-<br><br>
-
-Escribe tu nombre.
-
-`);
-
-step = 1;
-
-}
-
-function soloLetras(text){
-
-return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
-.test(text);
-
-}
-
-function soloNumeros(text){
-
-return /^[0-9]+$/
-.test(text);
-
-}
-
-function sendMessage(){
-
-const text =
-input.value.trim();
-
-if(text === ""){
-
-addBotMessage(
-"⚠️ Campo obligatorio."
-);
-
-return;
-
-}
-
-if(step === 1){
-
-if(!soloLetras(text)){
-
-addBotMessage(
-"⚠️ Solo letras."
-);
-
-return;
-
-}
-
-userData.nombre = text;
-
-addUserMessage(text);
-
-addBotMessage(
-"Ahora escribe tu apellido."
-);
-
-input.value = "";
-
-step = 2;
-
-return;
-
-}
-
-if(step === 2){
-
-if(!soloLetras(text)){
-
-addBotMessage(
-"⚠️ Solo letras."
-);
-
-return;
-
-}
-
-userData.apellido = text;
-
-addUserMessage(text);
-
-addBotMessage(
-"Escribe tu número de cédula."
-);
-
-input.value = "";
-
-step = 3;
-
-return;
-
-}
-
-if(step === 3){
-
-if(!soloNumeros(text)){
-
-addBotMessage(
-"⚠️ Solo números."
-);
-
-return;
-
-}
-
-userData.cedula = text;
-
-addUserMessage(text);
-
-addBotMessage(
-"Escribe tu número de contacto."
-);
-
-input.value = "";
-
-step = 4;
-
-return;
-
-}
-
-if(step === 4){
-
-if(!soloNumeros(text)){
-
-addBotMessage(
-"⚠️ Solo números."
-);
-
-return;
-
-}
-
-userData.telefono = text;
-
-addUserMessage(text);
-
-const nuevaSolicitud = {
-
-tipo:userData.servicio,
-nombre:userData.nombre,
-apellido:userData.apellido,
-cedula:userData.cedula,
-celular:userData.telefono,
-precio:userData.precio,
-estado:"Pendiente"
-
-};
-
-solicitudes.push(nuevaSolicitud);
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-mostrarToast();
-
-addBotMessage(`
-
-✅ <b>Solicitud enviada</b><br><br>
-
-📞 En un momento se pondrá en contacto nuestro abogado.
-
-`);
-
-input.value = "";
-
-step = 0;
-
-userData = {
-servicio:"",
-precio:"",
-nombre:"",
-apellido:"",
-cedula:"",
-telefono:""
-};
-
-setTimeout(()=>{
-
-messages.innerHTML = "";
-
-startChat();
-
-},4500);
-
-}
-
-}
-
-function mostrarSolicitudes(){
-
-const tabla =
-document.getElementById("tablaSolicitudes");
-
-tabla.innerHTML = "";
-
-let pendientes = 0;
-
-solicitudes.forEach((solicitud,index)=>{
-
-if(solicitud.estado === "Pendiente"){
-pendientes++;
-}
-
-tabla.innerHTML += `
-
-<tr>
-
-<td>${solicitud.tipo}</td>
-
-<td>
-${solicitud.nombre}
-${solicitud.apellido}
-</td>
-
-<td>${solicitud.celular}</td>
-
-<td>
-
-<span class="${
-solicitud.estado === "Pendiente"
-? "badge-pendiente"
-: "badge-respondido"
-}">
-
-${solicitud.estado}
-
-</span>
-
-</td>
-
-<td>
-
-<button
-class="btn btn-sm btn-success"
-onclick="cambiarEstado(${index})"
->
-
-Responder
-
-</button>
-
-<button
-class="btn btn-sm btn-danger mt-1"
-onclick="eliminarSolicitud(${index})"
->
-
-Eliminar
-
-</button>
-
-</td>
-
-</tr>
-
-`;
-
-});
-
-document.getElementById(
-"contadorPendientes"
-).innerText = pendientes;
-
-}
-
-function cambiarEstado(index){
-
-solicitudes[index].estado =
-"Respondido";
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-}
-
-function eliminarSolicitud(index){
-
-solicitudes.splice(index,1);
-
-localStorage.setItem(
-"solicitudes",
-JSON.stringify(solicitudes)
-);
-
-mostrarSolicitudes();
-
-}
-
-input.addEventListener(
-"keypress",
-function(e){
-
-if(e.key === "Enter"){
-
-sendMessage();
-
-}
-
-}
-);
-
-startChat();
-
-mostrarSolicitudes();
+<div id="toast">✅ Solicitud enviada</div>
+
+<!-- FIREBASE SDK -->
+<script type="module">
+
+  // ============================================================
+  // PASO 1: REEMPLAZA ESTOS VALORES CON LOS DE TU PROYECTO
+  // Ve a: https://console.firebase.google.com
+  // Proyecto → Configuración → Tus apps → Web → firebaseConfig
+  // ============================================================
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    onSnapshot,
+    updateDoc,
+    deleteDoc,
+    doc,
+    query,
+    orderBy,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "TU_API_KEY",
+    authDomain: "TU_PROYECTO.firebaseapp.com",
+    projectId: "TU_PROYECTO_ID",
+    storageBucket: "TU_PROYECTO.appspot.com",
+    messagingSenderId: "TU_SENDER_ID",
+    appId: "TU_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+
+  // ============================================================
+  // ESTADO GLOBAL
+  // ============================================================
+  let solicitudesCache = [];
+  let usuarioAdmin = null;
+
+  // ============================================================
+  // AUTENTICACIÓN ADMIN
+  // ============================================================
+  onAuthStateChanged(auth, (user) => {
+    usuarioAdmin = user;
+    if (user) {
+      escucharSolicitudes();
+    }
+  });
+
+  window.verificarAdmin = function() {
+    document.getElementById("modalAdmin").classList.add("active");
+  };
+
+  window.cerrarModal = function() {
+    document.getElementById("modalAdmin").classList.remove("active");
+    document.getElementById("errorLogin").innerText = "";
+  };
+
+  window.loginAdmin = async function() {
+    const email = document.getElementById("adminEmail").value.trim();
+    const pass = document.getElementById("adminPassword").value.trim();
+    const errorEl = document.getElementById("errorLogin");
+
+    if (!email || !pass) {
+      errorEl.innerText = "Completa todos los campos.";
+      return;
+    }
+
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+      cerrarModal();
+      abrirPanel();
+    } catch (e) {
+      errorEl.innerText = "Correo o contraseña incorrectos.";
+    }
+  };
+
+  window.logoutAdmin = async function() {
+    await signOut(auth);
+    cerrarPanel();
+  };
+
+  window.abrirPanel = function() {
+    if (!usuarioAdmin) {
+      verificarAdmin();
+      return;
+    }
+    document.getElementById("panelSolicitudes").classList.add("active");
+  };
+
+  window.cerrarPanel = function() {
+    document.getElementById("panelSolicitudes").classList.remove("active");
+  };
+
+  // ============================================================
+  // ESCUCHAR SOLICITUDES EN TIEMPO REAL (solo si está logueado)
+  // ============================================================
+  function escucharSolicitudes() {
+    const estadoEl = document.getElementById("estadoFirebase");
+    try {
+      const q = query(collection(db, "solicitudes"), orderBy("fecha", "desc"));
+      onSnapshot(q, (snapshot) => {
+        solicitudesCache = [];
+        snapshot.forEach((docSnap) => {
+          solicitudesCache.push({ id: docSnap.id, ...docSnap.data() });
+        });
+        renderTabla();
+        estadoEl.innerText = "✅ Conectado a Firebase";
+        estadoEl.className = "conectado";
+      }, (error) => {
+        estadoEl.innerText = "❌ Error de conexión: " + error.message;
+        estadoEl.className = "error";
+      });
+    } catch (e) {
+      estadoEl.innerText = "❌ Error al iniciar escucha.";
+      estadoEl.className = "error";
+    }
+  }
+
+  function renderTabla() {
+    const tabla = document.getElementById("tablaSolicitudes");
+    tabla.innerHTML = "";
+    let pendientes = 0;
+
+    solicitudesCache.forEach((solicitud) => {
+      if (solicitud.estado === "Pendiente") pendientes++;
+
+      tabla.innerHTML += `
+        <tr>
+          <td>${solicitud.tipo || ""}</td>
+          <td>${solicitud.nombre || ""} ${solicitud.apellido || ""}</td>
+          <td>${solicitud.cedula || ""}</td>
+          <td>${solicitud.celular || ""}</td>
+          <td>
+            <span class="${solicitud.estado === "Pendiente" ? "badge-pendiente" : "badge-respondido"}">
+              ${solicitud.estado}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-success" onclick="window.cambiarEstado('${solicitud.id}')">
+              Responder
+            </button>
+            <button class="btn btn-sm btn-danger mt-1" onclick="window.eliminarSolicitud('${solicitud.id}')">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+
+    document.getElementById("contadorPendientes").innerText = pendientes;
+  }
+
+  // ============================================================
+  // CAMBIAR ESTADO Y ELIMINAR
+  // ============================================================
+  window.cambiarEstado = async function(id) {
+    try {
+      await updateDoc(doc(db, "solicitudes", id), { estado: "Respondido" });
+    } catch (e) {
+      alert("Error al actualizar: " + e.message);
+    }
+  };
+
+  window.eliminarSolicitud = async function(id) {
+    if (!confirm("¿Eliminar esta solicitud?")) return;
+    try {
+      await deleteDoc(doc(db, "solicitudes", id));
+    } catch (e) {
+      alert("Error al eliminar: " + e.message);
+    }
+  };
+
+  // ============================================================
+  // GUARDAR NUEVA SOLICITUD (público, sin login)
+  // ============================================================
+  window.guardarSolicitudFirebase = async function(nuevaSolicitud) {
+    try {
+      nuevaSolicitud.fecha = serverTimestamp();
+      await addDoc(collection(db, "solicitudes"), nuevaSolicitud);
+      return true;
+    } catch (e) {
+      console.error("Error guardando solicitud:", e);
+      return false;
+    }
+  };
+
+  // ============================================================
+  // CHAT - LÓGICA
+  // ============================================================
+  const messagesEl = document.getElementById("messages");
+  const inputEl = document.getElementById("input");
+  const toastEl = document.getElementById("toast");
+
+  let step = 0;
+  let userData = { servicio:"", precio:"", nombre:"", apellido:"", cedula:"", telefono:"" };
+
+  const servicios = {
+    "1":{ nombre:"Derecho de petición", precio:"80000" },
+    "2":{ nombre:"Tutela", precio:"120000" },
+    "3":{ nombre:"Asesoría jurídica", precio:"60000" },
+    "4":{ nombre:"Ejecución sentencia", precio:"250000" },
+    "5":{ nombre:"Incidente desacato", precio:"180000" }
+  };
+
+  window.toggleChat = function() {
+    const chat = document.getElementById("chatbox");
+    chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+  };
+
+  function mostrarToast() {
+    toastEl.innerHTML = "✅ Solicitud enviada<br>📞 En un momento se pondrá en contacto nuestro abogado.";
+    toastEl.classList.add("active");
+    setTimeout(() => toastEl.classList.remove("active"), 4500);
+  }
+
+  function addBotMessage(text) {
+    let div = document.createElement("div");
+    div.className = "message bot";
+    div.innerHTML = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function addUserMessage(text) {
+    let div = document.createElement("div");
+    div.className = "message user";
+    div.innerHTML = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function startChat() {
+    messagesEl.innerHTML = "";
+    addBotMessage(`
+      Hola 👋<br><br>
+      ¿Qué servicio necesitas?<br><br>
+      <div class="options">
+        <button onclick="window.selectOption('1')">Derecho de petición</button>
+        <button onclick="window.selectOption('2')">Tutela</button>
+        <button onclick="window.selectOption('3')">Asesoría jurídica</button>
+        <button onclick="window.selectOption('4')">Ejecución sentencia</button>
+        <button onclick="window.selectOption('5')">Incidente desacato</button>
+      </div>
+    `);
+  }
+
+  window.selectOption = function(option) {
+    userData.servicio = servicios[option].nombre;
+    userData.precio = servicios[option].precio;
+    addUserMessage(servicios[option].nombre);
+    addBotMessage(`
+      Valor aproximado:<br><br>
+      <b>$${servicios[option].precio} COP</b><br><br>
+      Escribe tu nombre.
+    `);
+    step = 1;
+  };
+
+  function soloLetras(text) {
+    return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(text);
+  }
+
+  function soloNumeros(text) {
+    return /^[0-9]+$/.test(text);
+  }
+
+  window.sendMessage = async function() {
+    const text = inputEl.value.trim();
+    if (text === "") { addBotMessage("⚠️ Campo obligatorio."); return; }
+
+    if (step === 1) {
+      if (!soloLetras(text)) { addBotMessage("⚠️ Solo letras."); return; }
+      userData.nombre = text;
+      addUserMessage(text);
+      addBotMessage("Ahora escribe tu apellido.");
+      inputEl.value = "";
+      step = 2;
+      return;
+    }
+
+    if (step === 2) {
+      if (!soloLetras(text)) { addBotMessage("⚠️ Solo letras."); return; }
+      userData.apellido = text;
+      addUserMessage(text);
+      addBotMessage("Escribe tu número de cédula.");
+      inputEl.value = "";
+      step = 3;
+      return;
+    }
+
+    if (step === 3) {
+      if (!soloNumeros(text)) { addBotMessage("⚠️ Solo números."); return; }
+      userData.cedula = text;
+      addUserMessage(text);
+      addBotMessage("Escribe tu número de contacto.");
+      inputEl.value = "";
+      step = 4;
+      return;
+    }
+
+    if (step === 4) {
+      if (!soloNumeros(text)) { addBotMessage("⚠️ Solo números."); return; }
+      userData.telefono = text;
+      addUserMessage(text);
+      inputEl.value = "";
+
+      const nuevaSolicitud = {
+        tipo: userData.servicio,
+        nombre: userData.nombre,
+        apellido: userData.apellido,
+        cedula: userData.cedula,
+        celular: userData.telefono,
+        precio: userData.precio,
+        estado: "Pendiente"
+      };
+
+      addBotMessage("⏳ Enviando solicitud...");
+
+      const exito = await window.guardarSolicitudFirebase(nuevaSolicitud);
+
+      if (exito) {
+        mostrarToast();
+        addBotMessage("✅ <b>Solicitud enviada</b><br><br>📞 En un momento se pondrá en contacto nuestro abogado.");
+      } else {
+        addBotMessage("❌ Error al enviar. Contáctanos por WhatsApp directamente.");
+      }
+
+      step = 0;
+      userData = { servicio:"", precio:"", nombre:"", apellido:"", cedula:"", telefono:"" };
+
+      setTimeout(() => {
+        messagesEl.innerHTML = "";
+        startChat();
+      }, 4500);
+    }
+  };
+
+  inputEl.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") window.sendMessage();
+  });
+
+  startChat();
 
 </script>
 
