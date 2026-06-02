@@ -332,7 +332,7 @@ color:#fff;
 margin-top:8px;
 }
 
-#estadoFirebase{
+/* #estadoFirebase{
 font-size:12px;
 color:#666;
 text-align:center;
@@ -340,7 +340,7 @@ padding:4px;
 }
 
 #estadoFirebase.conectado{color:green;}
-#estadoFirebase.error{color:red;}
+#estadoFirebase.error{color:red;} */
 
 @keyframes brilloRedes{
 0%{background-position:0% 50%;}
@@ -401,7 +401,7 @@ font-size:13px;
 <div class="panel" id="panelSolicitudes">
   <span class="cerrar-panel" onclick="cerrarPanel()">&times;</span>
   <h2 class="mb-2">Solicitudes</h2>
-  <p id="estadoFirebase">Conectando con Firebase...</p>
+  <!-- <p id="estadoFirebase">Conectando con Firebase...</p> -->
   <button class="btn btn-sm btn-danger mb-3" onclick="logoutAdmin()">Cerrar sesión</button>
   <div class="table-responsive">
     <table class="table table-bordered">
@@ -714,28 +714,23 @@ window.abrirPanel = function() {
   // ============================================================
   // ESCUCHAR SOLICITUDES EN TIEMPO REAL (solo si está logueado)
   // ============================================================
-  function escucharSolicitudes() {
-    const estadoEl = document.getElementById("estadoFirebase");
-    try {
-      const q = query(collection(db, "solicitudes"), orderBy("fecha", "desc"));
-      onSnapshot(q, (snapshot) => {
-        solicitudesCache = [];
-        snapshot.forEach((docSnap) => {
-          solicitudesCache.push({ id: docSnap.id, ...docSnap.data() });
-        });
-        renderTabla();
-        estadoEl.innerText = "✅ Conectado a Firebase"; 
-        estadoEl.className = "conectado";
-      }, (error) => {
-        estadoEl.innerText = "❌ Error de conexión: " + error.message;
-        estadoEl.className = "error";
+function escucharSolicitudes() {
+  try {
+    const q = query(collection(db, "solicitudes"), orderBy("fecha", "desc"));
+    onSnapshot(q, (snapshot) => {
+      solicitudesCache = [];
+      snapshot.forEach((docSnap) => {
+        solicitudesCache.push({ id: docSnap.id, ...docSnap.data() });
       });
-    } catch (e) {
-      estadoEl.innerText = "❌ Error al iniciar escucha.";
-      estadoEl.className = "error";
-    }
+      renderTabla();
+      console.log("✅ Conectado a Firebase");
+    }, (error) => {
+      console.error("❌ Error de conexión: " + error.message);
+    });
+  } catch (e) {
+    console.error("❌ Error al iniciar escucha:", e);
   }
-
+}
   function renderTabla() {
     const tabla = document.getElementById("tablaSolicitudes");
     tabla.innerHTML = "";
